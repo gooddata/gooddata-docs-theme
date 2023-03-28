@@ -1,0 +1,11 @@
+{{/* (C) 2023 GoodData Corporation */}}
+{{ if and (isset .Site.Params "platformswitch") (not (and .Page.Params.edition (in .Site.Params.platformswitchexclude .Page.Params.edition))) }}
+<ul class="gd-docs-header-platform-switch">
+    <li class="gd-docs-header-platform-switch__item{{ if eq .Site.Params.platformswitch "cloud" }} active{{ end }}">
+        <a href="{{ if eq .Site.Params.platformSwitch "cloud" }}{{ .Site.Home.RelPermalink }}{{ else }}https://www.gooddata.com/developers/cloud-native/doc/{{ end }}cloud/" class="gd-docs-header-platform-switch__link">Cloud</a>
+    </li>
+    <li class="gd-docs-header-platform-switch__item{{ if eq .Site.Params.platformswitch "platform" }} active{{ end }}">
+        <a href="{{ if eq .Site.Params.platformSwitch "platform" }}{{ .Site.Home.RelPermalink }}{{ else }}https://help.gooddata.com/{{ end }}doc/enterprise/en/" class="gd-docs-header-platform-switch__link">Platform</a>
+    </li>
+</ul>
+{{ end }}

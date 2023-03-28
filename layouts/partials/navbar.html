@@ -1,0 +1,35 @@
+{{/* (C) 2023 GoodData Corporation */}}
+{{ $cover := .HasShortcode "blocks/cover" }}
+<nav class="gd-docs-header-nav gd-docs-header-nav__first">
+  <div class="gd-docs-header-nav__left">
+    <a class="gd-docs-header-nav__logo gd-header-nav__logo" href="{{ .Site.Home.RelPermalink }}">
+      {{ with resources.Get "icons/GoodDataLearn.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+    </a>
+    <span class="gd-header-nav__logo-text">Learn</span>
+  </div>
+  {{ partial "header-menu.html" . }}
+  {{ partial "header-right.html" . }}
+</nav>
+<nav class="gd-docs-header-nav gd-docs-header-nav__second">
+  <div class="gd-docs-header-nav__left">
+    {{ partial "platform-switch.html" . }}
+    {{ partial "navbar-breadcrumb.html" . }}
+  </div>
+  <div class="gd-docs-header-nav__center">
+    <div id="adds-container" class="gd-docs-header-nav__search"></div>
+  </div>
+  {{ if  .Site.Params.versions }}
+  <div class="gd-docs-header-nav__right">
+    {{ partial "navbar-version-selector.html" . }}
+  </div>
+  {{ else }}
+  <div class="gd-docs-header-nav__right">
+    {{ with .Site.GetPage "docs" }}
+    <a class="gd-header-link-item" href="{{ .RelPermalink }}">{{ .Name }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ partial "edition-switch.html" . }}
+  {{ partial "lang-switch.html" . }}
+</nav>

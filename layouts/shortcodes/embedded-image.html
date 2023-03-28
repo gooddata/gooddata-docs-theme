@@ -1,0 +1,19 @@
+{{/* (C) 2023 GoodData Corporation */}}
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $width := .Get "width" }}
+{{ $height := .Get "height" }}
+{{ $id := urlize (humanize (replace (delimit (last 1 (split $src "/")) "") "." "-")) }}
+
+<div class="embedded-image" data-toggle="modal" data-target="#{{ $id }}">
+    <img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
+</div>
+
+<div class="modal fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}" aria-hidden="true">
+    <div class="modal-dialog embedded-image-dialog" role="document">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            {{ with resources.Get "icons/close.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+        </button>
+        <img src="{{ $src }}" alt="{{ $alt }}" />
+    </div>
+</div>
