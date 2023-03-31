@@ -1,0 +1,19 @@
+# (C) 2023 GoodData Corporation
+
+name = "GDCDocsTheme"
+license = "BSD 3-Clause License"
+licenselink = "https://github.com/gooddata/gdc-docs-theme/blob/master/LICENSE"
+description = "GoodData documentation sites theme"
+homepage = "http://help.gooddata.com/"
+tags = ["documentation"]
+features = []
+min_version = "0.81.0"
+
+[author]
+  name = "GoodData Corporation"
+  homepage = "http://www.gooddata.com/"
+
+[original]
+  name = "The Docsy Authors"
+  homepage = "https://docsy.dev"
+  repo = "https://github.com/google/docsy"

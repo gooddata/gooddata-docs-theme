@@ -1,0 +1,48 @@
+{{/* (C) 2023 GoodData Corporation */}}
+{{ $currentPage := . }}
+{{ $site := .Site }}
+{{ $delimiter := "/" }}
+{{ $edition := default "enterprise" .Page.Params.edition }}
+{{ $pageLang := default "en" .Page.Params.lang }}
+{{ $sectionRootPath := printf "%s%s" (cond (eq (index (split .RelPermalink "/") 1) $edition) "/" "/doc/") $edition }}
+{{ $root := .Site.GetPage $sectionRootPath }}
+{{ $languages := $root.Pages }}
+
+{{ if .Site.Data.languages }}
+    <div class="gd-docs-dropdown gd-docs-language-switch">
+        <input type="checkbox" id="gd-docs-language-switch-trigger" class="gd-docs-dropdown-trigger">
+        <label class="gd-docs-dropdown-button" for="gd-docs-language-switch-trigger">
+            {{ range where .Site.Data.languages "lang" "=" $pageLang }}
+                {{ .title }}
+                {{ with resources.Get "icons/chevron-dropdown.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+            {{ end }}
+        </label>
+
+        <ul class="gd-docs-dropdown-list">
+            {{ range .Site.Data.languages }}
+                {{ $lang := . }}
+
+                {{ range where $languages "Params.lang" "=" $lang.lang }}
+                    {{ if gt (len (split $currentPage.RelPermalink "/")) 3 }}
+                        {{ $equivPath := replaceRE "/$" "" (replace $currentPage.RelPermalink (printf "%s%s%s" "/" $pageLang "/") (printf "%s%s%s" "/" $lang.lang "/")) }}
+                        {{ $pageEquiv := $site.GetPage $equivPath }}
+
+                        {{ with $pageEquiv }}
+                            <li class="gd-docs-dropdown-list-item">
+                                <a href="{{ .RelPermalink }}" class="gd-docs-dropdown-list-item-link">
+                                    {{ $lang.title }}
+                                </a>
+                            </li>
+                        {{ end }}
+                    {{ else }}
+                        <li class="gd-docs-dropdown-list-item">
+                            <a href="/doc/{{ $edition }}/{{ $pageLang }}/" class="gd-docs-dropdown-list-item-link">
+                                {{ $lang.title }}
+                            </a>
+                        </li>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

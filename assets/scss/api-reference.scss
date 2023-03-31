@@ -1,0 +1,15 @@
+// (C) 2023 GoodData Corporation
+
+.api-reference {
+    .td-outer {
+        padding-top: 139px;
+        padding-left: 0;
+    }
+
+    redoc {
+        .menu-content {
+            top: 139px !important;
+            height: calc(100vh - 139px) !important;
+        }
+    }
+}

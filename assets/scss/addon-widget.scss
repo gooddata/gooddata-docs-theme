@@ -1,0 +1,25 @@
+// (C) 2023 GoodData Corporation
+
+.addon-widget {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    min-height: 30px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    color: $color-deep-purple;
+    font-size: 14px;
+    line-height: 1;
+    background: #FFF6CC;
+
+    svg {
+        margin-right: 8px;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}

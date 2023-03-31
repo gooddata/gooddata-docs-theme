@@ -1,0 +1,10 @@
+{{/* (C) 2023 GoodData Corporation */}}
+<script src="https://www.gooddata.com/learn-assets/js/quicksearch-plugin.js"></script>
+<script>
+    $("#adds-container").gdQuickSearch({
+        tab: '{{ default "docs" .Site.Params.addSearchTab }}',
+        {{ if .Site.Params.versions }}version: "{{ partial "version.html" (dict "context" . "useLatest" true) }}",{{ end }}
+        {{ if .Page.Params.edition }}plan: "{{ .Page.Params.edition }}",{{ end }}
+        {{ if .Page.Params.lang }}lang: "{{ index (split .Page.Params.lang "_") 0 }}"{{ end }}
+    });
+</script>
