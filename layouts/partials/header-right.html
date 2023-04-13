@@ -2,8 +2,10 @@
 {{ $dot := . }}
 {{ $resources := resources }}
 {{ $rightMenu := index (index .Site.Params.header 0) "main" }}
-{{ if and .Page.Params.edition (isset (index .Site.Params.header 0) .Page.Params.edition) }}
-    {{ $rightMenu = index (index .Site.Params.header 0) .Page.Params.edition }}
+{{ if and (isset .Page.Params "edition") (isset .Site.Params "header") }}
+    {{ if isset (index .Site.Params.header 0) .Page.Params.edition }}
+        {{ $rightMenu = index (index .Site.Params.header 0) .Page.Params.edition }}
+    {{ end }}
 {{ end }}
 
 <div class="gd-docs-header-nav__right">
