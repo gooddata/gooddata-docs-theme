@@ -1,8 +1,25 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{ $src := .Get "src" }}
-<redoc spec-url="{{ $src }}"> </redoc>
-<!--The some_swagger_doc.yaml can be a site attachment, just copy over the download link once you uploaded the yaml to your page.-->
-<script src="https://sdk.gooddata.com/API-doc--production/redoc.standalone.js">//<![CDATA[
+{{ $id := .Get "id" | default "header" }}
+<redoc id="redoc-instance" spec-url="{{ $src }}" ></redoc>
 
-//]]>
+
+<script>
+      var header = document.querySelector('{{ $id }}');
+      if (header) {
+        let _totalHeight = header.offsetHeight;
+        for (let i = 0; i < header.children.length; i++) {
+          _totalHeight += header.children[i].offsetHeight;
+        }
+        var redocInstance = document.getElementById("redoc-instance");
+        if (redocInstance) {
+          redocInstance.setAttribute("scroll-y-offset", _totalHeight);
+        } else {
+          console.error("Redoc instance element not found");
+        }
+      } else {
+        console.error("Header element not found");
+      }
 </script>
+
+<script src="https://sdk.gooddata.com/API-doc--production/redoc.standalone.js"></script>

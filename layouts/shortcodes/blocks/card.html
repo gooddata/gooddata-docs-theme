@@ -18,8 +18,9 @@
     {{ if $sectionLink }}
         {{ with .Site.GetPage (printf "%s%s" (.Scratch.Get "docsRoot") $sectionLink) }}
             <a href="{{ .RelPermalink }}" class="homepage-card homepage-card__sectionLink homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}">
-                {{ template "image-import" (dict "src" .Params.icon "relPermalink" .RelPermalink) }}
-
+                <div class="homepage-card__icon">
+                    {{ readFile (printf "%s%s" .RelPermalink .Params.icon) | safeHTML }}
+                </div>
                 <h4 class="homepage-card__title">{{ .Title }}</h4>
                 {{ if $description }}
                     <p class="homepage-card__text">{{ $description }}</p>
@@ -31,7 +32,9 @@
     {{ else }}
         <div class="homepage-card{{ if $icon }} homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}{{ end }}">
             {{ if $icon }}
-                {{ template "image-import" (dict "src" $icon) }}
+                <div class="homepage-card__icon">
+                    {{ readFile $icon | safeHTML }}
+                </div>
             {{ end }}
             <h4 class="homepage-card__title">{{ $title }}</h4>
 
@@ -43,21 +46,3 @@
         </div>
     {{ end }}
 </div>
-
-{{ define "image-import" }}
-    {{ $src := .src }}
-    {{ $relPermalink := .relPermalink }}
-    {{ $ext := index (last 1 (split $src ".")) 0 }}
-
-    {{ if $relPermalink }}
-        {{ $src = printf "%s%s" $relPermalink $src }}
-    {{ end }}
-
-    <div class="homepage-card__icon">
-        {{ if eq $ext "svg" }}
-            {{ readFile $src | safeHTML }}
-        {{ else }}
-            <img src="{{ $src }}" />
-        {{ end }}
-    </div>
-{{ end }}

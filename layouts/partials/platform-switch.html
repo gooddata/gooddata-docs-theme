@@ -1,5 +1,5 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{ if and (isset .Site.Params "platformswitch") (not (and .Page.Params.edition (in .Site.Params.platformswitchexclude .Page.Params.edition))) }}
+{{ if and (isset .Site.Params "platformswitch") (not (and .Page.Params.edition (in .Site.Params.platformswitchexclude .Page.Params.edition))) (ne .Page.Params.type "api-reference") }}
 <ul class="gd-docs-header-platform-switch">
     <li class="gd-docs-header-platform-switch__item{{ if eq .Site.Params.platformswitch "cloud" }} active{{ end }}">
         <a href="{{ if eq .Site.Params.platformSwitch "cloud" }}{{ .Site.Home.RelPermalink }}{{ else }}https://www.gooddata.com/developers/cloud-native/doc/{{ end }}cloud/" class="gd-docs-header-platform-switch__link">Cloud</a>

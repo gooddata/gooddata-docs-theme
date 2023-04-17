@@ -46,4 +46,9 @@
         max-width: 100%;
         cursor: pointer;
     }
+
+    &_noborder {
+        @extend .embedded-image;
+        padding: 0;
+    }
 }
