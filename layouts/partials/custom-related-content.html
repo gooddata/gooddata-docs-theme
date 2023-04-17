@@ -8,7 +8,7 @@
     {{ range .Params.related }}
       {{ $isExternalLink := findRE "^(http|https)://" .link }}
       <li>
-        {{ if or $isExternalLink .title }}
+        {{ if $isExternalLink }}
           <a href="{{ .link  | safeURL }}" target="_blank" class="related-link link-external">{{ .title }}</a>
         {{ else }}
           {{ $Title := .title }}
