@@ -1,15 +1,25 @@
 // (C) 2023 GoodData Corporation
+@import "variables/variables";
 
 .api-reference {
     .td-outer {
-        padding-top: 139px;
+        padding-top: $header-height-desktop;
         padding-left: 0;
+
+        @include mq(xxx-large) {
+            padding-top: $header-height-x-big-desktop;
+        }
     }
 
     redoc {
         .menu-content {
-            top: 139px !important;
-            height: calc(100vh - 139px) !important;
+            top: $header-height-desktop !important;
+            height: calc(100vh - #{$header-height-desktop}) !important;
+
+            @include mq(xxx-large) {
+                top: $header-height-x-big-desktop !important;
+                height: calc(100vh - #{$header-height-x-big-desktop}) !important;
+            }
         }
     }
 }
