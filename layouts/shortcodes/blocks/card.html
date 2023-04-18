@@ -33,7 +33,11 @@
         <div class="homepage-card{{ if $icon }} homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}{{ end }}">
             {{ if $icon }}
                 <div class="homepage-card__icon">
-                    {{ readFile $icon | safeHTML }}
+                    {{ if eq (index (last 1 (split $icon ".")) 0) "svg" }}
+                        {{ readFile $icon | safeHTML }}
+                    {{ else }}
+                        <img src="{{ $icon }}" />
+                    {{ end }}
                 </div>
             {{ end }}
             <h4 class="homepage-card__title">{{ $title }}</h4>
