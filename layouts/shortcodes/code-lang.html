@@ -1,19 +1,23 @@
 {{/* (C) 2023 GoodData Corporation */}}
+{{/* DO NOT INDENT THIS CODE */}}
+{{/* Indenting this code might break markdown rendering */}}
+{{/* For more information see https://gooddata.atlassian.net/browse/WEB-3600 */}}
+
 {{ $lang := .Get "lang" }}
 {{ $userAgent := .Get "userAgent" | default $lang }}
 {{ $index := .Ordinal }}
 {{ $codeBlock := .Inner }}
 
 {{ with .Parent }}
-  {{ $selectId := .Get "id" }}
-  {{ $scratchIdLang := print "code-block-lang-" (string .Ordinal) }}
-  {{ .Scratch.SetInMap $scratchIdLang (string $index) $lang }}
-  {{ $scratchIdUserAgent := print "code-block-userAgent-" (string .Ordinal) }}
-  {{ .Scratch.SetInMap $scratchIdUserAgent (string $index) $userAgent }}
+{{ $selectId := .Get "id" }}
+{{ $scratchIdLang := print "code-block-lang-" (string .Ordinal) }}
+{{ .Scratch.SetInMap $scratchIdLang (string $index) $lang }}
+{{ $scratchIdUserAgent := print "code-block-userAgent-" (string .Ordinal) }}
+{{ .Scratch.SetInMap $scratchIdUserAgent (string $index) $userAgent }}
 
-  <div class="gd-docs-code-select__code lang-{{ $lang | anchorize }}{{ if eq $index 0 }} active{{ end }}">
-    {{ $codeBlock }}
-  </div>
+<div class="gd-docs-code-select__code lang-{{ $lang | anchorize }}{{ if eq $index 0 }} active{{ end }}">
+{{ $codeBlock }}
+</div>
 {{ else }}
   {{ $codeBlock }}
 {{ end }}
