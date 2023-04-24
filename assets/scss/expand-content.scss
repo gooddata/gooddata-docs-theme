@@ -1,0 +1,28 @@
+.expand-content {
+    @include media-breakpoint-up(lg) {
+        max-width: 80%;
+    }
+
+    &-link {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        svg {
+            align-self: center;
+            width: 7px;
+            margin-right: 5px;
+            transform: rotate(90deg);
+            transition: transform 0.4s;
+        }
+
+        &-text.collapsed ~ svg {
+            transform: rotate(0);
+        }
+    }
+
+    &-inner {
+        margin-top: 20px;
+    }
+}

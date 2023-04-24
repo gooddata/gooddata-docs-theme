@@ -1,4 +1,14 @@
-{{/* (C) 2023 GoodData Corporation */}}
+{{ $id := printf "expand-content-%s" (string .Ordinal) }}
+{{ $lang := default .Page.Params.lang "en" }}
+
 <div class="expand-content">
-{{ .Inner }}
+<span class="expand-content-link">
+<a class="expand-content-link-text collapsed" data-toggle="collapse" href="#{{ $id }}" role="button" aria-expanded="false" aria-controls="{{ $id }}">
+{{ (or (index .Site.Data $lang) (index .Site.Data "en")).expandContent.other }}
+</a>
+{{ with resources.Get "icons/chevron-right-pink.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+</span>
+<div class="expand-content-inner collapse" id="{{ $id }}">
+{{ .Inner | markdownify | safeHTML }}
+</div>
 </div>
