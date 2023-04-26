@@ -5,7 +5,6 @@
 <html lang="{{ $pageLang }}" class="no-js">
   <head>
     {{ partial "head.html" . }}
-    <link rel="canonical" href="{{ .RelPermalink }}">
     {{ partial "meta-version.html" . }}
     {{ if .Params.externalLink }}
       <meta http-equiv="refresh" content="0;url={{ .Params.externalLink }}" />
