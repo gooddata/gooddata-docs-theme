@@ -4,7 +4,7 @@
 
 .alert,
 .td-content > blockquote {
-    padding: 10px 10px 10px 45px;
+    padding: 8px 16px 8px 45px;
     border: none;
     border-left: $alert-border-width solid $color-gray-tag;
     border-radius: 0;
@@ -20,40 +20,20 @@
     position: relative;
 
     &-heading {
-        color: $color-gray-tag;
-        
         .td-content & {
             margin-top: 10px;
             margin-bottom: 5px;
         }
     }
 
-    &-primary {
-        border-left-color: $color-gray-tag;
-        color: $color-deep-purple;
-    }
-
-    &-primary &-heading {
-        color: $color-deep-purple;
-    }
-
     &-info {
         border-left-color: $color-alert-info;
-        color: $color-deep-purple;
         background-color: $color-alert-info-bg;
-    }
-
-    &-info &-heading {
-        color: $color-alert-info;
     }
 
     &-warning {
         border-left-color: $color-alert-warning;
         background-color: $color-alert-warning-bg;
-    }
-
-    &-warning &-heading {
-        color: $color-alert-warning;
     }
 
     &-label {
@@ -74,16 +54,6 @@
             background-color: $color-white;
         }
 
-        svg {
-            position: absolute;
-            top: 13px;
-            left: 15px;
-        }
-
-        strong {
-            font-family: $gdfont-demibold;
-        }
-
         a {
             &,
             &:hover,
@@ -93,6 +63,16 @@
                 text-decoration: underline;
             }
         }
+    }
+
+    svg {
+        position: absolute;
+        top: 13px;
+        left: 15px;
+    }
+
+    strong {
+        font-family: $gdfont-demibold;
     }
 }
 
