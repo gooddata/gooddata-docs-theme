@@ -26,6 +26,11 @@
         }
     }
 
+    & &-heading {
+        margin-top: 0;
+        color: inherit;
+    }
+
     &-info {
         border-left-color: $color-alert-info;
         background-color: $color-alert-info-bg;
