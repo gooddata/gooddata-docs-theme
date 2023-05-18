@@ -1,5 +1,5 @@
 {{/* (C) 2023 GoodData Corporation */}}
 <h{{ .Level }} id="{{ delimit (split .Page.Params.title " ") "" }}-{{ delimit (split .Text " ") "" }}">
-    <span id="{{ anchorize .Text }}" class="legacy-anchor"></span>
+    <span id="{{ .Text | plainify | anchorize }}" class="legacy-anchor"></span>
     {{ .Text | safeHTML }}
 </h{{ .Level }}>
