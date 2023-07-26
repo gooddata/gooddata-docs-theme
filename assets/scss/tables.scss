@@ -4,6 +4,7 @@
 .table-responsive,
 .td-content {
     table {
+        max-width: 100%;
         font-size: 14px;
 
         th,
@@ -59,6 +60,9 @@
     }
 
     table {
-        max-width: 100%;
+        &,
+        &:not(.td-initial) {
+            max-width: 100%;
+        }
     }
 }
