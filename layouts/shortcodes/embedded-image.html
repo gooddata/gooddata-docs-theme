@@ -7,17 +7,17 @@
 {{ $id := urlize (humanize (replace (delimit (last 1 (split $src "/")) "") "." "-")) }}
 
 {{ if $no_border}}
-<div class="embedded-image_noborder" data-toggle="modal" data-target="#{{ $id }}">
+<div class="embedded-image_noborder" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
 <img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
 </div>   
 {{ else }}
-<div class="embedded-image" data-toggle="modal" data-target="#{{ $id }}">
+<div class="embedded-image" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
 <img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
 </div>
 {{ end }}
 <div class="modal fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}" aria-hidden="true">
 <div class="modal-dialog embedded-image-dialog" role="document">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
 {{ with resources.Get "icons/close.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
 </button>
 <img src="{{ $src }}" alt="{{ $alt }}" />
