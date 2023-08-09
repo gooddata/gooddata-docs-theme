@@ -2,13 +2,13 @@
 {{ $additionalNavRoot := .Site.GetPage "/versions" }}
 {{ $root := .Site.GetPage "/docs" }}
 
-{{ if or (eq .FirstSection $additionalNavRoot) (eq .FirstSection .Site.Home) }}
-  {{- if .Site.Params.versions -}}
-  {{- $root = index (where .Site.Sections "RelPermalink" (index .Site.Params.versions 0).url) 0 -}}
-  {{- end -}}
+{{ if or (eq .FirstSection $additionalNavRoot) (and (eq .FirstSection .Site.Home) .Site.Params.versions) }}
+  {{ $root = index (where .Site.Sections "RelPermalink" (index .Site.Params.versions 0).url) 0 }}
 {{ else }}
   {{ $root = .FirstSection }}
 {{ end }}
 {{ template "root-link" (dict "currentPage" . "root" $root "site" .Site) }}
 {{ template "section-tree-nav-sections" (dict "root" $root.CurrentSection.Pages "currentPage" . "site" .Site) }}
+{{ if $additionalNavRoot }}
 {{ template "section-tree-nav-sections" (dict "root" $additionalNavRoot.CurrentSection.Pages "currentPage" . "site" .Site) }}
+{{ end }}
