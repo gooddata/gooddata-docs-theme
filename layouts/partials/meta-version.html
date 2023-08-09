@@ -1,11 +1,1 @@
-{{/* (C) 2023 GoodData Corporation */}}
 <meta name="addsearch-custom-field" content="version={{ partial "version.html" (dict "context" .) }}"/>
-{{ $permalink := .RelPermalink }}
-{{ $attr := "" }}
-{{ if and (isset .Site.Params "versions") (.Param "activeVersions") .Section }}
-{{ if isset (where (after (.Param "activeVersions") .Site.Params.versions) "dirpath" "eq" .Section) 0 }}
-{{ $permalink = replaceRE (printf "/%s/" .Section) (index .Site.Params.versions (sub (.Param "activeVersions") 1)).url .RelPermalink }}
-{{ $attr = "data-proofer-ignore" }}
-{{ end }}
-{{ end }}
-<link rel="canonical" href="{{ $permalink }}" {{ $attr | safeHTMLAttr }}>

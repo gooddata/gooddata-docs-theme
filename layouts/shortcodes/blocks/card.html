@@ -1,6 +1,4 @@
-{{/* (C) 2023 GoodData Corporation */}}
 {{ $title := .Get "title" }}
-{{ $description := .Get "description" }}
 {{ $sectionLink := .Get "sectionLink" }}
 {{ $icon := .Get "icon" }}
 {{ $iconPosition := default "left" (.Get "iconPosition") }}
@@ -22,22 +20,14 @@
                     {{ readFile (printf "%s%s" .RelPermalink .Params.icon) | safeHTML }}
                 </div>
                 <h4 class="homepage-card__title">{{ .Title }}</h4>
-                {{ if $description }}
-                    <p class="homepage-card__text">{{ $description }}</p>
-                {{ else }}
-                    <p class="homepage-card__text">{{ .Description }}</p>
-                {{ end }}
+                <p class="homepage-card__text">{{ .Description }}</p>
             </a>
         {{ end }}
     {{ else }}
         <div class="homepage-card{{ if $icon }} homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}{{ end }}">
             {{ if $icon }}
                 <div class="homepage-card__icon">
-                    {{ if eq (index (last 1 (split $icon ".")) 0) "svg" }}
-                        {{ readFile $icon | safeHTML }}
-                    {{ else }}
-                        <img src="{{ $icon }}" />
-                    {{ end }}
+                    {{ readFile $icon | safeHTML }}
                 </div>
             {{ end }}
             <h4 class="homepage-card__title">{{ $title }}</h4>

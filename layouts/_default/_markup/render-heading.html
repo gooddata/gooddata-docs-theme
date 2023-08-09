@@ -1,6 +1,0 @@
-{{/* (C) 2023 GoodData Corporation */}}
-{{ $cleanText := replaceRE "\\s+" " " (htmlUnescape .Text) }}
-<h{{ .Level }} id="{{ delimit (split .Page.Params.title " ") "" }}-{{ plainify (delimit (split (replaceRE "\\W" " " $cleanText) " ") "") }}">
-    <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
-    {{ .Text | safeHTML }}
-</h{{ .Level }}>

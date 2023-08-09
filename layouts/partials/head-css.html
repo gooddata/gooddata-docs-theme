@@ -1,4 +1,4 @@
-{{/* (C) 2023 GoodData Corporation */}}
+
 {{ $scssMain := "scss/main.scss"}}
 {{ if .Site.IsServer }}
 {{/* Note the missing postCSS. This makes it snappier to develop in Chrome, but makes it look sub-optimal in other browsers. */}}
@@ -11,5 +11,4 @@
 {{ end }}
 <link rel="stylesheet" href="https://www.gooddata.com/learn-assets/css/Header.css">
 <link rel="stylesheet" href="https://www.gooddata.com/learn-assets/css/Footer.css">
-<link rel="stylesheet" type="text/css" href="https://www.gooddata.com/learn-assets/css/CookiesBanner.css?v=1">
 {{ partial "gtm.html" . }}

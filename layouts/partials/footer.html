@@ -1,4 +1,3 @@
-{{/* (C) 2023 GoodData Corporation */}}
 {{ $footer := getJSON "https://www.gooddata.com/learn-assets/js/footer-definition.json" }}
 
 <footer class="gd-footer">
@@ -6,15 +5,15 @@
     <ul class="gd-footer-banner-links gd-footer-links">
     {{ range $index, $link := $footer.footer.bannerLinks }}
       <li class="gd-footer-banner-links-item gd-footer-links-item">
-        <input 
-          type="checkbox" 
-          tabindex="-1" 
-          id="gd-footer-banner-links-item-trigger-{{ $index }}" 
-          name="gd-footer-banner-links-item-trigger-{{ $index }}" 
+        <input
+          type="checkbox"
+          tabindex="-1"
+          id="gd-footer-banner-links-item-trigger-{{ $index }}"
+          name="gd-footer-banner-links-item-trigger-{{ $index }}"
           class="gd-footer-banner-links-item-trigger gd-footer-links-item-trigger"
         />
         <label
-          for="gd-footer-banner-links-item-trigger-{{ $index }}" 
+          for="gd-footer-banner-links-item-trigger-{{ $index }}"
           class="gd-footer-banner-links-item-text gd-footer-links-item-text"
         >
           {{ $link.title }}
@@ -36,15 +35,15 @@
   <ul class="gd-footer-links">
     {{ range $index, $link := $footer.footer.links }}
       <li class="gd-footer-links-item">
-        <input 
-          type="checkbox" 
-          tabindex="-1" 
-          id="gd-footer-links-item-trigger-{{ $index }}" 
-          name="gd-footer-links-item-trigger-{{ $index }}" 
+        <input
+          type="checkbox"
+          tabindex="-1"
+          id="gd-footer-links-item-trigger-{{ $index }}"
+          name="gd-footer-links-item-trigger-{{ $index }}"
           class="gd-footer-links-item-trigger"
         />
         <label
-          for="gd-footer-links-item-trigger-{{ $index }}" 
+          for="gd-footer-links-item-trigger-{{ $index }}"
           class="gd-footer-links-item-text"
         >
           {{ $link.title }}
