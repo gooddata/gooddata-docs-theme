@@ -1,22 +1,17 @@
-{{/* (C) 2023 GoodData Corporation */}}
-{{/* DO NOT INDENT THIS CODE */}}
-{{/* Indenting this code might break markdown rendering */}}
-{{/* For more information see https://gooddata.atlassian.net/browse/WEB-3600 */}}
-
 <div class="gd-docs-code-select">
-{{ $enableOSDetection := .Get "enableOSDetection" }}
-{{ $scratchIdLangs := print "code-block-lang-" (string .Ordinal) }}
-{{ $langs := .Scratch.Get $scratchIdLangs }}
-{{ $scratchIdUserAgent := print "code-block-userAgent-" (string .Ordinal) }}
-{{ $userAgent := .Scratch.Get $scratchIdUserAgent }}
+  {{ $enableOSDetection := .Get "enableOSDetection" }}
+  {{ $scratchIdLangs := print "code-block-lang-" (string .Ordinal) }}
+  {{ $langs := .Scratch.Get $scratchIdLangs }}
+  {{ $scratchIdUserAgent := print "code-block-userAgent-" (string .Ordinal) }}
+  {{ $userAgent := .Scratch.Get $scratchIdUserAgent }}
 
-{{ if $langs }}
-<div class="gd-docs-code-select__tabs{{ if $enableOSDetection }} gd-docs-code-select__osdetection{{ end }}">
-{{ range $index, $lang := $langs }}
-<div class="gd-docs-code-select__tab{{ if eq $index "0" }} active{{ end }}" data-lang="{{ $lang | anchorize }}" {{ if $enableOSDetection }}data-user-agent="{{ index $userAgent $index }}"{{ end }}>{{ $lang }}</div>
-{{ end }}
-</div>
-{{ end }}
+  {{ if $langs }}
+    <div class="gd-docs-code-select__tabs{{ if $enableOSDetection }} gd-docs-code-select__osdetection{{ end }}">
+    {{ range $index, $lang := $langs }}
+      <div class="gd-docs-code-select__tab{{ if eq $index "0" }} active{{ end }}" data-lang="{{ $lang | anchorize }}" {{ if $enableOSDetection }}data-user-agent="{{ index $userAgent $index }}"{{ end }}>{{ $lang }}</div>
+    {{ end }}
+    </div>
+  {{ end }}
 
-{{ .Inner }}
+  {{ .Inner }}
 </div>

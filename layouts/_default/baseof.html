@@ -1,13 +1,10 @@
-{{/* (C) 2023 GoodData Corporation */}}
-{{ $pageLang := cond (isset .Page.Params "lang") (default "en" (index (split .Page.Params.lang "_") 0)) .Site.Language.Lang }}
-
 <!doctype html>
-<html lang="{{ $pageLang }}" class="no-js">
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
   <head>
     {{ partial "head.html" . }}
     {{ partial "meta-version.html" . }}
   </head>
-  <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}">
+  <body class="td-{{ .Kind }}">
     {{ partial "gtm-body.html" }}
     <header>
       {{ partial "navbar.html" . }}
@@ -18,7 +15,6 @@
       </main>
       {{ partialCached "footer.html" . }}
     </div>
-    {{ partial "custom-scripts.html" . }}
     {{ partialCached "scripts.html" . }}
     {{ partial "search.html" . }}
   </body>

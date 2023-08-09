@@ -1,4 +1,3 @@
-{{/* (C) 2023 GoodData Corporation */}}
 {{/* set sane defaults */}}
 {{ $.Scratch.Set "docLabel" "Version " }}
 {{ $.Scratch.Set "activeVersion" .Site.Params.version }}
@@ -6,20 +5,20 @@
 {{/* find version matching the current page */}}
 {{ range .Site.Params.versions }}
   {{ if eq $curPage .dirpath }}
-    {{ $.Scratch.Add "docLabel" (printf "(%s)" .version) }}
+	{{ $.Scratch.Add "docLabel" (printf "(%s)" .version) }}
     {{ $.Scratch.Set "activeVersion" .version }}
   {{ end }}
 {{ end }}
-<a class="nav-link dropdown-toggle text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ printf "%s" ($.Scratch.Get "docLabel") }}
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	{{ printf "%s" ($.Scratch.Get "docLabel") }}
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    {{ range .Site.Params.versions }}
-    <a
-        class="dropdown-item{{ if eq ( $.Scratch.Get "activeVersion" ) ( printf "%s" .version ) }} active{{ end }}"
-        href="{{ cond (gt (len (findRE "^http(s)?://" .url)) 0) .url (relURL .url) }}"
-    >
-        {{ .version }}
-    </a>
-    {{ end }}
+	{{ range .Site.Params.versions }}
+	<a
+		class="dropdown-item{{ if eq ( $.Scratch.Get "activeVersion" ) ( printf "%s" .version ) }} active{{ end }}"
+		href="{{ cond (gt (len (findRE "^http(s)?://" .url)) 0) .url (relURL .url) }}"
+	>
+		{{ .version }}
+	</a>
+	{{ end }}
 </div>

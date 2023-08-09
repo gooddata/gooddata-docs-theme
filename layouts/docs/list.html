@@ -1,9 +1,8 @@
-{{/* (C) 2023 GoodData Corporation */}}
+{{/* PETR: This is for parent articles only? */}}
+
 {{ define "main" }}
 <div class="td-content">
-	<div>
-		{{ partial "addon-widget.html" . }}
-	</div>
+	{{ partial "superheading.html" . }}
 	<h1>{{ .Title }}</h1>
 	{{ partial "article-label.html" . }}
         {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
