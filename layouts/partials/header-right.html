@@ -1,26 +1,29 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{ $dot := . }}
 {{ $resources := resources }}
-{{ $rightMenu := index (index .Site.Params.header 0) "main" }}
-{{ if and (isset .Page.Params "edition") (isset .Site.Params "header") }}
-    {{ if isset (index .Site.Params.header 0) .Page.Params.edition }}
-        {{ $rightMenu = index (index .Site.Params.header 0) .Page.Params.edition }}
+
+{{ if isset .Site.Params "header" }}
+    {{ $rightMenu := index (index .Site.Params.header 0) "main" }}
+    {{ if and (isset .Page.Params "edition") (isset .Site.Params "header") }}
+        {{ if isset (index .Site.Params.header 0) .Page.Params.edition }}
+            {{ $rightMenu = index (index .Site.Params.header 0) .Page.Params.edition }}
+        {{ end }}
     {{ end }}
+
+    <div class="gd-docs-header-nav__right">
+        {{ range $rightMenu }}
+            {{ if eq .type "button" }}
+                <a href="{{ .url }}" class="{{ .class }}">
+                    {{ if .icon }}
+                        {{ with $resources.Get .icon }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+                    {{ end }}
+                    {{ .name }}
+                </a>
+            {{ end }}
+
+            {{ if eq .type "tag" }}
+                <span class="gd-docs-header-tag">{{ .name }}</span>
+            {{ end }}
+        {{ end }}
+    </div>
 {{ end }}
-
-<div class="gd-docs-header-nav__right">
-    {{ range $rightMenu }}
-        {{ if eq .type "button" }}
-            <a href="{{ .url }}" class="{{ .class }}">
-                {{ if .icon }}
-                    {{ with $resources.Get .icon }}{{ ( . | minify).Content | safeHTML }}{{ end }}
-                {{ end }}
-                {{ .name }}
-            </a>
-        {{ end }}
-
-        {{ if eq .type "tag" }}
-            <span class="gd-docs-header-tag">{{ .name }}</span>
-        {{ end }}
-    {{ end }}
-</div>
