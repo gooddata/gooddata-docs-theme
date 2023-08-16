@@ -2,7 +2,7 @@
 {{ $additionalNavRoot := .Site.GetPage "/versions" }}
 {{ $root := .Site.GetPage "/docs" }}
 
-{{ if or (eq .FirstSection $additionalNavRoot) (and (eq .FirstSection .Site.Home) .Site.Params.versions) }}
+{{ if and .Site.Params.versions (or (eq .FirstSection $additionalNavRoot) (eq .FirstSection .Site.Home)) }}
   {{ $root = index (where .Site.Sections "RelPermalink" (index .Site.Params.versions 0).url) 0 }}
 {{ else }}
   {{ $root = .FirstSection }}
