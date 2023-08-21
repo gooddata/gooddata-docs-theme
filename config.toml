@@ -57,17 +57,6 @@ title = "GoodData Docs Theme"
 languageName = "English"
 # Weight used for sorting.
 weight = 1
-[languages.en.404]
-title = "Page not found"
-[[languages.en.404.links]]
-title = "Analytics platform"
-link = "https://www.gooddata.com/platform/"
-[[languages.en.404.links]]
-title = "Embedded analytics"
-link = "https://www.gooddata.com/embedded-analytics/"
-[[languages.en.404.links]]
-title = "Contact us"
-link = "https://www.gooddata.com/contact/"
 
 [menu]
 [[menu.main]]
@@ -120,6 +109,18 @@ sidebar_search_disable = true
 navbar_logo = true
 # Set to true to disable the About link in the site footer
 footer_about_disable = false
+
+[params.404]
+title = "Page not found"
+[[params.404.links]]
+title = "Analytics platform"
+link = "https://www.gooddata.com/platform/"
+[[params.404.links]]
+title = "Embedded analytics"
+link = "https://www.gooddata.com/embedded-analytics/"
+[[params.404.links]]
+title = "Contact us"
+link = "https://www.gooddata.com/contact/"
 
 [[deployment.matchers]]
 #  Cache static assets for 1 year.
