@@ -1,5 +1,6 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{ $pageLang := cond (isset .Page.Params "lang") (default "en" (index (split .Page.Params.lang "_") 0)) .Site.Language.Lang }}
+{{ $email := cond (isset .Page.Params "email") (default false (index (split .Page.Params.email "_") 0)) true }}
 
 <!doctype html>
 <html lang="{{ $pageLang }}" class="no-js">
@@ -8,18 +9,24 @@
     {{ partial "meta-version.html" . }}
   </head>
   <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}">
+    {{ if not $email }}
     {{ partial "gtm-body.html" }}
     <header>
       {{ partial "navbar.html" . }}
     </header>
+    {{ end }}
     <div class="container-fluid td-default td-outer">
       <main role="main" class="td-main">
         {{ block "main" . }}{{ end }}
       </main>
-      {{ partialCached "footer.html" . }}
+      {{ if not $email }}
+        {{ partialCached "footer.html" . }}
+      {{ end }}
     </div>
-    {{ partial "custom-scripts.html" . }}
-    {{ partialCached "scripts.html" . }}
-    {{ partial "search.html" . }}
+    {{ if not $email }}
+      {{ partial "custom-scripts.html" . }}
+      {{ partialCached "scripts.html" . }}
+      {{ partial "search.html" . }}
+    {{ end }}
   </body>
 </html>
