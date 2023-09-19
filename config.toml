@@ -151,6 +151,10 @@ baseName = "_redirects"
 isPlainText = true
 notAlternative = true
 
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^hugo_"]
+
 [module]
   proxy = "direct"
   [module.hugoVersion]
