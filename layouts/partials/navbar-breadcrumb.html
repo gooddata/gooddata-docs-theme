@@ -1,9 +1,8 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{ if eq .Page.Params.type "api-reference" }}
-  <ul class="gd-breadcrumb">
-    <li class="gd-breadcrumb-item">
-      <a href="{{ .Site.Home.RelPermalink }}">Docs</a>
-    </li>
-    <li class="gd-breadcrumb-item">{{ .Title }}</li>
-  </ul>
-{{ end }}
+{{/* This is overriden in docs (tiger/bear) */}}
+<ul class="gd-breadcrumb">
+  <li class="gd-breadcrumb-item">
+    <a href="{{ .Site.Home.RelPermalink }}">All Products</a>
+  </li>
+  <li class="gd-breadcrumb-item">{{ .Title }}</li>
+</ul>
