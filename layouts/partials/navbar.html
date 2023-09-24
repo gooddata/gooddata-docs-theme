@@ -16,7 +16,9 @@
     {{ partial "navbar-breadcrumb.html" . }}
   </div>
   <div class="gd-docs-header-nav__center">
-    <div id="adds-container" class="gd-docs-header-nav__search"></div>
+    {{ if eq .Page.Type "docs" }}
+      <div id="adds-container" class="gd-docs-header-nav__search"></div>
+    {{ end }}
   </div>
   {{ if .Site.Params.versions }}
   <div class="gd-docs-header-nav__right">
