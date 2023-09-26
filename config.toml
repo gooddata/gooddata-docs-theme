@@ -51,6 +51,13 @@ anchor = "smart"
 home = [ "HTML", "REDIR" ]
 section = [ "HTML" ]
 
+[languages]
+[languages.en]
+title = "GoodData Docs Theme"
+languageName = "English"
+# Weight used for sorting.
+weight = 1
+
 [menu]
 [[menu.main]]
 name = "Learn"
@@ -103,6 +110,18 @@ navbar_logo = true
 # Set to true to disable the About link in the site footer
 footer_about_disable = false
 
+[params.404]
+title = "Page not found"
+[[params.404.links]]
+title = "Analytics platform"
+link = "https://www.gooddata.com/platform/"
+[[params.404.links]]
+title = "Embedded analytics"
+link = "https://www.gooddata.com/embedded-analytics/"
+[[params.404.links]]
+title = "Contact us"
+link = "https://www.gooddata.com/contact/"
+
 [[deployment.matchers]]
 #  Cache static assets for 1 year.
 pattern = "^.+\\.(js|css|svg|ttf)$"
@@ -131,6 +150,10 @@ mediatype = "text/netlify"
 baseName = "_redirects"
 isPlainText = true
 notAlternative = true
+
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^hugo_"]
 
 [module]
   proxy = "direct"

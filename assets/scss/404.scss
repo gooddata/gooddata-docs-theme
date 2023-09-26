@@ -1,0 +1,51 @@
+.td-404 {
+    background-color: $color-mist-gray;
+
+    .td-main {
+        padding-top: $header-height-desktop + 40px;
+        padding-bottom: 40px;
+
+        @include mq(x-large) {
+            padding-top: $header-height-x-big-desktop + 80px;
+            padding-bottom: 80px;
+        }
+    }
+
+    h1 {
+        font-family: $gdfont-regular;
+        margin-bottom: 2rem;
+        font-size: 3rem;
+        line-height: 1.25;
+
+        @include mq(large) {
+            font-size: 4.25rem;
+        }
+    }
+
+    h2 {
+        font-family: $gdfont-demibold;
+        margin-bottom: 1.5rem;
+        font-size: 1.4375rem;
+        line-height: 1.25;
+
+        @include mq(large) {
+            font-size: 2rem;
+        }
+    }
+
+    main {
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 9px;
+
+            a {
+                font-size: 18px;
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -8,14 +8,25 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end -}}
 
-{{ if and (eq (getenv "HUGO_ENV") "public") (ne $outputFormat "print") -}}
+{{ if and (or (eq (getenv "HUGO_ENV") "public") (eq (getenv "hugo_env") "public")) (ne $outputFormat "print") -}}
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 {{ else -}}
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 {{ end -}}
 
 {{ partialCached "favicons.html" . }}
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}{{ if .Page.Params.edition }} {{ humanize .Page.Params.edition }}{{ end }}</title>
+<title>
+  {{ if .IsHome }}
+    {{ .Site.Title }}
+  {{ else }}
+    {{ if eq .Kind "404" }}
+      {{ default (index .Site.Params "404").title "Page not found" }}
+    {{ else }}
+      {{ with .Title }}{{ . }}{{ end }}
+    {{ end }} | {{ .Site.Title }}
+  {{ end }}
+  {{ if .Page.Params.edition }} {{ humanize .Page.Params.edition }}{{ end }}
+</title>
 <meta name="description" content="{{ .Site.Params.Description }}">
 {{ if isset .Page.Params "redirect" }}
   <meta http-equiv="refresh" content="0;URL='{{ .Page.Params.redirect }}'" /> 
