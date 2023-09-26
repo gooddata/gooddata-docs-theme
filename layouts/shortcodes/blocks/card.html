@@ -5,6 +5,7 @@
 {{ $icon := .Get "icon" }}
 {{ $iconPosition := default "left" (.Get "iconPosition") }}
 {{ $maxRow := .Parent.Get "maxRow" }}
+{{ $span := .Get "span" }}
 
 {{ if ne .Page.FirstSection .Site.Home }}
     {{ .Scratch.Set "docsRoot" (replaceRE "/$" "" .Page.FirstSection.RelPermalink) }}
@@ -14,7 +15,18 @@
     {{ .Scratch.Set "docsRoot" "/docs" }}
 {{ end }}
 
-<div class="col{{ if not $maxRow }}-xl{{ end }} d-flex align-items-stretch">
+
+{{ $cardClass := "col" }}
+{{ if not $maxRow}}
+    {{ $cardClass = printf "%s%s" $cardClass "-xl" }} {{/* add -xl to string */}}
+{{ else if and $maxRow $span }}
+    {{ $cardClass = printf "%s%s%s" $cardClass "-md-" $span }} {{/* add -md-span to string */}}
+{{ else if $span }}
+    {{ $cardClass = printf "%s%s" $cardClass "-4" }} {{/* add -4 to string */}}
+{{ end }}
+
+
+<div class="{{$cardClass}}  d-flex align-items-stretch">
     {{ if $sectionLink }}
         {{ with .Site.GetPage (printf "%s%s" (.Scratch.Get "docsRoot") $sectionLink) }}
             <a href="{{ .RelPermalink }}" class="homepage-card homepage-card__sectionLink homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}">
