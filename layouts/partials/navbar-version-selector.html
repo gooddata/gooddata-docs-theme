@@ -10,6 +10,9 @@
     {{ $.Scratch.Set "activeVersion" .version }}
   {{ end }}
 {{ end }}
+
+{{/* Hide version picker in cloud version and on homepage */}}
+{{ if and (not (eq $curPage "cloud")) (not (eq $curPage "docs")) (gt (len $curPage) 0)  }}
 <a class="nav-link dropdown-toggle text-decoration-none" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{ printf "%s" ($.Scratch.Get "docLabel") }}
 </a>
@@ -23,3 +26,4 @@
     </a>
     {{ end }}
 </div>
+{{ end }}
