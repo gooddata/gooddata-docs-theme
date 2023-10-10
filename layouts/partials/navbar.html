@@ -14,11 +14,13 @@
   <div class="gd-docs-header-nav__left">
     {{ partial "navbar-breadcrumb.html" . }}
   </div>
+  {{ if not .Params.no_search }}
   <div class="gd-docs-header-nav__center">
     {{ if eq .Page.Type "docs" }}
       <div id="adds-container" class="gd-docs-header-nav__search"></div>
     {{ end }}
   </div>
+  {{ end }}
   {{ if .Site.Params.versions }}
   <div class="gd-docs-header-nav__right">
     {{ partial "navbar-version-selector.html" . }}
