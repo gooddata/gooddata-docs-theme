@@ -1,9 +1,15 @@
 {{/* (C) 2023 GoodData Corporation */}}
+{{ $site := .Site }}
+{{ $page := .Page }}
+{{ $permalink := .RelPermalink }}
 {{ $additionalNavRoot := .Site.GetPage "/versions" }}
 {{ $root := .Site.GetPage "/docs" }}
+{{ $version := partial "version.html" (dict "context" .) }}
 
 {{ if and .Site.Params.versions (or (eq .FirstSection $additionalNavRoot) (eq .FirstSection .Site.Home)) }}
   {{ $root = index (where .Site.Sections "RelPermalink" (index .Site.Params.versions 0).url) 0 }}
+{{ else if ne $version.version "none" }}
+  {{ $root = $site.GetPage $version.url }}
 {{ else }}
   {{ $root = .FirstSection }}
 {{ end }}
