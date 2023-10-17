@@ -17,6 +17,14 @@
   }
 }
 
+.td-home {
+  // the search background (gray upper part) is very wide, so otherwise the site would scroll
+  // it's a bit of a hack, but it is required to create a side-to-side background for the search
+  // which is inside main
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .td-home #autocomplete-container {
   margin-left: 0;
 }
@@ -39,9 +47,14 @@
     width: 100%;
     max-width: 705px;
     display: block;
+    z-index: -1;
 
     form {
       margin-left: 0;
+    }
+
+    #searchfield-container {
+        z-index: 0; // otherwise it's above the header
     }
 
     input {
