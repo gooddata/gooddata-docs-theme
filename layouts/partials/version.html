@@ -1,21 +1,19 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{ $ := .context }}
-{{ $.Scratch.Set "activeVersion" $.Site.Params.version }}
-{{ $.Scratch.Set "noversion" true }}
-{{ $curPage := $.Page.Section }}
-{{ range $.Site.Params.versions }}
-  {{ if eq $curPage .dirpath }}
-    {{ $.Scratch.Set "activeVersion" .version }}
-    {{ $.Scratch.Set "noversion" false }}
+{{ $page := .context }}
+{{ $site := $page.Site }}
+
+{{/* Set default version to none */}}
+{{ $curVersion := dict "version" "none" }}
+
+{{ if and (eq .useLatest true) (isset $.Site.Params.versions 0) }}
+  {{ $curVersion = index $site.Params.versions 0 }}
+{{ else }}
+  {{/* Find if any of the versions roots are ancestors to the current page */}}
+  {{ range $site.Params.versions }}
+    {{ if or (eq ($site.GetPage .url) $page) (($site.GetPage .url).IsAncestor $page) }}
+      {{ $curVersion = . }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
-{{ if $.Scratch.Get "noversion" }}
-  {{ if and (eq .useLatest true) (isset $.Site.Params.versions 0) }}
-    {{ $.Scratch.Set "activeVersion" (index $.Site.Params.versions 0).version }}
-  {{ else }}
-    {{ $.Scratch.Set "activeVersion" "none" }}
-  {{ end }}
-{{ end }}
-
-{{ return .context.Scratch.Get "activeVersion" }}
+{{ return $curVersion }}

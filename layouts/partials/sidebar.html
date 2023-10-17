@@ -3,8 +3,6 @@
 <label for="gd-docs-menu__mobile-trigger" class="gd-docs-menu__mobile-icon"></label>
 <div class="gd-docs-menu__mobile-bg"></div>
 <nav class="gd-docs-menu init">
-    {{ partial "platform-switch.html" }}
-
     {{ if .Site.Params.versions }}
         {{ partial "navbar-version-selector.html" . }}
     {{ end }}
@@ -55,9 +53,9 @@
 
                 <div class="gd-docs-menu-page__title">
                 {{ if $page.Params.externalLink }}
-                    <a href ="{{ $page.Params.externalLink }}" class="gd-docs-menu-page__link" target="_blank">{{ $page.LinkTitle }}</a>
+                    <a href="{{ $page.Params.externalLink }}" class="gd-docs-menu-page__link" target="_blank">{{ $page.LinkTitle }}</a>
                 {{ else }}
-                    <a href ="{{ $page.Permalink }}" class="gd-docs-menu-page__link">{{ $page.LinkTitle }}</a>
+                    <a href="{{ $page.Permalink }}" class="gd-docs-menu-page__link">{{ $page.LinkTitle }}</a>
                 {{ end }}
 
                 {{ if $page.Pages }}
