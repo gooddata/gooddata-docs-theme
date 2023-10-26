@@ -1,5 +1,5 @@
 {{/* (C) 2023 GoodData Corporation */}}
-<meta name="addsearch-custom-field" content="version={{ partial "version.html" (dict "context" .) }}"/>
+<meta name="addsearch-custom-field" content="version={{ lower (partial "version.html" (dict "context" .)).version }}"/>
 {{ $permalink := .RelPermalink }}
 {{ $attr := "" }}
 {{ if and (isset .Site.Params "versions") (.Param "activeVersions") .Section }}
