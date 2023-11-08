@@ -1,3 +1,8 @@
 {{/* (C) 2023 GoodData Corporation */}}
 <script src="https://www.gooddata.com/location/location.js"></script>
 <script type="text/javascript" src="https://www.gooddata.com/js/modules/cookies.js?v=1"></script>
+<script>
+    if(!window.location.pathname.endsWith("/")) {
+        window.location = window.location.pathname + "/" + window.location.search + window.location.hash;
+    }
+</script>
