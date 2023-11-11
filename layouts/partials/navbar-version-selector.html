@@ -9,12 +9,14 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         {{ range .Site.Params.versions }}
+        {{ if not .hideVersionPicker }}
         <a
             class="dropdown-item{{ if eq . $version }} active{{ end }}"
             href="{{ cond (gt (len (findRE "^http(s)?://" .url)) 0) .url (relURL .url) }}"
         >
             {{ .version }}
         </a>
+        {{ end }}
         {{ end }}
     </div>
 {{ end }}
