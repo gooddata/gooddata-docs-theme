@@ -13,7 +13,7 @@
         <label for="gd-header-mobile-menu-trigger-input" class="gd-header-mobile gd-header-mobile-menu-trigger"><span></span></label>
         <ul class="gd-docs-header-nav__menu gd-header-links">
         {{ range $mainMenu }}
-            <li class="gd-docs-header-nav__menuitem gd-header-link-item{{ if (isset .Params "mobileOnly") }} gd-header-link-item-mobile-only{{ end }}">
+            <li class="gd-docs-header-nav__menuitem gd-header-link-item{{ if (isset .Params "mobileonly") }} gd-header-link-item-mobile-only{{ end }}">
             <a href="{{ if isset .Params "isHome" }}{{ $dot.Site.Home.RelPermalink }}{{ else }}{{ .URL }}{{ end }}" class="gd-docs-header-nav__menulink gd-header-link{{ if isset .Params "isMobileTitle" }} gd-header-link__main{{ end }}{{ if isset .Params "isHome" }} gd-header-link__active{{ end }}">
                 {{ .Name }}
             </a>
