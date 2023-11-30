@@ -175,6 +175,13 @@
         align-items: center;
         justify-content: center;
     }
+
+    .gd-docs-edition-switch, .gd-docs-language-switch {
+        @include mq(large) {
+            display: flex;
+        }
+        display: none;
+    }
 }
 
 .td-search-input {
