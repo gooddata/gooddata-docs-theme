@@ -1,8 +1,8 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{- $curPage := .Page.Section -}}
+{{- $curPage := .Page.RelPermalink -}}
 {{- if .Site.Params.versions -}}
   {{- range .Site.Params.versions -}}
-    {{- if eq $curPage .dirpath -}}
+    {{- if strings.HasPrefix $curPage .url -}}
     {{- .latestTag -}}
     {{- end -}}
   {{- end -}}
