@@ -27,5 +27,9 @@
                 button.popover("hide");
             });
         });
+
+        $(".legacy-anchor ~ a").on("click", function() {
+            navigator.clipboard.writeText(window.location.origin + window.location.pathname + $(this).attr("href"));
+        });
     });
 })(jQuery);
