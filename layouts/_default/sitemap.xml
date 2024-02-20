@@ -1,7 +1,8 @@
 {{- /* (C) 2023 GoodData Corporation */ -}}
 {{- $pages := where .Data.Pages ".Page.Params.sitemapExclude" "!=" "true" -}}
 {{- if isset .Site.Params "versions" -}}
-{{- $pages = where $pages ".FirstSection.RelPermalink" (index .Site.Params.versions 0).url -}}
+{{- $version := (index (where .Site.Params.versions "sitemapExclude" "!=" "true") 0) -}}
+{{- $pages = where $pages ".FirstSection.RelPermalink" $version.url -}}
 {{- end -}}
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
