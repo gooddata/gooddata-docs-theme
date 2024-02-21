@@ -1,4 +1,5 @@
 // (C) 2023 GoodData Corporation
+// This file is overridden in Tiger
 
 .gd-breadcrumb {
     display: none;
@@ -34,5 +35,16 @@
                 color: $color-deep-purple;
             }
         }
+    }
+}
+
+// inline breadcrumbs on mobile
+.td-main .gd-breadcrumb {
+    display: flex;
+    padding-top: 13px; // same as community
+    top: #{$header-first-nav-height-desktop + $header-second-nav-height};
+    position: relative;
+    @include mq(large) {
+        display: none;
     }
 }
