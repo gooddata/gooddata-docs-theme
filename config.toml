@@ -1,4 +1,4 @@
-theme = ["github.com/google/docsy", "github.com/google/docsy/dependencies"]
+theme = ["github.com/google/docsy"]
 
 contentDir = "docs/"
 defaultContentLanguage = "en"
@@ -162,7 +162,4 @@ notAlternative = true
     min = "0.81.0"
   [[module.imports]]
     path = "github.com/google/docsy"
-    disable = false
-  [[module.imports]]
-    path = "github.com/google/docsy/dependencies"
     disable = false
