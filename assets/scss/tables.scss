@@ -27,6 +27,16 @@
                     background: none;
                 }
             }
+            
+            td:has(> .table-vertical__text) {
+                vertical-align: middle;
+                transform: rotate(180deg);
+                min-width: 38px;
+                .table-vertical__text {
+                    writing-mode: vertical-lr;
+                }
+            }
+            
         }
     }
 }

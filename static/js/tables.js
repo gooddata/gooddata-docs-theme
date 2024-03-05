@@ -12,4 +12,10 @@ $(document).ready(function () {
     $(".td-content table").wrap($("<div>").addClass("table-responsive")).wrap($("<div>").addClass("table-responsive__inner"));
     responsiveTables();
     $(window).on("resize", responsiveTables);
+
+    // Vertical column in tables - wrap around span
+    const verticalColumn = document.querySelector("tbody tr:first-child td[rowspan]:first-child");
+    if (verticalColumn) {
+        verticalColumn.innerHTML = `<span class="table-vertical__text">${verticalColumn.innerText}</span>`;
+    }
 });
