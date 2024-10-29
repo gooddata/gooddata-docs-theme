@@ -5,21 +5,39 @@
 {{ $width := .Get "width" }}
 {{ $height := .Get "height" }}
 {{ $id := urlize (humanize (replace (delimit (last 1 (split $src "/")) "") "." "-")) }}
+{{ $caption := .Get "caption" }}
 
-{{ if $no_border}}
-<div class="embedded-image_noborder" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
-<img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
-</div>   
+<div class="{{ if $no_border }}embedded-image_noborder{{ else }}embedded-image{{ end }}{{ if $caption }} hasCaption{{ end }}" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
+
+{{ if strings.HasSuffix $src ".mp4" }}
+
+<video class="embedded-video" {{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} autoplay muted loop>
+<source src="{{ $src }}" type="video/mp4">
+{{ if $alt }}<p>Description: {{ $alt }}.</p>{{ end }}
+<p>Your browser does not support the video tag.</p>
+<p>Here is a <a href="{{ $src }}" target="_blank">link to the video</a>.</p>
+</video>
+
 {{ else }}
-<div class="embedded-image" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
 <img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
-</div>
 {{ end }}
-<div class="modal fade" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}" aria-hidden="true">
+
+{{ if $caption }}
+<figcaption class="img-caption">{{$caption}}</figcaption>
+{{ end }}
+</div>
+
+<div class="modal fade modal-video" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $id }}" aria-hidden="true">
 <div class="modal-dialog embedded-image-dialog" role="document">
-<button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-{{ with resources.Get "icons/close.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
-</button>
+<button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"></button>
+
+{{ if strings.HasSuffix $src ".mp4" }}
+<video class="lightbox-video" autoplay muted loop>
+<source src="{{ $src }}" type="video/mp4">
+<p>{{ if $alt }}Description: {{ $alt }}. {{ end }}Your browser does not support the video tag.</p>
+</video>
+{{ else }}
 <img src="{{ $src }}" alt="{{ $alt }}" />
+{{ end }}
 </div>
 </div>
