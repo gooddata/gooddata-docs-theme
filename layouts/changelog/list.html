@@ -1,0 +1,78 @@
+{{/* (C) 2023 GoodData Corporation */}}
+{{ define "main" }}
+<div class="td-content">
+    <div>
+        {{ partial "addon-widget.html" . }}
+    </div>
+    <h1>{{ .Title }}</h1>
+
+    {{ partial "article-label.html" . }}
+    {{ with .Params.description }}
+    <div class="lead">{{ . | markdownify }}</div>
+    {{ end }}
+    {{ if (and (not .Params.hide_readingtime) (.Site.Params.ui.readingtime.enable)) }}
+    {{ partial "reading-time.html" . }}
+    {{ end }}
+
+    {{ .Content }}
+    <div class="modal fade show" tabindex="-1" id="modalSubscribe" aria-labelledby="modalSubscribeLabel" role="dialog"
+     aria-hidden="true" data-attr-form="modal-form" style="display: block">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content c-form__container-hs">
+            <button id="footer-newsletter-close" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close" onclick="document.getElementById('modalSubscribe').style.display = 'none';"></button>
+            <div class="modal-header c-form__fill">
+                <p class="c-h5 modal-title">Subscribe</p>
+                <p class="modal-subtitle"></p>
+            </div>
+            <div class="modal-body c-form__subscribe c-form__fill">
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+				<script>
+				  hbspt.forms.create({
+					region: "na1",
+					portalId: "8934247",
+					formId: "71f6a7d0-19be-41bd-8e14-d55b7fbcbd28"
+				  });
+				</script>
+            </div>
+            <div class="c-form__submitted text-center">
+                <p> Thanks </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {{ $paginator := .Paginate (where .Site.RegularPages "File.Dir" .Page.File.Dir) }}
+    <ul>
+        {{ range $paginator.Pages }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+
+    </ul>
+    {{ if .Paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}">Previous</a>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}">Next</a>
+    {{ end }}
+
+
+    {{ if ne .Params.sectionIndex false }}
+    {{ partial "section-index.html" . }}
+    {{ end }}
+    {{ if (and (not .Params.hide_feedback) (.Site.Params.ui.feedback.enable) (.Site.GoogleAnalytics)) }}
+    {{ partial "feedback.html" .Site.Params.ui.feedback }}
+    <br/>
+    {{ end }}
+
+    {{ partial "prev-next-pages.html" . }}
+
+    {{ if (.Site.DisqusShortname) }}
+    <br/>
+    {{ partial "disqus-comment.html" . }}
+    {{ end }}
+</div>
+
+
+{{ end }}
