@@ -13,7 +13,15 @@
     <div class="gd-docs-header-nav__right">
         {{ range $rightMenu }}
             {{ if eq .type "button" }}
-                <a href="{{ .url }}" class="{{ .class }}">
+                <a
+                    href="{{ .url }}"
+                    class="gd-docs-header-nav__cta {{ .class }}"
+                    {{ if .attr }}
+                        {{ range $key, $value := (index .attr 0) }}
+                            {{ $key | safeHTMLAttr }}="{{ $value }}"
+                        {{ end }}
+                    {{ end }}
+                >
                     {{ if .icon }}
                         {{ with $resources.Get .icon }}{{ ( . | minify).Content | safeHTML }}{{ end }}
                     {{ end }}
