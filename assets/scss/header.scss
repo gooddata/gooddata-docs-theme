@@ -142,8 +142,13 @@
         & + & {
             margin-left: 1rem;
         }
+
+        svg {
+            margin-right: 10px;
+        }
     }
 
+    &__secondary,
     &__slack {
         color: $color-deep-purple;
         border-color: $color-deep-purple;
@@ -164,10 +169,6 @@
 
         &:focus {
             box-shadow: 0 0 0 0.2rem rgba($color-deep-purple, 0);
-        }
-
-        svg {
-            margin-right: 10px;
         }
     }
 

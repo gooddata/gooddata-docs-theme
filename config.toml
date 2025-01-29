@@ -97,6 +97,13 @@ offlineSearch = false
 # Enable syntax highlighting and copy buttons on code blocks with Prism
 prism_syntax_highlighting = true
 
+[[params.header]]
+[[params.header.main]]
+name = "Try it now"
+type = "button"
+url = "https://registration.cloud.gooddata.com/register"
+class = "gd-docs-header-nav__secondary"
+
 # User interface configuration
 [params.ui]
 # Enable to show the side bar menu in its compact state.
