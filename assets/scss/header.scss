@@ -67,10 +67,15 @@
 
     &__second &__left,
     &__second &__right {
-        flex: 1 0 0;
+        flex: 0 0 auto;
+
+        @include mq(x-large) {
+            flex: 1 0 0;
+        }
     }
 
     &__second &__left {
+        min-width: 55px;
         align-self: stretch;
     }
 
@@ -173,6 +178,7 @@
     }
 
     &__search {
+        position: relative;
         align-items: center;
         justify-content: center;
     }

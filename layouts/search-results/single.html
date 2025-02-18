@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/addsearch-js-client@0.8.12/dist/addsearch-js-client.min.js,npm/addsearch-search-ui@0.8.8/dist/addsearch-search-ui.min.js"></script>
+  <link rel="stylesheet" href="https://www.gooddata.com/css/search-results.css"/>
+
+  <div class="p-search">
+    <section class="c-section c-section__default">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3>Search for What You Need</h3>
+            <div id="searchfield" class="p-search-searchbar"></div>
+            <div class="adds-filter-wrapper">
+                <div id="tabs"></div>
+            </div>
+            <div id="searchresults"></div>
+            <div id="loadmore"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </div>
+  <script>const searchResultsData = {"heading":"Search for What You Need","resultsTitle":"Results on <strong>\{\{keyword\}\}</strong>","loadMore":"Load more","banner":"More questions? We are here to help."}</script>
+  <script>
+    window.isDocs = true;
+  </script>
+  <script src="https://www.gooddata.com/js/modules/search-common.js"></script>
+  <script src="https://www.gooddata.com/js/modules/search-results.js"></script>
+{{ end }}

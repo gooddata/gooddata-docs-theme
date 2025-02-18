@@ -1,8 +1,9 @@
 {{/* (C) 2023 GoodData Corporation */}}
-<script src="https://www.gooddata.com/learn-assets/js/quicksearch-plugin.js"></script>
+<script src="https://www.gooddata.com/js/modules/search-common.js"></script>
+<script src="https://www.gooddata.com/learn-assets/js/quicksearch-plugin-v2.js"></script>
 <script>
     $("#adds-container").gdQuickSearch({
-        tab: '{{ default "docs" .Site.Params.addSearchTab }}',
+        tab: '{{ default "gd-cn-doc" .Site.Params.addSearchTab }}',
         {{ if .Site.Params.versions }}version: "{{ lower (partial "version.html" (dict "context" .)).version }}",{{ end }}
         {{ if .Page.Params.edition }}plan: "{{ .Page.Params.edition }}",{{ end }}
         {{ if .Page.Params.lang }}lang: "{{ index (split .Page.Params.lang "_") 0 }}"{{ end }}
