@@ -18,3 +18,13 @@
         display: none;
     }
 }
+
+:focus {
+    outline: none;
+  }
+  
+  :focus-visible {
+    outline: 2px solid Highlight; /* System highlight color (preferred) */
+    outline: 2px solid -webkit-focus-ring-color; /* Fallback for older browsers */
+    outline-offset: 2px;
+  }
