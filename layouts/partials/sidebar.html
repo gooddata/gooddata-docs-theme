@@ -4,6 +4,10 @@
 </button>
 <div class="gd-docs-menu__mobile-bg"></div>
 <nav id="gd-docs-menu" class="gd-docs-menu init">
+    <div class="sidebar-skip-links">
+        <a href="#main-content" class="skip-link skip-link--sidebar">Skip to main content</a>
+    </div>
+    
     {{ if .Site.Params.versions }}
         {{ partial "navbar-version-selector.html" . }}
     {{ end }}

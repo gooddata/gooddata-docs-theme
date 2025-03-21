@@ -7,8 +7,9 @@
     {{ partial "head.html" . }}
     {{ partial "meta-version.html" . }}
   </head>
-  <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}">
+  <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}" id="top">
     {{ partial "gtm-body.html" }}
+    {{ partial "skip-links.html" . }}
     <header>
       {{ partial "navbar.html" . }}
     </header>
@@ -21,7 +22,7 @@
           </div>
           <main class="
            col-12 col-xl-8
-           " role="main">
+           " role="main" id="main-content">
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ if .Draft }}
