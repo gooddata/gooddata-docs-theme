@@ -2,6 +2,8 @@
 {{ $footer := getJSON "https://www.gooddata.com/learn-assets/js/footer-definition.json" }}
 
 <footer class="gd-footer">
+  <a href="#top" class="skip-link skip-link--footer">Skip footer content</a>
+  
   {{ if $footer.footer.bannerLinks }}
     <ul class="gd-footer-banner-links gd-footer-links">
     {{ range $index, $link := $footer.footer.bannerLinks }}

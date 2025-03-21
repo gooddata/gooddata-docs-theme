@@ -47,22 +47,39 @@
         opacity: 0;
     }
 
-    &__mobile-trigger {
-        display: none;
-    }
-
-    &__mobile-icon {
+    &__mobile-btn {
         position: fixed;
         top: $header-first-nav-height-desktop;
+        left: 10px;
+        z-index: 34;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 55px;
         height: $header-second-nav-height;
-        left: 10px;
-        z-index: 34;
+        padding: 0;
+        background: transparent;
+        border: none;
         transition: $transition;
         cursor: pointer;
+
+        &:focus {
+            outline: 2px solid $color-shocking-pink;
+            outline-offset: 2px;
+        }
+
+        @include mq(large) {
+            display: none;
+        }
+    }
+
+    &__mobile-icon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 26px;
+        height: 22px;
 
         &::before {
             content: url("../img/burger.svg");
@@ -70,19 +87,23 @@
             width: 26px;
             height: 22px;
         }
+    }
 
-        &::after {
-            content: "";
+    &__mobile-btn[aria-expanded="true"] {
+        left: calc(100% - 55px);
+
+        .gd-docs-menu__mobile-icon::before {
             display: none;
+        }
+
+        .gd-docs-menu__mobile-icon::after {
+            content: "";
+            display: block;
             width: 31px;
             height: 31px;
             background-image: url("../img/close.svg");
             background-repeat: no-repeat;
             background-size: contain;
-        }
-
-        @include mq(large) {
-            display: none;
         }
     }
 
@@ -101,21 +122,9 @@
         }
     }
 
-    &__mobile-trigger:checked ~ &,
-    &__mobile-trigger:checked ~ &__mobile-bg {
+    &__mobile-btn[aria-expanded="true"] ~ &,
+    &__mobile-btn[aria-expanded="true"] ~ &__mobile-bg {
         left: 0;
-    }
-
-    &__mobile-trigger:checked ~ &__mobile-icon {
-        left: calc(100% - 55px);
-
-        &::before {
-            display: none;
-        }
-
-        &::after {
-            display: block;
-        }
     }
 
     & > &-section {
@@ -138,6 +147,14 @@
         &__root + & {
             padding-top: 0;
             border-top: 0;
+        }
+    }
+
+    &-section-wrapper {
+        display: none;
+        
+        &.expanded {
+            display: block;
         }
     }
 
@@ -193,23 +210,40 @@
             }
         }
 
-        &__toggle {
-            display: none;
+        &__toggle-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4px 0 0;
+            padding: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            
+            // Add focus styles for keyboard navigation
+            &:focus {
+                outline: 2px solid $color-shocking-pink;
+                outline-offset: 2px;
+                border-radius: 3px;
+            }
+            
+            // SVG rotation based on expanded state
+            &[aria-expanded="false"] .gd-docs-menu-page__chevron svg {
+                transform: rotate(180deg);
+            }
+            
+            &[aria-expanded="true"] .gd-docs-menu-page__chevron svg {
+                transform: rotate(0deg);
+            }
         }
 
         &__chevron {
-            margin: 4px 0 0;
-            cursor: pointer;
-
-            svg {
-                transform: rotate(180deg);
-            }
+            display: flex;
+            margin: 0;
         }
 
-        &__toggle:checked ~ &__title &__chevron {
-            svg {
-                transform: rotate(0deg);
-            }
+        &__toggle {
+            display: none;
         }
 
         &__label {
@@ -221,14 +255,6 @@
             font-size: 12px;
             text-transform: uppercase;
         }
-    }
-
-    &-page__toggle ~ &-section {
-        display: none;
-    }
-
-    &-page__toggle:checked ~ &-section {
-        display: block;
     }
 
     .dropdown-toggle {
