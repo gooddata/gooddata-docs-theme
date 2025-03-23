@@ -1,8 +1,13 @@
 {{/* (C) 2023 GoodData Corporation */}}
-<input type="checkbox" id="gd-docs-menu__mobile-trigger" class="gd-docs-menu__mobile-trigger" />
-<label for="gd-docs-menu__mobile-trigger" class="gd-docs-menu__mobile-icon"></label>
+<button type="button" id="gd-docs-menu__mobile-trigger" class="gd-docs-menu__mobile-btn" aria-expanded="false" aria-controls="gd-docs-menu" aria-label="Toggle navigation menu">
+  <span class="gd-docs-menu__mobile-icon" aria-hidden="true"></span>
+</button>
 <div class="gd-docs-menu__mobile-bg"></div>
-<nav class="gd-docs-menu init">
+<nav id="gd-docs-menu" class="gd-docs-menu init">
+    <div class="sidebar-skip-links">
+        <a href="#main-content" class="skip-link skip-link--sidebar">Skip to main content</a>
+    </div>
+    
     {{ if .Site.Params.versions }}
         {{ partial "navbar-version-selector.html" . }}
     {{ end }}
@@ -47,10 +52,6 @@
             {{ if $page.Params.navigationLabel }}
                 <span class="gd-docs-menu-page__label">{{ $page.LinkTitle }}</span>
             {{ else }}
-                {{ if $page.Pages }}
-                <input type="checkbox" id="gd-docs-menu-page__{{ $pageId }}" class="gd-docs-menu-page__toggle"{{ if $activeSection }} checked{{ end }} />
-                {{ end }}
-
                 <div class="gd-docs-menu-page__title">
                 {{ if $page.Params.externalLink }}
                     <a href="{{ $page.Params.externalLink }}" class="gd-docs-menu-page__link" target="_blank">{{ $page.LinkTitle }}</a>
@@ -59,15 +60,29 @@
                 {{ end }}
 
                 {{ if $page.Pages }}
-                    <label for="gd-docs-menu-page__{{ $pageId }}" class="gd-docs-menu-page__chevron">
-                    {{ with resources.Get "icons/chevron-menu.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
-                    </label>
+                    <button 
+                      type="button"
+                      id="btn-{{ $pageId }}"
+                      class="gd-docs-menu-page__toggle-btn"
+                      aria-expanded="{{ if $activeSection }}true{{ else }}false{{ end }}"
+                      aria-controls="section-{{ $pageId }}"
+                      aria-label="{{ if $activeSection }}Collapse{{ else }}Expand{{ end }} {{ $page.LinkTitle }} section">
+                      <span class="gd-docs-menu-page__chevron">
+                        {{ with resources.Get "icons/chevron-menu.svg" }}
+                          {{ $svg := . | minify }}
+                          {{ $svg := replace $svg.Content "<svg " "<svg aria-hidden=\"true\" focusable=\"false\" " }}
+                          {{ $svg | safeHTML }}
+                        {{ end }}
+                      </span>
+                    </button>
                 {{ end }}
                 </div>
             {{ end }}
 
             {{ if $page.Pages }}
-                {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site)  }}
+                <div id="section-{{ $pageId }}" class="gd-docs-menu-section-wrapper{{ if $activeSection }} expanded{{ end }}">
+                  {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site)  }}
+                </div>
             {{ end }}
             </li>
         {{ end }}

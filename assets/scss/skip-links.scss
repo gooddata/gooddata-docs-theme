@@ -1,0 +1,66 @@
+// Skip links for accessibility
+.skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1050; // Higher than other elements
+}
+
+.sidebar-skip-links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid #000;
+  border-radius: 4px;
+  z-index: 1050;
+  
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    margin: 10px;
+    outline: 3px solid #2563eb; // Focus indicator
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+  }
+  
+  // Variants
+  &--sidebar {
+    margin-bottom: 5px;
+    
+    &:focus {
+      position: static;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      margin: 0 0 5px 0;
+      text-align: center;
+    }
+  }
+  
+  &--footer {
+    &:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      margin: 10px auto;
+      display: block;
+      text-align: center;
+    }
+  }
+} 
