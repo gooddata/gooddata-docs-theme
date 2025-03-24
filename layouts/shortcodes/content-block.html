@@ -8,7 +8,7 @@
 {{ $scratchIdTitles := print "content-block-" (string .Ordinal) }}
 {{ .Scratch.SetInMap $scratchIdTitles (string $index) $title }}
 
-<div class="gd-docs-content__block content-{{ $title | anchorize }}{{ if eq $index 0 }} active{{ end }}">
+<div id="panel-{{ $title | anchorize }}" class="gd-docs-content__block content-{{ $title | anchorize }}{{ if eq $index 0 }} active{{ end }}" role="tabpanel" aria-labelledby="tab-{{ $title | anchorize }}">
   {{ $block }}
 </div>
 {{ else }}

@@ -4,9 +4,9 @@
     {{ $titles := .Scratch.Get $scratchIdTitles }}
 
     {{ if $titles }}
-    <div class="gd-docs-content-select__tabs">
+    <div class="gd-docs-content-select__tabs" role="tablist">
         {{ range $index, $title := $titles }}
-        <div class="gd-docs-content-select__tab{{ if eq $index "0" }} active{{ end }}" data-content="{{ $title | anchorize }}">{{ $title }}</div>
+        <button id="tab-{{ $title | anchorize }}" class="gd-docs-content-select__tab{{ if eq $index "0" }} active{{ end }}" data-content="{{ $title | anchorize }}" role="tab" aria-selected="{{ if eq $index "0" }}true{{ else }}false{{ end }}" aria-controls="panel-{{ $title | anchorize }}">{{ $title }}</button>
     {{ end }}
 </div>
 {{ end }}
