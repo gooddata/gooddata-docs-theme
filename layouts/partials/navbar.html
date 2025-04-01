@@ -1,5 +1,10 @@
 {{/* (C) 2023 GoodData Corporation */}}
+
+<!-- Navbar content -->
+{{ $whitelabeled := .Site.Params.whitelabeled }}
 {{ $cover := .HasShortcode "blocks/cover" }}
+
+{{ if not $whitelabeled }}
 <nav class="gd-docs-header-nav gd-docs-header-nav__first">
   <div class="gd-docs-header-nav__left">
     <a class="gd-docs-header-nav__logo gd-header-nav__logo" href="{{ .Site.Home.RelPermalink }}" aria-label="Go to documentation homepage">
@@ -36,3 +41,15 @@
   {{ partial "edition-switch.html" . }}
   {{ partial "lang-switch.html" . }}
 </nav>
+{{ else }}
+
+<nav class="gd-docs-header-nav gd-docs-header-nav__first whitelabeled-header__first">
+  <div class="gd-docs-header-nav__left"></div>
+</nav>
+<nav class="gd-docs-header-nav gd-docs-header-nav__second whitelabeled-header__second">
+  <div class="gd-docs-header-nav__left"></div>
+  <div class="gd-docs-header-nav__center"></div>
+  <div class="gd-docs-header-nav__right"></div>
+</nav>
+
+{{ end }}

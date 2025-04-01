@@ -1,0 +1,41 @@
+// (C) 2023 GoodData Corporation
+
+.heading-with-anchor {
+  .anchor-wrapper {
+    opacity: 0;
+    display: inline-flex;
+    transform: translateY(4px);
+  }
+
+  &:hover .anchor-wrapper,
+  .anchor:focus,
+  &:focus-within .anchor-wrapper {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .anchor {
+
+
+    &:hover {
+      color: #cf119b;
+    }
+
+    &:focus {
+      /* Make the focus indicator visible for accessibility */
+      outline: 2px solid -webkit-focus-ring-color;
+      outline-offset: 2px;
+    }
+
+    svg {
+      display: block;
+      height: 24px; 
+      width: 24px;
+    }
+  }
+
+  /* Hide the auto-generated anchor icon that conflicts with our custom implementation */
+  > a[aria-hidden="true"] {
+    display: none !important;
+  }
+} 
