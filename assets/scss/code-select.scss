@@ -41,6 +41,8 @@
             &:focus {
                 box-shadow: 0 0 3px 1px rgba(69, 199, 239, 0), 0 1px 2px 0 rgba(20, 56, 93, 0.15), inset 0 -1px 0 0 rgba(177, 193, 209, 0.6);
                 border-color: rgba(20, 178, 226, 0.75);
+                outline: 2px solid -webkit-focus-ring-color;
+                transition: none;
             }
 
             &:active {
@@ -131,3 +133,24 @@
         }
     }
 }
+
+   /* Accessibility enhancements for code blocks */
+
+/* Make sure the toolbar appears when using keyboard navigation */
+.gd-docs-code-select__code .code-toolbar {
+    &:focus-within > .toolbar {
+      opacity: 1;
+    }
+  
+    > .toolbar {
+      /* Make sure the toolbar position doesn't interfere with the outline */
+      z-index: 2;
+  
+    }
+  }
+  
+  /* Make the code block itself focusable for keyboard navigation */
+  pre[class*="language-"] {
+    position: relative;
+    
+  } 

@@ -1,6 +1,22 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{ $cleanText := replaceRE "\\s+" " " (htmlUnescape .Text) }}
-<h{{ .Level }} id="{{ delimit (split .Page.Params.title " ") "" }}-{{ plainify (delimit (split (replaceRE "\\W" " " $cleanText) " ") "") }}">
-    <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
-    {{ .Text | safeHTML }}
+
+<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="heading-with-anchor">
+  <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
+  {{ .Text | safeHTML }}
+  {{- if in (slice 2 3 4 6) .Level }}{{" " -}}
+    <span class="anchor-wrapper">
+      <a 
+        class="anchor" 
+        name="{{ .Anchor }}" 
+        href="#{{ .Anchor | safeURL }}" 
+        aria-label="Anchor to {{ .Text | plainify }}"
+        tabindex="0"
+        role="button"
+        data-anchor-link="true"
+      >
+        {{ with resources.Get "icons/icon-anchor.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+      </a>
+    </span>
+  {{- end -}}
 </h{{ .Level }}>
