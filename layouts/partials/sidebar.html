@@ -77,14 +77,18 @@
                     </button>
                 {{ end }}
                 </div>
-            {{ end }}
-
-            {{ if $page.Pages }}
+                
+                {{ if $page.Pages }}
                 <div id="section-{{ $pageId }}" class="gd-docs-menu-section-wrapper{{ if $activeSection }} expanded{{ end }}">
                   {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site)  }}
                 </div>
+                {{ end }}
             {{ end }}
             </li>
+            
+            {{ if and $page.Params.navigationLabel $page.Pages }}
+            {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site) }}
+            {{ end }}
         {{ end }}
         {{ end }}
         </ul>
