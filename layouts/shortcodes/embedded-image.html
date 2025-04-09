@@ -6,6 +6,7 @@
 {{ $height := .Get "height" }}
 {{ $id := urlize (humanize (replace (delimit (last 1 (split $src "/")) "") "." "-")) }}
 {{ $caption := .Get "caption" }}
+{{ $noalt := .Get "noalt" }}
 
 <div class="{{ if $no_border }}embedded-image_noborder{{ else }}embedded-image{{ end }}{{ if $caption }} hasCaption{{ end }}" data-toggle="modal" data-bs-toggle="modal" data-target="#{{ $id }}" data-bs-target="#{{ $id }}">
 
@@ -19,7 +20,7 @@
 </video>
 
 {{ else }}
-<img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} />
+<img src="{{ $src }}" alt="{{ $alt }}"{{ if $width }} width="{{ $width }}"{{ end }}{{ if $height }} height="{{ $height }}"{{ end }} {{ if $noalt }} aria-hidden=”true” data-proofer-ignore {{ end }} />
 {{ end }}
 
 {{ if $caption }}
@@ -37,7 +38,7 @@
 <p>{{ if $alt }}Description: {{ $alt }}. {{ end }}Your browser does not support the video tag.</p>
 </video>
 {{ else }}
-<img src="{{ $src }}" alt="{{ $alt }}" />
+<img src="{{ $src }}" alt="{{ $alt }}" {{ if $noalt }} aria-hidden=”true” data-proofer-ignore {{ end }}/>
 {{ end }}
 </div>
 </div>

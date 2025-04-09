@@ -26,12 +26,14 @@
 {{ end }}
 
 
-<div class="{{$cardClass}}  d-flex align-items-stretch">
+<div class="{{$cardClass}} d-flex align-items-stretch">
     {{ if $sectionLink }}
         {{ with .Site.GetPage (printf "%s%s" (.Scratch.Get "docsRoot") $sectionLink) }}
             <a href="{{ .RelPermalink }}" class="homepage-card homepage-card__sectionLink homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}">
                 <div class="homepage-card__icon">
-                    {{ readFile (printf "%s%s" .RelPermalink .Params.icon) | safeHTML }}
+                    {{ $svgContent := readFile (printf "%s%s" .RelPermalink .Params.icon) }}
+                    {{ $modifiedSvg := replaceRE `(<svg)(.*?>)` "$1 aria-hidden=\"true\"$2" $svgContent 1 }}
+                    {{ $modifiedSvg | safeHTML }}
                 </div>
                 <h4 class="homepage-card__title">{{ .Title }}</h4>
                 {{ if $description }}
@@ -46,9 +48,11 @@
             {{ if $icon }}
                 <div class="homepage-card__icon">
                     {{ if eq (index (last 1 (split $icon ".")) 0) "svg" }}
-                        {{ readFile $icon | safeHTML }}
+                        {{ $svgContent := readFile $icon }}
+                        {{ $modifiedSvg := replaceRE `(<svg)(.*?>)` "$1 aria-hidden=\"true\"$2" $svgContent 1 }}
+                        {{ $modifiedSvg | safeHTML }}
                     {{ else }}
-                        <img src="{{ $icon }}" />
+                        <img src="{{ $icon }}" aria-hidden="true"/>
                     {{ end }}
                 </div>
             {{ end }}

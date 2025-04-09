@@ -154,7 +154,7 @@
         display: none;
         
         &.expanded {
-            display: block;
+            display: block !important;
         }
     }
 
