@@ -1,6 +1,9 @@
 // (C) 2023 GoodData Corporation
 
 .heading-with-anchor {
+  .nowrapper {
+    white-space: nowrap;
+  }
   .anchor-wrapper {
     opacity: 0;
     display: inline-flex;
