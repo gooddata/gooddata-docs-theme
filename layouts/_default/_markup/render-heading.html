@@ -6,7 +6,7 @@
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="heading-with-anchor">
   <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
-  {{- $withoutLast | safeHTML -}}
+  {{- $withoutLast | safeHTML }}
   <span class="nowrapper">
     {{- $lastWord | safeHTML -}}
     {{- if in (slice 2 3 4 6) .Level }}{{" " -}}
