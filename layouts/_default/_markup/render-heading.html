@@ -1,30 +1,56 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{ $cleanText := replaceRE "\\s+" " " (htmlUnescape .Text) }}
 {{ $words := split $cleanText " " }}
-{{ $lastWord := index $words (sub (len $words) 1)}}
-{{ $withoutLast := substr $cleanText 0 (sub (len $cleanText) (add (len $lastWord) 1)) }}
+{{ $wordCount := len $words }}
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="heading-with-anchor">
   <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
-  {{- $withoutLast | safeHTML }}
-  <span class="nowrapper">
-    {{- $lastWord | safeHTML -}}
-    {{- if in (slice 2 3 4 6) .Level }}{{" " -}}
-      <span class="anchor-wrapper">
-        <a 
-          class="anchor" 
-          name="{{ .Anchor }}" 
-          href="#{{ .Anchor | safeURL }}" 
-          aria-label="Anchor to {{ .Text | plainify }}"
-          tabindex="0"
-          role="button"
-          data-anchor-link="true"
-        >
-          {{ with resources.Get "icons/icon-anchor.svg" }}
-            {{ ( . | minify).Content | safeHTML }}
-          {{ end }}
-        </a>
-      </span>
-    {{- end -}}
-  </span>
+  {{ if eq $wordCount 1 }}
+    {{/* Single word - no need to split */}}
+    <span class="nowrapper">
+      {{- $cleanText | safeHTML -}}
+      {{- if in (slice 2 3 4 6) .Level }}{{" " -}}
+        <span class="anchor-wrapper">
+          <a 
+            class="anchor" 
+            name="{{ .Anchor }}" 
+            href="#{{ .Anchor | safeURL }}" 
+            aria-label="Anchor to {{ .Text | plainify }}"
+            tabindex="0"
+            role="button"
+            data-anchor-link="true"
+          >
+            {{ with resources.Get "icons/icon-anchor.svg" }}
+              {{ ( . | minify).Content | safeHTML }}
+            {{ end }}
+          </a>
+        </span>
+      {{- end -}}
+    </span>
+  {{ else }}
+    {{/* Multiple words - split to prevent line break in last word */}}
+    {{ $lastWord := index $words (sub $wordCount 1) }}
+    {{ $withoutLast := substr $cleanText 0 (sub (len $cleanText) (add (len $lastWord) 1)) }}
+    {{- $withoutLast | safeHTML }}
+    <span class="nowrapper">
+      {{- $lastWord | safeHTML -}}
+      {{- if in (slice 2 3 4 6) .Level }}{{" " -}}
+        <span class="anchor-wrapper">
+          <a 
+            class="anchor" 
+            name="{{ .Anchor }}" 
+            href="#{{ .Anchor | safeURL }}" 
+            aria-label="Anchor to {{ .Text | plainify }}"
+            tabindex="0"
+            role="button"
+            data-anchor-link="true"
+          >
+            {{ with resources.Get "icons/icon-anchor.svg" }}
+              {{ ( . | minify).Content | safeHTML }}
+            {{ end }}
+          </a>
+        </span>
+      {{- end -}}
+    </span>
+  {{ end }}
 </h{{ .Level }}>
