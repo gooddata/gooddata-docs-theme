@@ -20,10 +20,5 @@
 	{{ end }}
 
 	{{ partial "prev-next-pages.html" . }}
-
-	{{ if (.Site.DisqusShortname) }}
-		<br />
-		{{ partial "disqus-comment.html" . }}
-	{{ end }}
 </div>
 {{ end }}
