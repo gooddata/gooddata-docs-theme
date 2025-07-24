@@ -30,7 +30,8 @@
   {{ else }}
     {{/* Multiple words - split to prevent line break in last word */}}
     {{ $lastWord := index $words (sub $wordCount 1) }}
-    {{ $withoutLast := substr $cleanText 0 (sub (len $cleanText) (add (len $lastWord) 1)) }}
+    {{ $wordsWithoutLast := first (sub $wordCount 1) $words }}
+    {{ $withoutLast := delimit $wordsWithoutLast " " }}
     {{- $withoutLast | safeHTML }}
     <span class="nowrapper">
       {{- $lastWord | safeHTML -}}
