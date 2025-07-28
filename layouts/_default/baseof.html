@@ -6,6 +6,9 @@
   <head>
     {{ partial "head.html" . }}
     {{ partial "meta-version.html" . }}
+    {{ if .Params.externalLink }}
+      <meta http-equiv="refresh" content="0;url={{ .Params.externalLink }}" />
+    {{ end }}
   </head>
   <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}" id="top">
     {{ partial "gtm-body.html" }}
@@ -15,14 +18,15 @@
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
+        {{ partial "navbar-breadcrumb.html" . }}
         <div class="row flex-xl-nowrap">
-          <div class="col-xl-2 col td-sidebar d-print-none">
+          <div class="col-12 col-lg-4 col-xl-3 td-sidebar d-print-none">
+            {{ partial "sidebar.html" . }}
           </div>
-          <div class="d-none d-xl-block col-xl-1 td-toc d-print-none">
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            {{ partial "toc.html" . }}
           </div>
-          <main class="
-           col-12 col-xl-8
-           " role="main" id="main-content">
+          <main class="col-12 col-lg-8 col-xl-7 pl-lg-5 ps-lg-5" role="main" id="main-content">
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ if .Draft }}
@@ -39,8 +43,6 @@
     </div>
     {{ partial "custom-scripts.html" . }}
     {{ partial "scripts.html" . }}
-    {{ if ne .Page.Params.type "search-results" }}
-      {{ partial "search.html" . }}
-    {{ end }}
+    {{ partial "search.html" . }}
   </body>
 </html>
