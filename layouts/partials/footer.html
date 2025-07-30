@@ -1,5 +1,5 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{ $footer := getJSON "https://www.gooddata.com/learn-assets/js/footer-definition.json" }}
+{{ $footer := resources.GetRemote "https://www.gooddata.com/learn-assets/js/footer-definition.json" | transform.Unmarshal }}
 {{ if not .Site.Params.whitelabeled }}
 
 <footer class="gd-footer">

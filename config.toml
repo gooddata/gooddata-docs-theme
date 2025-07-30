@@ -11,7 +11,7 @@ canonifyURLs = true
 # Disable, it makes problems with Netlify (missing internal redirect .../path -> .../path/)
 # relativeURLs = true
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy"]
 
 # Highlighting config
 pygmentsCodeFences = true

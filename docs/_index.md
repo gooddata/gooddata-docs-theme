@@ -10,7 +10,7 @@ cascade:
 - type: "docs"
   toc_root: true
   _target:
-    path: "/_index.md"
+    path: "/"
 
 ---
 GoodData Documentation Theme extends and overrides [Docsy](https://www.docsy.dev/) theme for [Hugo](https://gohugo.io/) static site generator. It provides ont only GoodData-branded styling but also some additional functionality, like support for custom versioning scheme, translated documentation and Redocly API refernces.
