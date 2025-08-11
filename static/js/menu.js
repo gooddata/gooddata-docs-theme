@@ -1,6 +1,7 @@
 // (C) 2023 GoodData Corporation
 
 $(document).ready(function () {
+    // Side menu
     var menu = $(".gd-docs-menu"),
         menuActive = $(".gd-docs-menu-page.active");
 
@@ -36,4 +37,40 @@ $(document).ready(function () {
         
         $button.attr("aria-expanded", !isExpanded);
     });
+    // Mobile header menu
+    var $mobileMenuTrigger = $("#gd-header-mobile-menu-trigger-input");
+    var scrollPosition = 0; // Store scroll position
+
+    $mobileMenuTrigger.on("change", function() {
+        var isChecked = $(this).is(":checked");
+        
+        // Update aria-expanded for accessibility
+        $(this).attr("aria-expanded", isChecked);
+        
+        // Prevent body scrolling when menu is open
+        if (isChecked) {
+            // Save current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Menu is open - disable body scroll and maintain position
+            $("body").css({
+                "overflow": "hidden",
+                "position": "fixed",
+                "top": -scrollPosition + "px",
+                "width": "100%"
+            });
+        } else {
+            // Menu is closed - enable body scroll and restore position
+            $("body").css({
+                "overflow": "",
+                "position": "",
+                "top": "",
+                "width": ""
+            });
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
+        }
+    });
+
 });
