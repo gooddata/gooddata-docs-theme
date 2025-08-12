@@ -2,7 +2,7 @@
 {{ $footer := getJSON "https://www.gooddata.com/learn-assets/js/footer-definition.json" }}
 {{ if not .Site.Params.whitelabeled }}
 
-<footer class="gd-footer">
+<footer class="gd-footer" aria-label="Page footer">
   <a href="#top" class="skip-link skip-link--footer">Skip footer content</a>
   
   {{ if $footer.footer.bannerLinks }}

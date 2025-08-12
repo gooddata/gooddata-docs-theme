@@ -84,5 +84,7 @@ $(document).ready(function () {
             $mobileMenuTrigger.trigger("change");
         }
     });
-
+    // TOC menu
+    var $tocMenu = $("#TableOfContents");
+    $tocMenu.attr("aria-label", "Table of contents");
 });

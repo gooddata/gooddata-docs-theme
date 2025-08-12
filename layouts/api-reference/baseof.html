@@ -10,11 +10,11 @@
   <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}" id="top">
     {{ partial "gtm-body.html" }}
     {{ partial "skip-links.html" . }}
-    <header>
+    <header aria-label="Main site header">
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-default td-outer">
-      <main role="main" class="td-main" id="main-content">
+      <main role="main" class="td-main" id="main-content" aria-label="Article content">
         {{ block "main" . }}{{ end }}
       </main>
       {{ partialCached "footer.html" . }}
