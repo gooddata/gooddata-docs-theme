@@ -9,14 +9,14 @@
 
 <div class="gd-docs-header-nav__center gd-header">
     {{ if $mainMenu }}
-        <input type="checkbox" id="gd-header-mobile-menu-trigger-input" name="gd-header-mobile-menu-trigger-input" class="gd-header-mobile gd-header-mobile-menu-trigger-input">
-        <label for="gd-header-mobile-menu-trigger-input" class="gd-header-mobile gd-header-mobile-menu-trigger"><span></span></label>
-        <ul class="gd-docs-header-nav__menu gd-header-links">
+        <input type="checkbox" role="button" id="gd-header-mobile-menu-trigger-input" name="gd-header-mobile-menu-trigger-input" class="gd-header-mobile gd-header-mobile-menu-trigger-input" aria-label="Open navigation menu" aria-controls="gd-header-mobile-menu" aria-expanded="false">
+        <label tabindex="0" for="gd-header-mobile-menu-trigger-input" class="gd-header-mobile gd-header-mobile-menu-trigger"><span></span></label>
+        <ul id="gd-header-mobile-menu" class="gd-docs-header-nav__menu gd-header-links">
         {{ range $mainMenu }}
             <li class="gd-docs-header-nav__menuitem gd-header-link-item{{ if (isset .Params "mobileonly") }} gd-header-link-item-mobile-only{{ end }}">
-            <a href="{{ if isset .Params "isHome" }}{{ $dot.Site.Home.RelPermalink }}{{ else }}{{ .URL }}{{ end }}" class="gd-docs-header-nav__menulink gd-header-link{{ if isset .Params "ismobiletitle" }} gd-header-link__main{{ end }}{{ if isset .Params "ishome" }} gd-header-link__active{{ end }}">
-                {{ .Name }}
-            </a>
+                <a href="{{ if isset .Params "isHome" }}{{ $dot.Site.Home.RelPermalink }}{{ else }}{{ .URL }}{{ end }}" class="gd-docs-header-nav__menulink gd-header-link{{ if isset .Params "ismobiletitle" }} gd-header-link__main{{ end }}{{ if isset .Params "ishome" }} gd-header-link__active{{ end }}">
+                    {{ .Name }}
+                </a>
             </li>
         {{ end }}
         </ul>

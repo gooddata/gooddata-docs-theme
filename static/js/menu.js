@@ -39,13 +39,15 @@ $(document).ready(function () {
     });
     // Mobile header menu
     var $mobileMenuTrigger = $("#gd-header-mobile-menu-trigger-input");
+    var $mobileMenuLabel = $("label[for='gd-header-mobile-menu-trigger-input']");
     var scrollPosition = 0; // Store scroll position
 
-    $mobileMenuTrigger.on("change", function() {
-        var isChecked = $(this).is(":checked");
+    // Function to toggle menu state
+    function toggleMobileMenu() {
+        var isChecked = $mobileMenuTrigger.is(":checked");
         
         // Update aria-expanded for accessibility
-        $(this).attr("aria-expanded", isChecked);
+        $mobileMenuTrigger.attr("aria-expanded", isChecked);
         
         // Prevent body scrolling when menu is open
         if (isChecked) {
@@ -59,6 +61,7 @@ $(document).ready(function () {
                 "top": -scrollPosition + "px",
                 "width": "100%"
             });
+            $mobileMenuTrigger.attr("aria-label", "Close navigation menu");
         } else {
             // Menu is closed - enable body scroll and restore position
             $("body").css({
@@ -67,9 +70,18 @@ $(document).ready(function () {
                 "top": "",
                 "width": ""
             });
-            
+            $mobileMenuTrigger.attr("aria-label", "Open navigation menu");
             // Restore scroll position
             window.scrollTo(0, scrollPosition);
+        }
+    }
+
+    $mobileMenuTrigger.on("change", toggleMobileMenu);
+    $mobileMenuLabel.on("keydown", function(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            $mobileMenuTrigger.prop("checked", !$mobileMenuTrigger.prop("checked"));
+            $mobileMenuTrigger.trigger("change");
         }
     });
 
