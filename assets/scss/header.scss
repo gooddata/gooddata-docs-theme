@@ -39,6 +39,10 @@
     align-items: center;
     padding: 0 20px;
 
+    &__menu {
+        overflow-y: auto;
+    }
+
     &__first {
         top: 0;
         min-height: $header-first-nav-height;
@@ -212,6 +216,7 @@
 
 .gd-header-mobile-menu-trigger {
     margin-bottom: 0;
+    border: none;
 }
 
 .search-result-close-button {

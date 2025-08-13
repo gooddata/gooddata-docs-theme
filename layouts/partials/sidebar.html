@@ -3,7 +3,7 @@
   <span class="gd-docs-menu__mobile-icon" aria-hidden="true"></span>
 </button>
 <div class="gd-docs-menu__mobile-bg"></div>
-<nav id="gd-docs-menu" class="gd-docs-menu init">
+<nav id="gd-docs-menu" class="gd-docs-menu init" aria-label="Articles">
     <div class="sidebar-skip-links">
         <a href="#main-content" class="skip-link skip-link--sidebar">Skip to main content</a>
     </div>
@@ -87,7 +87,9 @@
             </li>
             
             {{ if and $page.Params.navigationLabel $page.Pages }}
-            {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site) }}
+            <li class="gd-docs-menu-page">
+                {{ template "section-tree-nav-sections" (dict "root" $page.Pages "currentPage" $currentPage "activeSection" $activeSection "site" $site) }}
+            </li>
             {{ end }}
         {{ end }}
         {{ end }}

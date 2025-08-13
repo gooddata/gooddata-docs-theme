@@ -13,7 +13,7 @@
   <body class="td-{{ .Kind }}{{ if .Page.Params.edition }} doc{{ .Page.Params.edition }}{{ end }}{{ if .Page.Params.type }} {{ .Page.Params.type }}{{ end }}" id="top">
     {{ partial "gtm-body.html" }}
     {{ partial "skip-links.html" . }}
-    <header>
+    <header aria-label="Main site header">
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-outer">
@@ -26,7 +26,7 @@
           <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
             {{ partial "toc.html" . }}
           </div>
-          <main class="col-12 col-lg-8 col-xl-7 pl-lg-5 ps-lg-5" role="main" id="main-content">
+          <main class="col-12 col-lg-8 col-xl-7 pl-lg-5 ps-lg-5" role="main" id="main-content" aria-label="Article content">
             {{ partial "version-banner.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ if .Draft }}

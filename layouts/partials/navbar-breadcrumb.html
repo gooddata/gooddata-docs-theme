@@ -1,8 +1,10 @@
 {{/* (C) 2023 GoodData Corporation */}}
 {{/* This is overriden in docs (tiger/bear) */}}
-<ul class="gd-breadcrumb">
-  <li class="gd-breadcrumb-item">
-    <a href="{{ .Site.Home.RelPermalink }}">All Products</a>
-  </li>
-  <li class="gd-breadcrumb-item">{{ .Title }}</li>
-</ul>
+<nav class="gd-docs-header-nav__left" aria-label="Breadcrumbs">
+  <ul class="gd-breadcrumb">
+    <li class="gd-breadcrumb-item">
+      <a href="{{ .Site.Home.RelPermalink }}">All Products</a>
+    </li>
+    <li class="gd-breadcrumb-item">{{ .Title }}</li>
+  </ul>
+</nav>
