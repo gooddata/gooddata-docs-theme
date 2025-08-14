@@ -6,7 +6,11 @@ $(document).ready(function () {
         menuActive = $(".gd-docs-menu-page.active");
 
     if(menuActive.length > 0) {
-        menu.scrollTop(menuActive.offset().top - menu.offset().top - parseInt(menu.css("paddingTop")));
+        if (menuActive.parent().hasClass("gd-docs-menu-section__root")) {
+            menu.scrollTop(0);
+        } else {
+            menu.scrollTop(menuActive.offset().top - menu.offset().top - parseInt(menu.css("paddingTop")));
+        }
     }
 
     menu.removeClass("init");
