@@ -126,9 +126,29 @@ pre[class*="language-"] {
 
 div.code-toolbar {
 	position: relative;
+	max-height: 162px;
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out;
+}
+
+div.code-toolbar.overflowing::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 20px;
+	background: linear-gradient(to top, #1C0D3F, transparent);
+	pointer-events: none;
+}
+
+div.code-toolbar.expanded::after {
+	background: none;
 }
 
 div.code-toolbar > .toolbar {
+	display: flex;
+	gap: 0.5em;
 	position: absolute;
 	top: .3em;
 	right: .2em;
