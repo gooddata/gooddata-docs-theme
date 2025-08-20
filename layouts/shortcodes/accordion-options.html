@@ -1,0 +1,6 @@
+{{ $threshold := .Get "threshold" }}
+{{ $notCollapsible := eq (lower (printf "%v" (.Get "notCollapsible"))) "true" }}
+
+<div class="accordion-options{{ if $notCollapsible }} accordion-options--not-collapsible{{ end }}" {{ if and $threshold (not $notCollapsible) }}data-threshold="{{ $threshold }}"{{ end }}>
+    {{ .Inner | markdownify }}
+</div>

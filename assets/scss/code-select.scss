@@ -22,15 +22,7 @@
 
         button {
             height: 27px;
-            padding: 0 11px;
-            border: 1px solid $color-share-button;
-            border-radius: 3px;
-            box-shadow: 0 1px 1px 0 rgba(20, 56, 93, 0.15);
-            outline: none;
-            color: #778491;
-            font-size: 12px;
-            line-height: 25px;
-            background: #fcfcfd;
+            background-color: #433860;
 
             &.expand-button {
                 position: relative;
@@ -66,6 +58,7 @@
             &:focus {
                 box-shadow: 0 0 3px 1px rgba(69, 199, 239, 0), 0 1px 2px 0 rgba(20, 56, 93, 0.15), inset 0 -1px 0 0 rgba(177, 193, 209, 0.6);
                 border-color: rgba(20, 178, 226, 0.75);
+                background: #f5f8fa;
                 outline: 2px solid -webkit-focus-ring-color;
                 transition: none;
             }
@@ -90,6 +83,19 @@
     }
 }
 
+.accordion-options {
+    &--not-collapsible {
+        .code-toolbar {
+            max-height: none;
+            &.overflowing {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
 .td-content .highlight,
 .td-content > .code-toolbar {
     margin: 1.5rem 0;
@@ -97,6 +103,7 @@
 
 .td-content {
     > .gd-docs-code-select,
+    > .accordion-options,
     > .highlight {
         @include mq(large) {
             width: 80%;
