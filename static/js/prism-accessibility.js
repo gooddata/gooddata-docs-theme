@@ -22,10 +22,11 @@
                 var nearestCodeBlock = $(this).closest($codeBlock);
                 var nearestCodeBlockContent = nearestCodeBlock.find($codeBlockContent);
                 var expandButton = $('<button class="expand-button">Expand</button>');
-                if (nearestCodeBlockContent.outerHeight(true) > 162) {
+                if (nearestCodeBlockContent.outerHeight(true) > 200) {
                     $(this).prepend(expandButton);
                     nearestCodeBlock.addClass('overflowing');
                 }
+                expandButton.attr('aria-label', 'Expand code block');
                 expandButton.wrap('<div class="toolbar-item"></div>');
             });
 
@@ -37,6 +38,7 @@
                 // Toggle expanded state
                 nearestCodeBlock.toggleClass('expanded');
                 nearestCodeBlock.attr('aria-expanded', nearestCodeBlock.hasClass('expanded'));
+                $(this).attr('aria-expanded', nearestCodeBlock.hasClass('expanded'));
                 $(this).attr('aria-label', nearestCodeBlock.hasClass('expanded') ? 'Collapse code block' : 'Expand code block');
                 $(this).text(nearestCodeBlock.hasClass('expanded') ? 'Collapse' : 'Expand');
                 $(this).toggleClass('expand-button--expanded');

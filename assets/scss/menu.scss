@@ -21,7 +21,7 @@
     overflow: auto;
     width: calc(100% - 55px);
     flex: 1 1 auto;
-    padding: 0 20px 20px;
+    padding: 32px 40px;
     background: $color-mist-gray;
     transition: $transition;
 
@@ -34,7 +34,6 @@
         z-index: 0;
         width: 100%;
         max-width: 380px;
-        padding: 32px 40px;
 
         @supports(position: sticky) {
             position: sticky;
@@ -283,5 +282,15 @@
         @include mq(large) {
             display: none;
         }
+    }
+    
+    h4 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid $color-dove-gray;
+        font-family: $gdfont-demibold;
+        font-size: 21px;
+        line-height: 1.25;
     }
 }

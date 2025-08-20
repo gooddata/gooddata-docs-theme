@@ -126,7 +126,7 @@ pre[class*="language-"] {
 
 div.code-toolbar {
 	position: relative;
-	max-height: 162px;
+	max-height: 200px;
 	overflow: hidden;
 	transition: max-height 0.3s ease-in-out;
 }
@@ -137,7 +137,7 @@ div.code-toolbar.overflowing::after {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	height: 20px;
+	height: 60px;
 	background: linear-gradient(to top, #1C0D3F, transparent);
 	pointer-events: none;
 }
@@ -208,4 +208,3 @@ div.code-toolbar > .toolbar span:focus {
 	color: inherit;
 	text-decoration: none;
 }
-
