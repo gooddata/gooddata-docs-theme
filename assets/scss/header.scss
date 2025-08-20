@@ -43,6 +43,24 @@
         overflow-y: auto;
     }
 
+    &__desktop {
+        display: flex;
+        min-width: 55px;
+        nav {
+            display: none;
+            @include mq(large) {
+                display: block;
+            }
+        }
+    }
+
+    &__mobile {
+        display: block;
+        @include mq(large) {
+            display: none;
+        }
+    }
+
     &__first {
         top: 0;
         min-height: $header-first-nav-height;
@@ -70,6 +88,7 @@
     }
 
     &__second &__left,
+    &__desktop,
     &__second &__right {
         flex: 0 0 auto;
 

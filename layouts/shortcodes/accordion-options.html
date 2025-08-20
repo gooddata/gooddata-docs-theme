@@ -1,0 +1,24 @@
+{{/* 
+(C) 2025 GoodData Corporation 
+
+This shortcode gives codeblocks the option to change their collapsible threshold or to completely disable collapsing.
+
+Usage:
+-------
+{{< accordion-options threshold="600" notCollapsible="false" >}}
+Code block content goes here with **markdown** support.
+{{< /accordion-options >}}
+
+Parameters:
+------------
+-- threshold (number): The pixel threshold at which the accordion collapses (only for non-collapsible accordions)
+-- notCollapsible (boolean): If true, the accordion cannot be collapsed
+
+*/}}
+
+{{ $threshold := .Get "threshold" }}
+{{ $notCollapsible := eq (lower (printf "%v" (.Get "notCollapsible"))) "true" }}
+
+<div class="accordion-options{{ if $notCollapsible }} accordion-options--not-collapsible{{ end }}" {{ if and $threshold (not $notCollapsible) }}data-threshold="{{ $threshold }}"{{ end }}>
+    {{ .Inner | markdownify }}
+</div>

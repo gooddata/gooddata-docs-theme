@@ -126,17 +126,33 @@ pre[class*="language-"] {
 
 div.code-toolbar {
 	position: relative;
+	max-height: 200px;
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out;
+}
+
+div.code-toolbar.overflowing::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 60px;
+	background: linear-gradient(to top, #1C0D3F, transparent);
+	pointer-events: none;
+}
+
+div.code-toolbar.expanded::after {
+	background: none;
 }
 
 div.code-toolbar > .toolbar {
+	display: flex;
+	gap: 0.5em;
 	position: absolute;
 	top: .3em;
 	right: .2em;
 	transition: opacity 0.3s ease-in-out;
-	opacity: 0;
-}
-
-div.code-toolbar:hover > .toolbar {
 	opacity: 1;
 }
 
@@ -188,4 +204,3 @@ div.code-toolbar > .toolbar span:focus {
 	color: inherit;
 	text-decoration: none;
 }
-
