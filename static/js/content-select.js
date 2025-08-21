@@ -2,6 +2,29 @@
 
 (function ($) {
     $(document).ready(function () {
+        // Code needed to load the hidden content blocks for the prism-accessibility.js to apply to the code blocks in them
+        $(".gd-docs-content__block").each(function(index) {
+            if (index > 0) {
+                $(this).css({
+                    "display": "block",
+                    "position": "absolute",
+                    "opacity": 0,
+                });
+            }
+        });
+        
+        setTimeout(function() {
+            $(".gd-docs-content__block").each(function(index) {
+                if (index > 0) {
+                    $(this).css({
+                        "display": "",
+                        "position": "",
+                        "opacity": "",
+                    });
+                }
+            });
+        }, 100);
+
         // Set up tab click behavior
         $(".gd-docs-content-select__tab").on("click", setActive);
         
