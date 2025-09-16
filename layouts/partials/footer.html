@@ -66,17 +66,7 @@
   </ul>
 
   <div class="gd-footer-bottom">
-    {{ if $footer.footer.buttons }}
-      <div class="gd-footer-buttons">
-        {{ range $button := $footer.footer.buttons }}
-          {{ if eq $button.type "social" }}
-            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "icon" ($button.icon | safeHTML) "class" "gd-footer-buttons-item gd-footer-buttons-item-icon-button" "idPrefix" "footer-btn-" "rel" "noreferrer noopener") }}
-          {{ else if eq $button.type "secondary" }}
-            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "class" "gd-footer-buttons-item button button-secondary button-small button-inverted" "idPrefix" "footer-btn-") }}
-          {{ end }}
-        {{ end }}
-      </div>
-    {{ end }}
+    {{ template "footer-buttons" (dict "footer" $footer.footer "class" "d-lg-none") }}
 
     {{ if $footer.footer.copyright }}
       <div class="gd-footer-copyright">
@@ -91,8 +81,23 @@
         {{ end }}
       </div>
     {{ end }}
-  </div>
+
+    {{ template "footer-buttons" (dict "footer" $footer.footer "class" "d-none d-lg-flex") }}
 </footer>
+{{ end }}
+
+{{ define "footer-buttons" }}
+  {{ if .footer.buttons }}
+      <div class="gd-footer-buttons{{ if .class }} {{ .class }}{{ end }}">
+        {{ range $button := .footer.buttons }}
+          {{ if eq $button.type "social" }}
+            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "icon" ($button.icon | safeHTML) "class" "gd-footer-buttons-item gd-footer-buttons-item-icon-button" "idPrefix" "footer-btn-" "rel" "noreferrer noopener") }}
+          {{ else if eq $button.type "secondary" }}
+            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "class" "gd-footer-buttons-item button button-secondary button-small button-inverted" "idPrefix" "footer-btn-") }}
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
 {{ end }}
 
 {{ define "absolute-link" }}
