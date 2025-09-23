@@ -29,7 +29,7 @@
                 {{ if and $sublink.link $sublink.title }}
                   {{ template "absolute-link" (dict "url" $sublink.link "text" $sublink.title "class" "gd-footer-sublinks-item-link" "idPrefix" "footer-link-") }}
                 {{ else }}
-                  <span>&nbsp;</span>
+                  <span class="gd-footer-sublinks-item-link">&nbsp;</span>
                 {{ end }}
               </li>
             {{ end }}
