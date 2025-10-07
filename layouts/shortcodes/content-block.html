@@ -4,13 +4,12 @@
 {{ $block := .Inner }}
 
 {{ with .Parent }}
-{{ $selectId := .Get "id" }}
-{{ $scratchIdTitles := print "content-block-" (string .Ordinal) }}
-{{ .Scratch.SetInMap $scratchIdTitles (string $index) $title }}
+  {{ $scratchIdTitles := print "content-block-" (string .Ordinal) }}
+  {{ .Scratch.SetInMap $scratchIdTitles (string $index) $title }}
 
-<div id="panel-{{ $title | anchorize }}" class="gd-docs-content__block content-{{ $title | anchorize }}{{ if eq $index 0 }} active{{ end }}" role="tabpanel" aria-labelledby="tab-{{ $title | anchorize }}">
-  {{ $block }}
-</div>
+  <div class="gd-docs-content__block {{ if eq $index 0 }}active{{ end }}" role="tabpanel">
+    {{ $block }}
+  </div>
 {{ else }}
 {{ $block }}
 {{ end }}

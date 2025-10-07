@@ -2,7 +2,7 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
 {{ $color := .Get "color" | default "primary" }}
 {{ $icon := .Get "color" | default "default" }}
-<aside class="alert alert-{{ $color }}" role="alert" aria-labelledby="alert-title">
+<div class="alert alert-{{ $color }}" role="note">
 {{ with resources.Get (printf "icons/icon-alert-%s.svg" $icon) }}{{ ( . | minify).Content | safeHTML }}{{ end }}
 {{ with .Get "title" }}<h4 class="alert-heading">{{ . | safeHTML }}</h4>{{ end }}
 {{ if eq .Page.File.Ext "md" }}
@@ -10,4 +10,4 @@
 {{ else }}
 {{ .Inner | htmlUnescape | safeHTML }}
 {{ end }}
-</aside>
+</div>
