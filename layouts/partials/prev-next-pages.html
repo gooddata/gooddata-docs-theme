@@ -17,7 +17,7 @@
   {{ else }}
     {{ if $currentPage.NextInSection }}
       {{ with $currentPage.NextInSection }}
-        <a href="{{ .RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__prev" aria-label="Previous section: {{ .LinkTitle }}">
+        <a href="{{ .RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__prev" aria-label="{{ .LinkTitle }} (Prev article)">
           <span class="gd-docs-prev-next-pages__chevron" aria-hidden="true">{{ with resources.Get "icons/chevron.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}</span>
           {{ .LinkTitle }}
         </a>
@@ -33,7 +33,7 @@
 
   {{ if $currentPage.IsSection }}
     {{ with index $currentPage.Pages.ByWeight 0 }}
-      <a href="{{ .RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__next" aria-label="Next section: {{ .LinkTitle }}">
+      <a href="{{ .RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__next" aria-label="{{ .LinkTitle }} (Next article)">
         <span class="gd-docs-prev-next-pages__chevron" aria-hidden="true">{{ with resources.Get "icons/chevron.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}</span>
         {{ .LinkTitle }}
       </a>
@@ -41,7 +41,7 @@
   {{ else }}
     {{ if $currentPage.PrevInSection }}
       {{ with $currentPage.PrevInSection }}
-        <a href="{{ $currentPage.PrevInSection.RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__next" aria-label="Next section: {{ .LinkTitle }}">
+        <a href="{{ $currentPage.PrevInSection.RelPermalink }}" class="gd-docs-prev-next-pages__link gd-docs-prev-next-pages__next" aria-label="{{ .LinkTitle }} (Next article)">
           <span class="gd-docs-prev-next-pages__chevron" aria-hidden="true">{{ with resources.Get "icons/chevron.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}</span>
           {{ $currentPage.PrevInSection.LinkTitle }}
         </a>

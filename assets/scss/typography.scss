@@ -44,15 +44,12 @@ body {
         margin-bottom: 1em;
         color: inherit;
 
-        &[id]:before,
-        .legacy-anchor:before {
-            @include mq(large) {
-                content: "";
-                display: block;
-                visibility: hidden;
-                height: 179px;
-                margin-top: -179px;
-            }
+        &[id] {
+            scroll-margin-top: 179px;
+        }
+
+        &[id]::before {
+            display: none;
         }
 
         a {
