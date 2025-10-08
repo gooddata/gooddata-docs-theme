@@ -9,21 +9,12 @@
     <ul class="gd-footer-banner-links gd-footer-links">
     {{ range $index, $link := $footer.footer.bannerLinks }}
       <li class="gd-footer-banner-links-item gd-footer-links-item">
-        <input 
-          type="checkbox" 
-          tabindex="-1" 
-          id="gd-footer-banner-links-item-trigger-{{ $index }}" 
-          name="gd-footer-banner-links-item-trigger-{{ $index }}" 
-          class="gd-footer-banner-links-item-trigger gd-footer-links-item-trigger"
-        />
-        <label
-          for="gd-footer-banner-links-item-trigger-{{ $index }}" 
-          class="gd-footer-banner-links-item-text gd-footer-links-item-text"
-        >
-          {{ $link.title }}
-        </label>
+        <span class="gd-footer-banner-links-item-text gd-footer-links-item-text d-none d-lg-block">{{ $link.title }}</span>
+        <button class="gd-footer-banner-links-item-text gd-footer-links-item-text btn d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gd-footer-banner-sublinks-item-{{ $index }}" aria-expanded="false" aria-controls="gd-footer-banner-sublinks-item-{{ $index }}">
+            {{ $link.title }}
+        </button>
         {{ if and $link.items (gt (len $link.items) 0) }}
-          <ul class="gd-footer-banner-sublinks gd-footer-sublinks">
+          <ul class="gd-footer-banner-sublinks gd-footer-sublinks collapse d-lg-flex" id="gd-footer-banner-sublinks-item-{{ $index }}">
             {{ range $sublink := $link.items }}
               <li class="gd-footer-banner-sublinks-item gd-footer-sublinks-item">
                 {{ if and $sublink.link $sublink.title }}
@@ -43,21 +34,13 @@
   <ul class="gd-footer-links">
     {{ range $index, $link := $footer.footer.links }}
       <li class="gd-footer-links-item">
-        <input 
-          type="checkbox" 
-          tabindex="-1" 
-          id="gd-footer-links-item-trigger-{{ $index }}" 
-          name="gd-footer-links-item-trigger-{{ $index }}" 
-          class="gd-footer-links-item-trigger"
-        />
-        <label
-          for="gd-footer-links-item-trigger-{{ $index }}" 
-          class="gd-footer-links-item-text"
-        >
-          {{ $link.title }}
-        </label>
+        <span class="gd-footer-links-item-text d-none d-lg-block">{{ $link.title }}</span>
+        <button class="gd-footer-links-item-text btn d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gd-footer-links-item-{{ $index }}" aria-expanded="false" aria-controls="gd-footer-links-item-{{ $index }}">
+            {{ $link.title }}
+        </button>
+
         {{ if and $link.items (gt (len $link.items) 0) }}
-          <ul class="gd-footer-sublinks">
+          <ul class="gd-footer-sublinks collapse d-lg-block" id="gd-footer-links-item-{{ $index }}">
             {{ range $sublink := $link.items }}
               <li class="gd-footer-sublinks-item">
                 {{ if and $sublink.link $sublink.title }}
