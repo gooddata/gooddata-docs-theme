@@ -4,7 +4,6 @@
 {{ $wordCount := len $words }}
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="heading-with-anchor">
-  <span id="{{ $cleanText | plainify | anchorize }}" class="legacy-anchor"></span>
   {{ if eq $wordCount 1 }}
     {{/* Single word - no need to split */}}
     <span class="nowrapper">
