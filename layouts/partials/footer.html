@@ -97,5 +97,5 @@
   {{ $id := replace (lower .text) " " "-" }}
   {{ $content := cond (isset . "icon") .icon .text }}
 
-  <a href="{{ $url }}" class="{{ .class }}" id="{{ .idPrefix }}{{ $id }}" target="_blank" {{ if (isset . "rel") }}rel="{{ .rel }}"{{ end }} aria-label="{{ $id }}">{{ $content }}</a>
+  <a href="{{ $url }}" class="{{ .class }}" id="{{ .idPrefix }}{{ $id }}" target="_blank" {{ if (isset . "rel") }}rel="{{ .rel }}"{{ end }}>{{ $content }}</a>
 {{ end }}
