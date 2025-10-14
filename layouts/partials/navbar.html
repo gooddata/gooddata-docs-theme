@@ -21,9 +21,7 @@
   </div>
   {{ if not .Params.no_search }}
   <div class="gd-docs-header-nav__center">
-    {{ if eq .Page.Type "docs" }}
-      <div id="adds-container" class="gd-docs-header-nav__search"></div>
-    {{ end }}
+    <div id="adds-container" class="gd-docs-header-nav__search"></div>
   </div>
   {{ end }}
   {{ if .Site.Params.versions }}
