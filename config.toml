@@ -99,9 +99,9 @@ prism_syntax_highlighting = true
 
 [[params.header]]
 [[params.header.main]]
-name = "Take a product tour"
+name = "Request a demo"
 type = "button"
-url = "https://www.gooddata.com/resources/tags/product-tours/"
+url = "https://www.gooddata.com/request-a-demo/"
 class = "gd-docs-header-nav__secondary"
 
 # User interface configuration
