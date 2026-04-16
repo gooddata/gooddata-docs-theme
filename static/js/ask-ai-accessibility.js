@@ -1,6 +1,7 @@
 $(document).ready(function () {
   let isModalPresent = false;
   const $askAiButton = $("#ask-ai-button");
+  const observedShadowRoots = new WeakSet();
 
   function updateModalState() {
     const $kapaContainer = $("#kapa-widget-container");
@@ -16,10 +17,12 @@ $(document).ready(function () {
     if (exists && !isModalPresent) {
       isModalPresent = true;
       $askAiButton.attr("aria-expanded", "true");
+      $askAiButton.attr("aria-controls", "kapa-modal-content");
       enhanceModalAccessibility(shadowRoot);
     } else if (!exists && isModalPresent) {
       isModalPresent = false;
       $askAiButton.attr("aria-expanded", "false");
+      $askAiButton.removeAttr("aria-controls");
     }
   }
 
@@ -61,11 +64,12 @@ $(document).ready(function () {
     });
 
     // Watch for dynamically added buttons
-    if (!shadowRoot.getAttribute("data-answer-buttons-observer")) {
-      shadowRoot.setAttribute("data-answer-buttons-observer", "true");
+    if (!observedShadowRoots.has(shadowRoot)) {
+      observedShadowRoots.add(shadowRoot);
 
       const answerButtonsObserver = new MutationObserver(() => {
         setupAnswerButtonsAccessibility(shadowRoot);
+        setupRecaptchaAccessibility(shadowRoot);
       });
 
       answerButtonsObserver.observe(shadowRoot, {
@@ -73,6 +77,72 @@ $(document).ready(function () {
         subtree: true
       });
     }
+  }
+
+  function setupRecaptchaAccessibility(shadowRoot) {
+    const recaptchaLink = Array.from(shadowRoot.querySelectorAll("a")).find(a => a.textContent.trim() === "reCAPTCHA");
+
+    if (!recaptchaLink) {
+      return;
+    }
+
+    if (recaptchaLink.hasAttribute("data-recaptcha-a11y-setup")) {
+      return;
+    }
+
+    recaptchaLink.setAttribute("data-recaptcha-a11y-setup", "true");
+
+    // Set proper button semantics since it opens a dialog
+    recaptchaLink.setAttribute("role", "button");
+
+    // Set accessible name
+    if (!recaptchaLink.getAttribute("aria-label")) {
+      recaptchaLink.setAttribute("aria-label", "Protected by reCAPTCHA");
+    }
+
+    // Make keyboard accessible
+    if (!recaptchaLink.hasAttribute("tabindex")) {
+      recaptchaLink.setAttribute("tabindex", "0");
+    }
+
+    // Setup reCAPTCHA dialog accessibility
+    recaptchaLink.addEventListener("click", function () {
+      recaptchaLink.setAttribute("aria-expanded", "true");
+
+      setTimeout(() => {
+        const dialog = shadowRoot.querySelector(".mantine-Popover-dropdown[role='dialog']");
+        if (dialog) {
+          const dialogText = dialog.querySelector("p");
+          if (dialogText && !dialogText.id) {
+            dialogText.id = "recaptcha-dialog-description";
+          }
+
+          if (!dialog.getAttribute("aria-label")) {
+            dialog.setAttribute("aria-label", "reCAPTCHA information");
+          }
+
+          if (dialogText && dialogText.id) {
+            dialog.setAttribute("aria-describedby", dialogText.id);
+          }
+
+          dialog.setAttribute("aria-modal", "true");
+          dialog.focus();
+        }
+      }, 100);
+    });
+
+    // Handle dialog close to update aria-expanded
+    const closeObserver = new MutationObserver(() => {
+      const dialog = shadowRoot.querySelector(".mantine-Popover-dropdown[role='dialog']");
+      if (!dialog) {
+        recaptchaLink.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    closeObserver.observe(shadowRoot, {
+      childList: true,
+      subtree: true
+    });
   }
 
   function setupDeepThinkingButtonAccessibility(shadowRoot) {
@@ -171,12 +241,12 @@ $(document).ready(function () {
       }
     }
 
-    // Style back to top button
+    // Style send message button (up arrow icon)
     const backToTopSvg = shadowRoot.querySelector(".tabler-icon-arrow-up");
     if (backToTopSvg) {
       const backToTopButton = backToTopSvg.closest("button");
       if (backToTopButton && !backToTopButton.getAttribute("aria-label")) {
-        backToTopButton.setAttribute("aria-label", "Back to top");
+        backToTopButton.setAttribute("aria-label", "Send message");
         if (!backToTopSvg.getAttribute("aria-hidden")) {
           backToTopSvg.setAttribute("aria-hidden", "true");
         }
@@ -185,50 +255,13 @@ $(document).ready(function () {
 
     setupDeepThinkingButtonAccessibility(shadowRoot);
     setupAnswerButtonsAccessibility(shadowRoot);
+    setupRecaptchaAccessibility(shadowRoot);
 
     // Fix input accessibility
     const kpaInput = shadowRoot.querySelector("#kapa-ask-ai-input");
     if (kpaInput) {
       kpaInput.setAttribute("aria-label", "Ask me a question about GoodData");
       kpaInput.setAttribute("autocomplete", "off");
-    }
-
-    // Fix reCAPTCHA link accessibility
-    const recaptchaLink = shadowRoot.querySelector("a[data-underline='hover']:not([href])");
-    if (recaptchaLink && recaptchaLink.textContent.includes("reCAPTCHA")) {
-      if (!recaptchaLink.getAttribute("aria-label")) {
-        recaptchaLink.setAttribute("aria-label", "Protected by reCAPTCHA");
-      }
-
-      recaptchaLink.setAttribute("role", "button");
-
-      if (!recaptchaLink.hasAttribute("href")) {
-        recaptchaLink.setAttribute("tabindex", "0");
-      }
-
-      // Setup reCAPTCHA dialog accessibility
-      recaptchaLink.addEventListener("click", function () {
-        setTimeout(() => {
-          const dialog = shadowRoot.querySelector(".mantine-Popover-dropdown[role='dialog']");
-          if (dialog) {
-            const dialogText = dialog.querySelector("p");
-            if (dialogText && !dialogText.id) {
-              dialogText.id = "recaptcha-dialog-description";
-            }
-
-            if (!dialog.getAttribute("aria-label")) {
-              dialog.setAttribute("aria-label", "reCAPTCHA information");
-            }
-
-            if (dialogText && dialogText.id) {
-              dialog.setAttribute("aria-describedby", dialogText.id);
-            }
-
-            dialog.setAttribute("aria-modal", "true");
-            dialog.focus();
-          }
-        }, 100);
-      });
     }
   }
 

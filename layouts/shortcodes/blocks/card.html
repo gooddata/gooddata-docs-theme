@@ -35,7 +35,7 @@
                     {{ $modifiedSvg := replaceRE `(<svg)(.*?>)` "$1 aria-hidden=\"true\"$2" $svgContent 1 }}
                     {{ $modifiedSvg | safeHTML }}
                 </div>
-                <p class="homepage-card__title">{{ .Title }}</p>
+                <strong class="homepage-card__title">{{ .Title }}</strong>
                 {{ if $description }}
                     <p class="homepage-card__text">{{ $description }}</p>
                 {{ else }}
@@ -56,7 +56,7 @@
                     {{ end }}
                 </div>
             {{ end }}
-            <p class="homepage-card__title">{{ $title }}</p>
+            <strong class="homepage-card__title">{{ $title }}</strong>
 
             {{ if eq .Page.File.Ext "md" }}
                 {{ .Inner | .Page.RenderString }}
