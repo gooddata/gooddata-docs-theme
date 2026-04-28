@@ -61,7 +61,7 @@ weight = 1
 [menu]
 [[menu.main]]
 name = "Learn"
-url = "https://www.gooddata.com/learn/"
+url = "https://www.gooddata.ai/learn/"
 weight = 1
 [menu.main.params]
     isMobileTitle = true
@@ -85,7 +85,7 @@ url = "https://support.gooddata.com/hc/en-us"
 weight = 5
 [[menu.main]]
 name = "Go to GoodData.com"
-url = "https://www.gooddata.com/"
+url = "https://www.gooddata.ai/"
 weight = 6
 [menu.main.params]
     mobileOnly = true
@@ -101,7 +101,7 @@ prism_syntax_highlighting = true
 [[params.header.main]]
 name = "Request a demo"
 type = "button"
-url = "https://www.gooddata.com/request-a-demo/"
+url = "https://www.gooddata.ai/request-a-demo/"
 class = "gd-docs-header-nav__secondary"
 
 # User interface configuration
@@ -121,13 +121,13 @@ footer_about_disable = false
 title = "Page not found"
 [[params.404.links]]
 title = "Analytics platform"
-link = "https://www.gooddata.com/platform/"
+link = "https://www.gooddata.ai/platform/"
 [[params.404.links]]
 title = "Embedded analytics"
-link = "https://www.gooddata.com/embedded-analytics/"
+link = "https://www.gooddata.ai/embedded-analytics/"
 [[params.404.links]]
 title = "Contact us"
-link = "https://www.gooddata.com/contact/"
+link = "https://www.gooddata.ai/contact/"
 
 [[deployment.matchers]]
 #  Cache static assets for 1 year.
