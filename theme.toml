@@ -11,7 +11,7 @@ min_version = "0.81.0"
 
 [author]
   name = "GoodData Corporation"
-  homepage = "http://www.gooddata.com/"
+  homepage = "http://www.gooddata.ai/"
 
 [original]
   name = "The Docsy Authors"

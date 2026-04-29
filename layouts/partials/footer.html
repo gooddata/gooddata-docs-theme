@@ -1,5 +1,5 @@
 {{/* (C) 2023 GoodData Corporation */}}
-{{ $footer := getJSON "https://www.gooddata.com/learn-assets/js/footer-definition.json" }}
+{{ $footer := getJSON "https://www.gooddata.ai/learn-assets/js/footer-definition.json" }}
 {{ if not .Site.Params.whitelabeled }}
 
 <footer class="gd-footer" aria-label="Page footer">
@@ -93,7 +93,7 @@
 
 {{ define "absolute-link" }}
   {{ $urlParse := urls.Parse .url }}
-  {{ $url := print (cond (and (gt (len $urlParse.Path) 0) (eq (len $urlParse.Host) 0)) "https://www.gooddata.com" "") .url }}
+  {{ $url := print (cond (and (gt (len $urlParse.Path) 0) (eq (len $urlParse.Host) 0)) "https://www.gooddata.ai" "") .url }}
   {{ $id := replace (lower .text) " " "-" }}
   {{ $content := cond (isset . "icon") .icon .text }}
 
