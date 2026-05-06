@@ -66,6 +66,8 @@ As a developer, make use of our development kits and API:
 
 Did you try GoodData yet?
 
+{{< cta-banner >}}
+
 </conditionalcontent>
 
 Reach out to our shared community and knowledge base get the answers you are looking for:
