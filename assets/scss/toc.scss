@@ -33,14 +33,14 @@ $toc-top: 20px;
             &:hover,
             &:focus,
             &:active {
-                color: $color-marlin-black;
+                color: $color-storm-gray;
             }
 
             &:hover,
             &:focus,
             &:active {
-                color: $color-link-hover;
-                text-decoration: underline;
+                color: $color-marlin-black;
+                text-decoration: none;
             }
         }
 
@@ -52,10 +52,12 @@ $toc-top: 20px;
     }
 
     h3 {
-        margin: 35px 0 15px;
+        margin: 16px 0 8px;
         color: $color-black;
-        font-size: 21px;
-        font-weight: bold;
+        font-family: $gdfont-demibold;
+        font-size: 15px;
+        font-weight: normal;
+        line-height: 1.5;
     }
 }
 
@@ -78,7 +80,15 @@ $toc-top: 20px;
     a {
         padding-bottom: 5px;
         font-size: 15px;
-        line-height: 26px;
+        line-height: 1.5;
+        color: $color-storm-gray;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-marlin-black;
+            text-decoration: none;
+        }
     }
 }
 

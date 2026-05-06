@@ -17,21 +17,16 @@
         display: block;
         max-width: 100%;
         padding: 0 15px;
-        color: $color-cta;
-        font-size: 16px;
-        font-weight: bold;
-
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-            text-decoration: none;
-        }
+        color: $color-link;
+        font-family: $gdfont-demibold;
+        font-size: 14px;
+        text-decoration: underline;
 
         &:hover,
         &:focus,
         &:active {
-            color: $color-cta-hover;
+            color: $color-link-hover;
+            text-decoration: underline;
         }
     }
 

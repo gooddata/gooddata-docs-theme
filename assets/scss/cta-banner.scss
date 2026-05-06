@@ -5,11 +5,11 @@
 
 .gd-cta-banner {
   display: flex;
-  align-items: center;
-  gap: pxtorem(32px);
+  align-items: flex-end;
+  gap: pxtorem(24px);
   background-color: $color-lime-green;
-  border-radius: 12px;
-  padding: pxtorem(32px) pxtorem(40px);
+  border-radius: 16px;
+  padding: pxtorem(32px);
   margin-bottom: pxtorem(40px);
   overflow: hidden;
   position: relative;
@@ -17,37 +17,47 @@
   // ── Text column ──────────────────────────────────────────────────────────
 
   &__content {
-    flex: 1 1 55%;
+    flex: 0 0 auto;
+    width: 55%;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: pxtorem(24px);
+    align-items: flex-start;
   }
 
   &__title {
     font-family: $gdfont-demibold;
     font-size: pxtorem(22px);
-    line-height: 1.3;
+    line-height: 1;
     color: $color-black;
-    margin: 0 0 pxtorem(12px);
+    margin: 0;
   }
 
   &__subtitle {
-    font-size: pxtorem(16px);
-    line-height: 1.55;
-    color: $color-marlin-black;
-    margin: 0 0 pxtorem(24px);
+    font-size: pxtorem(18px);
+    line-height: 1.3;
+    letter-spacing: -0.18px;
+    color: $color-black;
+    margin: 0;
   }
 
   &__button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: $gdfont-demibold;
-    font-size: pxtorem(16px);
+    font-size: pxtorem(18px);
     line-height: 1;
-    padding: pxtorem(14px) pxtorem(24px);
-    border-radius: pxtorem(50px);
-    border: 2px solid $color-black;
+    height: 48px;
+    padding: 0 pxtorem(32px);
+    border-radius: 8px;
+    border: 1px solid $color-cloud-gray;
     background-color: $color-white;
     color: $color-black;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
     transition: background-color $transition, color $transition, border-color $transition;
 
     &:hover,
@@ -62,21 +72,23 @@
 
   // ── Image column ─────────────────────────────────────────────────────────
 
+  &--has-image {
+    // Extra right padding so the absolutely-positioned image doesn't clip text
+    padding-right: pxtorem(40px);
+  }
+
   &__media {
-    flex: 0 0 auto;
-    // Allow the image to visually overflow upward for a "pop-out" effect
-    margin-top: pxtorem(-48px);
-    margin-bottom: pxtorem(-32px);
-    max-width: 42%;
-    display: flex;
-    align-items: flex-end;
+    position: absolute;
+    top: -13px;
+    right: pxtorem(32px);
+    width: 42%;
+    max-width: 340px;
 
     img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 8px 8px 0 0;
-      box-shadow: 0 8px 32px rgba($color-black, 0.18);
+      border-radius: 4px;
     }
   }
 
@@ -84,18 +96,22 @@
 
   @media (max-width: 767px) {
     flex-direction: column;
-    padding: pxtorem(24px) pxtorem(24px) pxtorem(8px);
+    align-items: flex-start;
+    padding: pxtorem(24px);
+
+    &__content {
+      width: 100%;
+    }
 
     &__media {
-      max-width: 100%;
+      position: static;
       width: 100%;
+      max-width: 100%;
       margin-top: pxtorem(8px);
-      margin-bottom: 0;
-      align-items: flex-end;
 
       img {
-        border-radius: 8px 8px 0 0;
-        max-height: 200px;
+        border-radius: 4px 4px 0 0;
+        max-height: 180px;
         object-fit: cover;
         object-position: top left;
       }
@@ -108,17 +124,14 @@
 [data-theme="dark"] .gd-cta-banner {
   background-color: $color-key-lime-green;
 
-  .gd-cta-banner__title {
-    color: $color-black;
-  }
-
+  .gd-cta-banner__title,
   .gd-cta-banner__subtitle {
-    color: $color-coal-black;
+    color: $color-black;
   }
 
   .gd-cta-banner__button {
     color: $color-black;
-    border-color: $color-black;
+    border-color: $color-storm-gray;
     background-color: $color-white;
 
     &:hover,
@@ -126,6 +139,7 @@
     &:active {
       background-color: $color-black;
       color: $color-white;
+      border-color: $color-black;
     }
   }
 }

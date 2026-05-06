@@ -206,16 +206,16 @@
 
       &__link {
         &,
-        &:hover,
-        &:active,
-        &:focus {
+        &:visited {
           color: $color-silver-gray;
+          text-decoration: none;
         }
 
         &:hover,
         &:active,
         &:focus {
           color: $color-white;
+          text-decoration: none;
         }
       }
 
@@ -229,7 +229,7 @@
     }
 
     &-page.active > &-page__title &-page__link {
-      color: $color-ice-blue;
+      color: $color-lime-green;
     }
 
     h4 {

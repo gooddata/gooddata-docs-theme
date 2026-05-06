@@ -144,9 +144,9 @@
         display: flex;
         align-items: center;
         height: 2.5rem;
-        padding: .56rem 1.06rem;
+        padding: .56rem 1.25rem;
         border: 1px solid transparent;
-        border-radius: 40px;
+        border-radius: 8px;
         font-family: $gdfont-demibold;
         font-size: 18px;
         font-weight: normal;
@@ -218,10 +218,10 @@
 .td-search-input {
     width: 100%;
     max-width: 650px;
-    height: 36px;
+    height: 32px;
     margin: 0;
-    padding: 1px 15px;
-    border-radius: 20px;
+    padding: 8px 12px;
+    border-radius: 6px;
     color: $color-marlin-black;
     font-size: 14px;
     background: $color-white;

@@ -12,8 +12,9 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 17px;
-    padding: 30px;
+    padding: 18px;
     background: $color-mist-gray;
+    border-radius: 12px;
 
     @include media-breakpoint-up(lg) {
         max-width: 80%;

@@ -131,6 +131,9 @@
     }
 
     &-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         padding-left: 12px;
         list-style-type: none;
 
@@ -171,14 +174,16 @@
 
         &__title {
             display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
         }
 
         &__link {
             position: relative;
             display: inline-block;
             flex: 1 1 auto;
-            margin: 8px 20px 3px 0;
-            padding: 0 0 5px;
+            min-width: 0;
             max-width: 100%;
             font-size: 15px;
             line-height: 1.5;
@@ -188,19 +193,19 @@
             &:active,
             &:focus {
                 color: $color-marlin-black;
+                text-decoration: none;
             }
 
             &:hover,
             &:active,
             &:focus {
                 color: $color-black;
-                text-decoration: underline;
             }
         }
 
         &.active > &__title &__link {
             font-family: $gdfont-demibold;
-            color: $color-link;
+            color: $color-black;
 
             &,
             &:hover,

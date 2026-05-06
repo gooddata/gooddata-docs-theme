@@ -42,17 +42,17 @@ $color-cta:               $color-shocking-pink;
 $color-cta-hover:         $color-shocking-pink-h;
 
 // Code background
-$color-code-bg:           $color-coal-black;
+$color-code-bg:           $color-black;
 
 // Alerts
 $color-alert:             $color-marlin-black;
 $color-alert-bg:          $color-mist-gray;
 
-$color-alert-info:        $color-deep-ocean-blue;
-$color-alert-info-bg:     $color-alice-blue;
+$color-alert-info:        $color-ocean-blue;       // #285D92 — matches Figma
+$color-alert-info-bg:     $color-alice-blue;        // #E1EEFA — matches Figma
 
 $color-alert-warning:     $color-red;
-$color-alert-warning-bg:  rgba($color-red, 0.06);
+$color-alert-warning-bg:  #fff1f5;                 // Figma-exact light pink tint
 
 $color-alert-label:       $color-white;
 $color-alert-label-bg:    $color-black;
@@ -66,6 +66,6 @@ $color-gray-bg:           $color-mist-gray;
 // keep working but point to the canonical palette.
 $color-shocking-pink-dark: $color-shocking-pink-h;
 
-$alert-border-width: 5px;
+$alert-border-width: 6px;  // Figma: 6px left border on alerts
 
 $transition: 0.15s ease-in-out;
