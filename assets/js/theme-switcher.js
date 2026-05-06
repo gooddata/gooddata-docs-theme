@@ -1,4 +1,4 @@
-// (C) 2025 GoodData Corporation
+// (C) 2026 GoodData Corporation
 // Theme switcher — light / dark preference with localStorage persistence
 // and respect for the OS prefers-color-scheme media query.
 //

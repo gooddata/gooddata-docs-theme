@@ -1,4 +1,4 @@
-{{- /* (C) 2023 GoodData Corporation */ -}}
+{{- /* (C) 2026 GoodData Corporation */ -}}
 {{- $pages := where .Data.Pages ".Page.Params.sitemapExclude" "!=" "true" -}}
 {{- if isset .Site.Params "versions" -}}
 {{- $version := (index (where .Site.Params.versions "sitemapExclude" "!=" "true") 0) -}}

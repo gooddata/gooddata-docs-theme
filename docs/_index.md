@@ -98,7 +98,7 @@ theme = ["GDCDocsTheme", "docsy"]
 
 ## License
 
-(C) 2007-2023 GoodData Corporation
+(C) 2007-2026 GoodData Corporation
 
 For more information, please see [LICENSE](LICENSE).
 
