@@ -1,19 +1,22 @@
 {{/* (C) 2025 GoodData Corporation */}}
-{{/* Theme switcher toggle button — Sun (light) / Moon (dark) */}}
-{{ $sun  := resources.Get "icons/icon-sun.svg"  }}
+{{/* Theme switcher — pill toggle matching Figma "modes switch" design.
+     Two icon slots (dark/moon left, light/sun right).
+     The active slot gets a filled circle background.
+     Light mode → sun slot is active. Dark mode → moon slot is active. */}}
 {{ $moon := resources.Get "icons/icon-moon.svg" }}
+{{ $sun  := resources.Get "icons/icon-sun.svg"  }}
 
 <button
   id="gd-theme-switcher"
   class="gd-docs-theme-switcher"
   type="button"
-  aria-label="Toggle dark / light theme"
+  aria-label="Switch to dark theme"
   title="Toggle dark / light theme"
 >
-  <span class="gd-docs-theme-switcher__icon gd-docs-theme-switcher__icon--light">
-    {{ ( $sun | minify ).Content | safeHTML }}
-  </span>
-  <span class="gd-docs-theme-switcher__icon gd-docs-theme-switcher__icon--dark">
+  <span class="gd-docs-theme-switcher__option gd-docs-theme-switcher__option--dark" aria-hidden="true">
     {{ ( $moon | minify ).Content | safeHTML }}
+  </span>
+  <span class="gd-docs-theme-switcher__option gd-docs-theme-switcher__option--light" aria-hidden="true">
+    {{ ( $sun | minify ).Content | safeHTML }}
   </span>
 </button>
