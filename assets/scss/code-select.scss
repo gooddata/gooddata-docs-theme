@@ -5,7 +5,7 @@
 .td-content .code-toolbar {
     border: none;
     border-radius: 0;
-    background-color: $color-text;
+    background-color: $color-code-bg;
 
     pre {
         outline: none;
@@ -22,7 +22,7 @@
 
         button {
             height: 27px;
-            background-color: #433860;
+            background-color: $color-gunpowder-gray;
 
             &.expand-button {
                 position: relative;
@@ -116,7 +116,7 @@
     flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: $color-text;
+    background-color: $color-code-bg;
 
     &__tabs {
         display: flex;
@@ -124,7 +124,7 @@
         margin: 10px;
         padding: 1px;
         border-radius: 5px;
-        background-color: #545C61;
+        background-color: $color-gunpowder-gray;
     }
 
     &__tab {
@@ -141,7 +141,7 @@
 
         &.active {
             color: $color-white;
-            background-color: $color-shocking-pink;
+            background-color: $color-cta;
         }
     }
 

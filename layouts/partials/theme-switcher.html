@@ -1,0 +1,19 @@
+{{/* (C) 2025 GoodData Corporation */}}
+{{/* Theme switcher toggle button — Sun (light) / Moon (dark) */}}
+{{ $sun  := resources.Get "icons/icon-sun.svg"  }}
+{{ $moon := resources.Get "icons/icon-moon.svg" }}
+
+<button
+  id="gd-theme-switcher"
+  class="gd-docs-theme-switcher"
+  type="button"
+  aria-label="Toggle dark / light theme"
+  title="Toggle dark / light theme"
+>
+  <span class="gd-docs-theme-switcher__icon gd-docs-theme-switcher__icon--light">
+    {{ ( $sun | minify ).Content | safeHTML }}
+  </span>
+  <span class="gd-docs-theme-switcher__icon gd-docs-theme-switcher__icon--dark">
+    {{ ( $moon | minify ).Content | safeHTML }}
+  </span>
+</button>

@@ -26,19 +26,20 @@ $toc-top: 20px;
     }
 
     #TableOfContents {
-        border-left: 1px solid $color-gray-divider;
+        border-left: 1px solid $color-cloud-gray;
 
         a {
             &,
             &:hover,
             &:focus,
             &:active {
-                color: #464e56;
+                color: $color-marlin-black;
             }
 
             &:hover,
             &:focus,
             &:active {
+                color: $color-link-hover;
                 text-decoration: underline;
             }
         }
@@ -52,6 +53,7 @@ $toc-top: 20px;
 
     h3 {
         margin: 35px 0 15px;
+        color: $color-black;
         font-size: 21px;
         font-weight: bold;
     }
@@ -59,7 +61,7 @@ $toc-top: 20px;
 
 .td-toc nav,
 .gd-docs-learn-more {
-    border-left: 1px solid $color-gray-divider;
+    border-left: 1px solid $color-cloud-gray;
 
     ul {
         padding-left: 20px;
@@ -82,8 +84,14 @@ $toc-top: 20px;
 
 .gd-docs-learn-more {
     a {
-        color: $color-shocking-pink;
+        color: $color-link;
         font-weight: bold;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-link-hover;
+        }
     }
 }
 

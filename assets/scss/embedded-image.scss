@@ -2,7 +2,7 @@
 @import "variables/variables";
 
 .modal {
-    background-color: rgba(28, 13, 63, .8);
+    background-color: rgba($color-black, .8);
 }
 .modal-backdrop.show{
     opacity: 0;
@@ -53,14 +53,14 @@
             box-shadow: none;
             background-image: url(../img/menu-close-gray.svg);
             background-repeat: no-repeat;
-            background-color: #1c0d3f;
+            background-color: $color-black;
             background-size: 20px;
             -webkit-transition: background-color .2s;
             transition: background-color .2s;
 
             &:hover{
                 background-image: url(../img/menu-close-purple.svg);
-                background-color: #fff;
+                background-color: $color-white;
             }
         }
     }
@@ -82,7 +82,7 @@ flex-direction: column;
 
 .img-caption{
     font-size: 14px;
-    color: #667d8e;
+    color: $color-storm-gray;
 }
 }
 

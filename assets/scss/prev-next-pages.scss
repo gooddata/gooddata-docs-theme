@@ -1,11 +1,12 @@
 // (C) 2023 GoodData Corporation
+@import "variables/variables";
 
 .gd-docs-prev-next-pages {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid #dde4eb;
+    border-top: 1px solid $color-pearl-gray;
 
     &__wrapper {
         flex: 1 1 auto;
@@ -16,9 +17,22 @@
         display: block;
         max-width: 100%;
         padding: 0 15px;
-        color: $color-shocking-pink;
+        color: $color-cta;
         font-size: 16px;
         font-weight: bold;
+
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-cta-hover;
+        }
     }
 
     &__chevron {

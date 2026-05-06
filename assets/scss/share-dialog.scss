@@ -10,9 +10,9 @@
         line-height: 1;
         border: none;
         border-radius: 3px;
-        color: $color-deep-purple;
+        color: $color-marlin-black;
         font-weight: normal;
-        background: transparentize($color-share-button, 0.5);
+        background: $color-share-button;
         transition: background 350ms ease;
 
         &,
@@ -25,7 +25,7 @@
         &:hover,
         &:focus,
         &:active {
-            background: rgba($color-share-button, .8);
+            background: $color-cloud-gray;
         }
 
         &::before {
@@ -40,9 +40,10 @@
         width: 250px;
         margin: 0;
         padding: 15px 20px;
-        border: none;
+        border: 1px solid $color-pearl-gray;
         border-radius: 3px;
-        box-shadow: 0 1px 14px 0 transparentize($color-black, 0.8);
+        box-shadow: 0 1px 14px 0 rgba($color-black, 0.2);
+        background-color: $color-white;
     }
 
     &__arrow.arrow {
@@ -101,7 +102,13 @@
         &:hover,
         &:focus,
         &:active {
-            color: $color-deep-purple;
+            color: $color-link;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-link-hover;
         }
 
         &::before {

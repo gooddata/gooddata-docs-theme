@@ -6,7 +6,7 @@
 .td-content > blockquote {
     padding: 8px 16px 8px 45px;
     border: none;
-    border-left: $alert-border-width solid $color-gray-tag;
+    border-left: $alert-border-width solid $color-storm-gray;
     border-radius: 0;
     color: $color-alert;
     background-color: $color-alert-bg;
@@ -34,19 +34,36 @@
     &-info {
         border-left-color: $color-alert-info;
         background-color: $color-alert-info-bg;
+
+        .alert-heading {
+            color: $color-alert-info;
+        }
+
+        > svg path {
+            // Tint the brand info glyph to match the deep ocean accent.
+            fill: $color-alert-info;
+        }
     }
 
     &-warning {
         border-left-color: $color-alert-warning;
         background-color: $color-alert-warning-bg;
+
+        .alert-heading {
+            color: $color-alert-warning;
+        }
+
+        > svg path {
+            fill: $color-alert-warning;
+        }
     }
 
     &-label {
         padding-top: 8px;
         padding-bottom: 8px;
         border-left-color: transparent;
-        color: $color-white;
-        background-color: $color-deep-purple;
+        color: $color-alert-label;
+        background-color: $color-alert-label-bg;
 
         &::before {
             content: "";
@@ -55,7 +72,7 @@
             left: -$alert-border-width;
             bottom: 0;
             width: $alert-border-width;
-            border-left: $alert-border-width solid rgba($color-deep-purple, 0.3);
+            border-left: $alert-border-width solid rgba($color-alert-label-bg, 0.3);
             background-color: $color-white;
         }
 

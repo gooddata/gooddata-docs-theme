@@ -10,3 +10,5 @@
 <script src="/js/heading-anchor.js"></script>
 <script src="/js/prism-accessibility.js"></script>
 <script src="/js/tab-order.js"></script>
+{{ $themeSwitcherJS := resources.Get "js/theme-switcher.js" | minify | fingerprint }}
+<script src="{{ $themeSwitcherJS.RelPermalink }}" integrity="{{ $themeSwitcherJS.Data.integrity }}" defer></script>

@@ -1,0 +1,594 @@
+// (C) 2025 GoodData Corporation
+//
+// Dark-theme overrides.
+// Applied when <html data-theme="dark"> is set by the theme switcher.
+// All rules are scoped to [data-theme="dark"] to avoid any impact on
+// the default (light) theme.
+
+@import "variables/variables";
+
+// ─── Dark surface palette ────────────────────────────────────────────────────
+//
+// Derived from the canonical brand blacks + gunpowder grays.
+//
+//   page-bg          #09090c   $color-black          — deepest surface
+//   surface          #222224   $color-coal-black      — raised panels, sidebar
+//   surface-raised   #535355   $color-gunpowder-gray  — hover / active chips
+//   border           #3A3A3D   $color-marlin-black    — dividers
+//
+// ─── Dark text palette ───────────────────────────────────────────────────────
+//   heading          #ffffff   $color-white
+//   body             #CECECE   $color-silver-gray
+//   muted            #848486   $color-storm-gray
+//
+// ─── Dark link / accent palette ──────────────────────────────────────────────
+//   link             #CDE2F7   $color-ice-blue        — links on dark surfaces
+//   link-hover       #E1EEFA   $color-alice-blue
+//   cta              ED26B7    $color-shocking-pink   (same as light)
+//
+// ─── Dark alert palette ──────────────────────────────────────────────────────
+//   alert-info-bg    navy-blue 25% opacity
+//   alert-warning-bg coal-black + light red tint
+
+[data-theme="dark"] {
+
+  // ── Global surfaces ───────────────────────────────────────────────────────
+
+  background-color: $color-black;
+  color: $color-silver-gray;
+
+  body {
+    background-color: $color-black;
+    color: $color-silver-gray;
+  }
+
+  // ── Typography ────────────────────────────────────────────────────────────
+
+  .td-content,
+  .td-home,
+  .td-default {
+    h1, h2, h3, h4, h5, h6 {
+      color: $color-white;
+    }
+  }
+
+  // ── Links ─────────────────────────────────────────────────────────────────
+
+  a,
+  .td-box--gray p > a,
+  .api-reference .td-default a {
+    color: $color-ice-blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-alice-blue;
+    }
+  }
+
+  // Inline code chips
+  .td-content :not(pre) > code {
+    color: $color-ice-blue;
+    background-color: rgba($color-ice-blue, 0.12);
+    border-color: rgba($color-ice-blue, 0.25);
+  }
+
+  // ── Header / Navigation ───────────────────────────────────────────────────
+
+  .gd-docs-header-nav {
+    &__first {
+      background-color: $color-black;
+      border-bottom-color: $color-marlin-black;
+
+      &.td-navbar-cover {
+        background-color: $color-black !important;
+      }
+    }
+
+    &__second {
+      background: $color-coal-black;
+      border-top-color: $color-marlin-black;
+      border-bottom-color: $color-marlin-black;
+    }
+
+    // Logo SVG paths
+    &__logo svg path,
+    &__logo svg g {
+      fill: $color-white;
+    }
+  }
+
+  .gd-header-nav__logo svg path {
+    fill: $color-white;
+  }
+
+  .gd-header-nav__logo-text {
+    color: $color-white;
+  }
+
+  .gd-header-link-item {
+    color: $color-silver-gray;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+    }
+  }
+
+  // Secondary (outlined) header button
+  .gd-docs-header-nav__secondary,
+  .gd-docs-header-nav__slack {
+    color: $color-white;
+    border-color: $color-white;
+    background-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-black;
+      background-color: $color-white;
+    }
+  }
+
+  // ── Search input ──────────────────────────────────────────────────────────
+
+  .td-search-input {
+    color: $color-white;
+    background: $color-coal-black;
+    border-color: $color-marlin-black;
+
+    &::placeholder {
+      color: $color-storm-gray;
+    }
+  }
+
+  // ── Nav links / dropdowns ─────────────────────────────────────────────────
+
+  .nav-link {
+    color: $color-silver-gray;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+    }
+
+    .show & {
+      background-color: $color-gunpowder-gray;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $color-coal-black;
+    border-color: $color-marlin-black;
+  }
+
+  .dropdown-item {
+    color: $color-silver-gray;
+
+    &,
+    &.active {
+      color: $color-silver-gray;
+      background-color: transparent;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+      background-color: $color-gunpowder-gray;
+    }
+
+    &.active {
+      background-color: $color-gunpowder-gray;
+    }
+  }
+
+  // ── Sidebar / Menu ────────────────────────────────────────────────────────
+
+  .td-sidebar {
+    background: $color-coal-black;
+  }
+
+  .gd-docs-menu {
+    background: $color-coal-black;
+    color: $color-silver-gray;
+
+    &-section + &-section {
+      border-top-color: $color-marlin-black;
+    }
+
+    &-page {
+      &__separator {
+        border-top-color: $color-marlin-black;
+      }
+
+      &__link {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+          color: $color-silver-gray;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $color-white;
+        }
+      }
+
+      &__label {
+        color: $color-storm-gray;
+      }
+
+      &__chevron {
+        color: $color-silver-gray;
+      }
+    }
+
+    &-page.active > &-page__title &-page__link {
+      color: $color-ice-blue;
+    }
+
+    h4 {
+      color: $color-white;
+      border-bottom-color: $color-marlin-black;
+    }
+
+    .dropdown-toggle {
+      background-color: $color-gunpowder-gray;
+      color: $color-white;
+      border-color: $color-marlin-black;
+    }
+  }
+
+  // ── Breadcrumbs ───────────────────────────────────────────────────────────
+
+  .gd-breadcrumb-item {
+    color: $color-storm-gray;
+
+    a {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-storm-gray;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-silver-gray;
+      }
+    }
+  }
+
+  // ── TOC ───────────────────────────────────────────────────────────────────
+
+  .td-toc {
+    #TableOfContents {
+      border-left-color: $color-marlin-black;
+
+      a {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-silver-gray;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-white;
+        }
+      }
+    }
+
+    nav {
+      border-left-color: $color-marlin-black;
+    }
+
+    h3 {
+      color: $color-white;
+    }
+  }
+
+  .gd-docs-learn-more {
+    border-left-color: $color-shocking-pink;
+
+    a {
+      color: $color-ice-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-alice-blue;
+      }
+    }
+  }
+
+  // ── Alerts ────────────────────────────────────────────────────────────────
+
+  .alert,
+  .td-content > blockquote {
+    color: $color-silver-gray;
+    background-color: $color-coal-black;
+    border-left-color: $color-storm-gray;
+  }
+
+  .alert-info {
+    background-color: rgba($color-navy-blue, 0.4);
+    border-left-color: $color-ice-blue;
+
+    .alert-heading {
+      color: $color-ice-blue;
+    }
+
+    > svg path {
+      fill: $color-ice-blue;
+    }
+  }
+
+  .alert-warning {
+    background-color: rgba($color-red, 0.12);
+    border-left-color: $color-shocking-pink;
+
+    .alert-heading {
+      color: $color-shocking-pink;
+    }
+
+    > svg path {
+      fill: $color-shocking-pink;
+    }
+  }
+
+  .alert-label {
+    color: $color-white;
+    background-color: rgba($color-shocking-pink, 0.18);
+    border-left-color: transparent;
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      color: $color-white;
+    }
+  }
+
+  // ── Code blocks ───────────────────────────────────────────────────────────
+
+  .td-content .highlight,
+  .td-content .code-toolbar {
+    background-color: $color-coal-black;
+    border-color: $color-marlin-black;
+  }
+
+  // Code-select tabs
+  .gd-docs-code-select {
+    background-color: $color-coal-black;
+
+    &__tabs {
+      background-color: $color-gunpowder-gray;
+    }
+
+    &__tab.active {
+      background-color: $color-shocking-pink;
+      color: $color-white;
+    }
+  }
+
+  // Content-select tabs
+  .gd-docs-content-select__tab {
+    color: $color-storm-gray;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+      color: $color-white;
+    }
+
+    &.active {
+      border-color: $color-marlin-black;
+      background-color: $color-coal-black;
+    }
+  }
+
+  .gd-docs-content__block {
+    border-color: $color-marlin-black;
+    background-color: $color-coal-black;
+  }
+
+  // ── Tables ────────────────────────────────────────────────────────────────
+
+  table {
+    color: $color-silver-gray;
+
+    th,
+    td {
+      border-color: $color-marlin-black;
+      background-color: $color-coal-black;
+    }
+
+    thead th {
+      color: $color-white;
+      background-color: $color-gunpowder-gray;
+      border-bottom-color: $color-marlin-black;
+    }
+  }
+
+  // ── Embedded image ────────────────────────────────────────────────────────
+
+  .embedded-image {
+    background: $color-coal-black;
+    border-color: $color-marlin-black;
+  }
+
+  // ── Share dialog ──────────────────────────────────────────────────────────
+
+  .gd-docs-share {
+    &__button {
+      color: $color-silver-gray;
+      background: $color-gunpowder-gray;
+      border-color: $color-marlin-black;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: $color-marlin-black;
+      }
+    }
+
+    &__dialog {
+      background-color: $color-coal-black;
+      border-color: $color-marlin-black;
+      color: $color-silver-gray;
+    }
+
+    &__copy {
+      color: $color-ice-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-alice-blue;
+      }
+    }
+  }
+
+  // ── Dropdown widget ───────────────────────────────────────────────────────
+
+  .gd-docs-dropdown {
+    &-button {
+      color: $color-silver-gray;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    &-list {
+      background-color: $color-coal-black;
+      border-color: $color-marlin-black;
+
+      &-item-link {
+        &,
+        &.active {
+          color: $color-silver-gray;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $color-white;
+        }
+      }
+    }
+  }
+
+  // ── Prev / Next navigation ────────────────────────────────────────────────
+
+  .gd-docs-prev-next-pages {
+    border-top-color: $color-marlin-black;
+
+    &__link {
+      color: $color-shocking-pink;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: lighten($color-shocking-pink, 10%);
+      }
+    }
+  }
+
+  // ── Homepage cards ────────────────────────────────────────────────────────
+
+  .homepage-card {
+    background-color: $color-coal-black;
+    border: 1px solid $color-marlin-black;
+
+    &:hover {
+      background-color: $color-gunpowder-gray;
+      border-color: $color-shocking-pink;
+    }
+
+    &__sectionLink {
+      color: $color-white;
+
+      p {
+        color: $color-silver-gray;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-ice-blue;
+      }
+    }
+  }
+
+  // ── Homepage section list ─────────────────────────────────────────────────
+
+  .gd-docs-homepage-sections-list__section {
+    background-color: $color-coal-black;
+    border: 1px solid $color-marlin-black;
+  }
+
+  // ── Homepage boxes ────────────────────────────────────────────────────────
+
+  .gd-docs-homepage-box__inner.white,
+  .gray-box {
+    background-color: $color-coal-black;
+    border: 1px solid $color-marlin-black;
+    color: $color-silver-gray;
+  }
+
+  // ── 404 page ──────────────────────────────────────────────────────────────
+
+  .td-404 {
+    background-color: $color-coal-black;
+    color: $color-silver-gray;
+
+    h1,
+    h2 {
+      color: $color-white;
+    }
+  }
+
+  // ── Addon widget ──────────────────────────────────────────────────────────
+
+  .addon-widget {
+    color: $color-silver-gray;
+    background: rgba($color-yellow, 0.1);
+    border-color: rgba($color-yellow, 0.3);
+  }
+
+  // ── td-box helpers ────────────────────────────────────────────────────────
+
+  .td-box--gray {
+    background-color: $color-coal-black;
+  }
+
+  // ── Selection highlight ───────────────────────────────────────────────────
+
+  ::selection {
+    color: $color-white;
+    background-color: rgba($color-shocking-pink, 0.5);
+  }
+
+  // ── Heading anchor ────────────────────────────────────────────────────────
+
+  .heading-with-anchor .anchor:hover {
+    color: $color-ice-blue;
+  }
+
+  // ── Focus ring ───────────────────────────────────────────────────────────
+
+  :focus-visible {
+    outline-color: $color-shocking-pink !important;
+  }
+}

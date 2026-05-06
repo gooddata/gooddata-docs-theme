@@ -63,7 +63,7 @@
         cursor: pointer;
 
         &:focus {
-            outline: 2px solid $color-shocking-pink;
+            outline: 2px solid $color-cta;
             outline-offset: 2px;
         }
 
@@ -113,7 +113,7 @@
         bottom: 0;
         width: 100%;
         z-index: 32;
-        background-color: rgba($color-deep-purple, 0.5);
+        background-color: rgba($color-black, 0.5);
         transition: $transition;
 
         @include mq(large) {
@@ -136,7 +136,7 @@
 
         & + & {
             padding-top: 1rem;
-            border-top: 1px solid $color-dove-gray;
+            border-top: 1px solid $color-pearl-gray;
         }
 
         &__root {
@@ -166,7 +166,7 @@
             margin-top: 1rem;
             margin-bottom: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid $color-dove-gray;
+            border-top: 1px solid $color-pearl-gray;
         }
 
         &__title {
@@ -187,19 +187,20 @@
             &:hover,
             &:active,
             &:focus {
-                color: $color-deep-purple;
+                color: $color-marlin-black;
             }
 
             &:hover,
             &:active,
             &:focus {
+                color: $color-black;
                 text-decoration: underline;
             }
         }
 
         &.active > &__title &__link {
             font-family: $gdfont-demibold;
-            color: $color-shocking-pink;
+            color: $color-link;
 
             &,
             &:hover,
@@ -250,10 +251,11 @@
             display: block;
             flex: 0 0 auto;
             margin: 16px 0 16px -12px;
-            color: $color-deep-purple;
+            color: $color-storm-gray;
             font-family: $gdfont-demibold;
             font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
     }
 
@@ -265,12 +267,13 @@
         margin-bottom: 10px;
         margin-top: 10px;
         padding: 10px 16px;
-        border: 1px solid $color-dove-gray;
+        border: 1px solid $color-cloud-gray;
         border-radius: 4px;
-        color: $color-deep-purple;
+        color: $color-marlin-black;
         font-family: $gdfont-demibold;
         font-size: 14px;
         line-height: 1.25;
+        background-color: $color-white;
     }
 
     .dropdown-menu {
@@ -288,7 +291,8 @@
         margin-top: 0;
         margin-bottom: 1rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid $color-dove-gray;
+        border-bottom: 1px solid $color-pearl-gray;
+        color: $color-black;
         font-family: $gdfont-demibold;
         font-size: 21px;
         line-height: 1.25;

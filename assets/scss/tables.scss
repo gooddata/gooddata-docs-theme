@@ -6,17 +6,19 @@
     table {
         max-width: 100%;
         font-size: 14px;
+        color: $color-marlin-black;
 
         th,
         td {
             padding: 10px;
-            border: 1px solid $color-gray-bg;
+            border: 1px solid $color-pearl-gray;
         }
 
         thead {
             th {
-                border-bottom: 1px solid $color-gray-bg;
-                background-color: $color-gray-bg;
+                color: $color-black;
+                border-bottom: 1px solid $color-cloud-gray;
+                background-color: $color-mist-gray;
             }
         }
 

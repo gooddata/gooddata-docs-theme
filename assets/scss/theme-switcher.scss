@@ -1,0 +1,80 @@
+// (C) 2025 GoodData Corporation
+// Styles for the light / dark theme toggle button in the header.
+
+@import "variables/variables";
+
+.gd-docs-theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin-left: 8px;
+  border: 1px solid $color-cloud-gray;
+  border-radius: 6px;
+  background: transparent;
+  color: $color-marlin-black;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color $transition, background $transition, border-color $transition;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-black;
+    background: $color-mist-gray;
+    border-color: $color-storm-gray;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-ocean-blue;
+    outline-offset: 2px;
+  }
+
+  // SVG icons — show only the relevant one depending on current theme
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+
+    // Default (light theme): show moon (to switch to dark)
+    &--light {
+      display: none;
+    }
+
+    &--dark {
+      display: flex;
+    }
+  }
+
+  // Dark theme: show sun (to switch back to light)
+  [data-theme="dark"] & {
+    color: $color-silver-gray;
+    border-color: $color-marlin-black;
+    background: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+      background: $color-gunpowder-gray;
+      border-color: $color-silver-gray;
+    }
+
+    .gd-docs-theme-switcher__icon--light {
+      display: flex;
+    }
+
+    .gd-docs-theme-switcher__icon--dark {
+      display: none;
+    }
+  }
+}
