@@ -2,8 +2,6 @@
 tag: cloud, native
 title: "Documentation Homepage"
 linkTitle: "Documentation Homepage"
-weight: 1
-sectionIndex: false
 ---
 Learn about the concepts behind GoodData, dive into technical details and follow practical examples to learn how to make GoodData work for you:
 

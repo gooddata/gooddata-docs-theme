@@ -6,6 +6,10 @@ cascade:
 - type: "docs"
   toc_root: true
   _target:
+    path: "/*"
+- type: "docs"
+  toc_root: true
+  _target:
     path: "/*/**"
 - type: "docs"
   toc_root: true
@@ -84,6 +88,13 @@ Hugo configuration file (config.toml):
 ```toml
 theme = ["GDCDocsTheme", "docsy"]
 ```
+
+## Reference
+
+| Page | Description |
+|------|-------------|
+| [Markdown Reference](markdown-reference) | All Markdown formatting options with live rendered output. |
+| [Shortcodes](shortcodes) | Every Hugo shortcode bundled with the theme. |
 
 ## License
 
