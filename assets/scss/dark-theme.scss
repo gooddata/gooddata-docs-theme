@@ -34,11 +34,11 @@
 
   // ── Global surfaces ───────────────────────────────────────────────────────
 
-  background-color: $color-black;
+  background-color: $color-marlin-black;
   color: $color-silver-gray;
 
   body {
-    background-color: $color-black;
+    background-color: $color-marlin-black;
     color: $color-silver-gray;
   }
 
@@ -86,7 +86,7 @@
     }
 
     &__second {
-      background: $color-coal-black;
+      background: $color-black;
       border-top-color: $color-marlin-black;
       border-bottom-color: $color-marlin-black;
     }
@@ -131,16 +131,44 @@
     }
   }
 
-  // ── Search input ──────────────────────────────────────────────────────────
+  // ── All inputs ────────────────────────────────────────────────────────────
 
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="password"],
+  input[type="url"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select,
+  .form-control,
   .td-search-input {
-    color: $color-white;
-    background: $color-coal-black;
-    border-color: $color-marlin-black;
+    color: $color-white !important;
+    background: $color-marlin-black !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 
     &::placeholder {
-      color: $color-storm-gray;
+      color: rgba($color-white, 0.4) !important;
     }
+
+    &:focus,
+    &.form-control:focus {
+      border-color: $color-gunpowder-gray !important;
+      outline: none !important;
+    }
+  }
+
+  select {
+    color-scheme: dark;
+  }
+
+  // Search icon: Figma shows white at 40% opacity.
+  // filter: brightness(0) invert(1) converts any icon color to white.
+  .gd-docs-header-nav__search svg {
+    filter: brightness(0) invert(1);
+    opacity: 0.4;
   }
 
   // ── Nav links / dropdowns ─────────────────────────────────────────────────
