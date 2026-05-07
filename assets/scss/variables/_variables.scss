@@ -1,8 +1,16 @@
 // (C) 2026 GoodData Corporation
 @import "variables.colors";
 
-$gdfont-regular: ("dc8ebcd096d8d65d80200bbe8e045d86", "Helvetica", "Arial", sans-serif);
-$gdfont-demibold: ("bca6d3310b5c9dae1dae416e8abc8405", "Helvetica", "Arial", sans-serif);
+// Current brand fonts (aligned with gdc-website variables.fonts.scss)
+$funnel-regular:   ("Funnel Display Regular",  "Helvetica", "Arial", sans-serif);
+$funnel-semibold:  ("Funnel Display SemiBold", "Helvetica", "Arial", sans-serif);
+$switzer-variable: ("Switzer Variable",        "Helvetica", "Arial", sans-serif);
+$switzer-semibold: ("Switzer Semibold",        "Helvetica", "Arial", sans-serif);
+
+// Legacy hash-based fonts kept for backward compatibility.
+// $gdfont-demibold now resolves to Switzer Semibold (old hash font is obsolete).
+$gdfont-regular:   ("dc8ebcd096d8d65d80200bbe8e045d86", "Helvetica", "Arial", sans-serif);
+$gdfont-demibold:  $switzer-semibold;
 $gdfont-extrabold: ("ae2e11957f2c90bcba60dd109b5379f5", "Helvetica", "Arial", sans-serif);
 
 $font-family: $gdfont-regular;

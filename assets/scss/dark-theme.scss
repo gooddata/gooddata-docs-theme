@@ -188,26 +188,26 @@
   // ── Sidebar / Menu ────────────────────────────────────────────────────────
 
   .td-sidebar {
-    background: $color-coal-black;
+    background: $color-black;
   }
 
   .gd-docs-menu {
-    background: $color-coal-black;
-    color: $color-silver-gray;
+    background: $color-black;
+    color: $color-mist-gray;
 
     &-section + &-section {
-      border-top-color: $color-marlin-black;
+      border-top-color: $color-gunpowder-gray;
     }
 
     &-page {
       &__separator {
-        border-top-color: $color-marlin-black;
+        border-top-color: $color-gunpowder-gray;
       }
 
       &__link {
         &,
         &:visited {
-          color: $color-silver-gray;
+          color: $color-mist-gray;
           text-decoration: none;
         }
 
@@ -224,17 +224,13 @@
       }
 
       &__chevron {
-        color: $color-silver-gray;
+        color: $color-mist-gray;
       }
-    }
-
-    &-page.active > &-page__title &-page__link {
-      color: $color-lime-green;
     }
 
     h4 {
       color: $color-white;
-      border-bottom-color: $color-marlin-black;
+      border-bottom-color: $color-gunpowder-gray;
     }
 
     .dropdown-toggle {
@@ -242,6 +238,17 @@
       color: $color-white;
       border-color: $color-marlin-black;
     }
+  }
+
+  // Active sidebar item — must be outside .gd-docs-menu {} to avoid SCSS
+  // prepending [data-theme="dark"] into the middle of the selector chain.
+  .gd-docs-menu-page.active > .gd-docs-menu-page__title .gd-docs-menu-page__link {
+    color: $color-lime-green;
+    font-family: $gdfont-demibold;
+  }
+
+  .gd-docs-menu-page.active > .gd-docs-menu-page__title .gd-docs-menu-page__chevron {
+    color: $color-lime-green;
   }
 
   // ── Breadcrumbs ───────────────────────────────────────────────────────────
@@ -492,15 +499,17 @@
   // ── Prev / Next navigation ────────────────────────────────────────────────
 
   .gd-docs-prev-next-pages {
-    border-top-color: $color-marlin-black;
+    border-top-color: $color-gunpowder-gray;
 
     &__link {
-      color: $color-shocking-pink;
+      color: $color-lime-green;
+      text-decoration: underline;
 
       &:hover,
       &:focus,
       &:active {
-        color: lighten($color-shocking-pink, 10%);
+        color: $color-white;
+        text-decoration: underline;
       }
     }
   }

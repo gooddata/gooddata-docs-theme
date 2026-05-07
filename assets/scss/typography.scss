@@ -27,6 +27,44 @@ $font-path-base: "https://www.gooddata.ai";
     font-style: normal;
 }
 
+// Funnel Display — display/heading typeface
+@font-face {
+    font-family: "Funnel Display Regular";
+    src: url($font-path-base + "/fonts/FunnelDisplay-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Funnel Display SemiBold";
+    src: url($font-path-base + "/fonts/FunnelDisplay-SemiBold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+// Switzer — UI / body typeface
+@font-face {
+    font-family: "Switzer Variable";
+    src: url($font-path-base + "/fonts/Switzer-Variable.woff2") format("woff2"),
+         url($font-path-base + "/fonts/Switzer-Variable.woff") format("woff"),
+         url($font-path-base + "/fonts/Switzer-Variable.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Switzer Semibold";
+    src: url($font-path-base + "/fonts/Switzer-Semibold.woff2") format("woff2"),
+         url($font-path-base + "/fonts/Switzer-Semibold.woff") format("woff"),
+         url($font-path-base + "/fonts/Switzer-Semibold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     color: $color-text;
     font-family: $font-family;
@@ -65,7 +103,7 @@ body {
     }
 
     h1 {
-        font-family: $gdfont-demibold;
+        font-family: $funnel-semibold;
         font-weight: normal;
         font-size: 36px;
         line-height: 1;
