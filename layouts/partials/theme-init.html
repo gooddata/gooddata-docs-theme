@@ -1,0 +1,7 @@
+{{/* (C) 2026 GoodData Corporation */}}
+{{/* Inline script — applied before first paint to prevent FOUC.
+     Must stay as a raw inline <script> so the browser can run it
+     synchronously before any stylesheet is applied. */}}
+<script>
+(function(){try{var s=localStorage.getItem("gd-theme");if(s==="dark"){document.documentElement.setAttribute("data-theme","dark");}else if(!s&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();
+</script>

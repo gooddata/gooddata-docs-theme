@@ -1,4 +1,4 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 @import "variables/variables";
 @import "homepage/box";
 @import "homepage/hosted";
@@ -18,7 +18,7 @@
 
     &--gray {
         color: inherit;
-        background-color: $color-bg-gray;
+        background-color: $color-mist-gray;
     }
 
     .row {
@@ -67,7 +67,7 @@
 
     .gray-box {
         padding: 25px 32px;
-        background-color: $color-bg-gray;
+        background-color: $color-mist-gray;
     }
 }
 
@@ -102,9 +102,9 @@
 .gd-docs-button {
     display: inline-block;
     padding: .28125rem 1.25rem;
-    border: 2px solid $color-deep-purple;
+    border: 2px solid $color-black;
     border-radius: 50px;
-    color: $color-deep-purple;
+    color: $color-black;
     font-size: 18px;
     font-weight: bold;
     line-height: 1.5;
@@ -122,8 +122,8 @@
     &:hover,
     &:focus,
     &:active {
-        color: desaturate(lighten($color-deep-purple, 30%), 40%);
-        border-color: desaturate(lighten($color-deep-purple, 30%), 40%);
+        color: $color-marlin-black;
+        border-color: $color-marlin-black;
     }
 }
 
@@ -143,7 +143,7 @@
             height: 64px;
             margin-top: -32px;
             margin-left: -32px;
-            background: rgba(28, 13, 63, 0.6);
+            background: rgba($color-black, 0.6);
             background-image: url('../img/video-play.svg');
             background-position: 23px center;
             background-size: 23px 29px;
@@ -169,6 +169,11 @@
     margin-bottom: 24px;
     border-radius: 12px;
     background-color: $color-mist-gray;
+    transition: background-color $transition;
+
+    &:hover {
+        background-color: $color-pearl-gray;
+    }
 
     &__hasIcon {
         position: relative;
@@ -197,7 +202,7 @@
     }
 
     &__sectionLink {
-        color: $color-deep-purple;
+        color: $color-black;
 
         &,
         &:hover,
@@ -206,14 +211,14 @@
             text-decoration: none;
 
             p {
-                color: $color-deep-purple;
+                color: $color-marlin-black;
             }
         }
 
         &:hover,
         &:focus,
         &:active {
-            color: $color-shocking-pink;
+            color: $color-link-hover;
 
             svg path {
                 fill: currentColor;

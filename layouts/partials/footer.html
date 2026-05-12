@@ -1,5 +1,5 @@
-{{/* (C) 2023 GoodData Corporation */}}
-{{ $footer := getJSON "https://www.gooddata.ai/learn-assets/js/footer-definition.json" }}
+{{/* (C) 2026 GoodData Corporation */}}
+{{ $footer := getJSON "https://www.gooddata.ai/learn-assets/js/footer-definition-new.json" }}
 {{ if not .Site.Params.whitelabeled }}
 
 <footer class="gd-footer" aria-label="Page footer">
@@ -9,7 +9,7 @@
     <ul class="gd-footer-banner-links gd-footer-links">
     {{ range $index, $link := $footer.footer.bannerLinks }}
       <li class="gd-footer-banner-links-item gd-footer-links-item">
-        <span class="gd-footer-banner-links-item-text gd-footer-links-item-text d-none d-lg-block">{{ $link.title }}</span>
+        <span class="gd-footer-banner-links-item-text gd-footer-links-item-text d-none d-lg-block">{{ $link.title | safeHTML }}</span>
         <button class="gd-footer-banner-links-item-text gd-footer-links-item-text btn d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gd-footer-banner-sublinks-item-{{ $index }}" aria-expanded="false" aria-controls="gd-footer-banner-sublinks-item-{{ $index }}">
             {{ $link.title }}
         </button>

@@ -138,7 +138,7 @@ div.code-toolbar.overflowing::after {
 	right: 0;
 	bottom: 0;
 	height: 60px;
-	background: linear-gradient(to top, #1C0D3F, transparent);
+	background: linear-gradient(to top, #09090c, transparent);
 	pointer-events: none;
 }
 

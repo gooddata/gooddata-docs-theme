@@ -1,0 +1,29 @@
+{{/* (C) 2026 GoodData Corporation
+     CTA Banner shortcode
+     Parameters:
+       title      – heading text  (default: "Experience GoodData in Action")
+       subtitle   – body text     (default: preset marketing copy)
+       buttonText – CTA label     (default: "Explore product tours")
+       buttonUrl  – CTA href      (default: GoodData registration URL)
+       image      – path to image relative to /static  (default: none)
+       imageAlt   – alt text for the image  (default: "")
+*/}}
+{{ $title      := .Get "title"      | default "Experience GoodData in Action" }}
+{{ $subtitle   := .Get "subtitle"   | default "Discover how our platform brings data, analytics, and AI together — through interactive product walkthroughs." }}
+{{ $buttonText := .Get "buttonText" | default "Explore product tours" }}
+{{ $buttonUrl  := .Get "buttonUrl"  | default "https://registration.cloud.gooddata.com/register" }}
+{{ $image      := .Get "image"      }}
+{{ $imageAlt   := .Get "imageAlt"   | default "" }}
+
+<div class="gd-cta-banner{{ if $image }} gd-cta-banner--has-image{{ end }}">
+  <div class="gd-cta-banner__content">
+    <p class="gd-cta-banner__title">{{ $title }}</p>
+    <p class="gd-cta-banner__subtitle">{{ $subtitle }}</p>
+    <a href="{{ $buttonUrl }}" class="gd-cta-banner__button">{{ $buttonText }}</a>
+  </div>
+  {{ if $image }}
+  <div class="gd-cta-banner__media">
+    <img src="{{ $image | relURL }}" alt="{{ $imageAlt }}" loading="lazy" />
+  </div>
+  {{ end }}
+</div>

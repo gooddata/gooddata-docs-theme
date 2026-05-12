@@ -1,4 +1,5 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
+@import "variables/variables";
 
 .heading-with-anchor {
   .nowrapper {
@@ -21,7 +22,7 @@
 
 
     &:hover {
-      color: #cf119b;
+      color: $color-link-hover;
     }
 
     &:focus {
