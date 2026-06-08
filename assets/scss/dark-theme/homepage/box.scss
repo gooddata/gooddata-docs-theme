@@ -1,0 +1,15 @@
+// (C) 2026 GoodData Corporation
+//
+// Dark-theme overrides for homepage boxes.
+// Mirrors the structure of `../../homepage/box.scss`.
+@import "../../variables/variables";
+
+[data-theme="dark"] {
+
+  .gd-docs-homepage-box__inner.white,
+  .gray-box {
+    background-color: $color-coal-black;
+    border: 1px solid $color-marlin-black;
+    color: $color-silver-gray;
+  }
+}

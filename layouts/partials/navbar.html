@@ -1,4 +1,4 @@
-{{/* (C) 2023 GoodData Corporation */}}
+{{/* (C) 2026 GoodData Corporation */}}
 
 <!-- Navbar content -->
 {{ $whitelabeled := .Site.Params.whitelabeled }}
@@ -27,12 +27,14 @@
   {{ if .Site.Params.versions }}
   <div class="gd-docs-header-nav__right">
     {{ partial "navbar-version-selector.html" . }}
+    {{ partial "theme-switcher.html" . }}
   </div>
   {{ else }}
   <div class="gd-docs-header-nav__right">
     {{ with .Site.GetPage "docs" }}
     <a class="gd-header-link-item" href="{{ .RelPermalink }}">{{ .Name }}</a>
     {{ end }}
+    {{ partial "theme-switcher.html" . }}
   </div>
   {{ end }}
 

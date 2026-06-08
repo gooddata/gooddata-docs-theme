@@ -1,0 +1,45 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+  body {
+    background-color: $color-marlin-black;
+    color: $color-white;
+  }
+
+  .td-content,
+  .td-home,
+  .td-default {
+    h1, h2, h3, h4, h5, h6 {
+      color: $color-white;
+    }
+  }
+
+  a,
+  .td-box--gray p > a,
+  .api-reference .td-default a {
+    color: $color-ice-blue;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-alice-blue;
+    }
+  }
+
+  .lead {
+    color: $color-silver-gray;
+  }
+
+  .td-content :not(pre) > code {
+    color: $color-ice-blue;
+    background-color: rgba($color-ice-blue, 0.12);
+    border-color: rgba($color-ice-blue, 0.25);
+  }
+
+  ::selection {
+    color: $color-black;
+    background-color: $color-lime-green;
+  }
+}

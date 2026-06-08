@@ -1,0 +1,16 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .td-404 {
+    background-color: $color-coal-black;
+    color: $color-silver-gray;
+
+    h1,
+    h2 {
+      color: $color-white;
+    }
+  }
+}

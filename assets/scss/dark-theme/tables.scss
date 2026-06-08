@@ -1,0 +1,33 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .table-responsive,
+  .td-content {
+    table {
+      th,
+      td {
+        color: $color-white;
+        border-color: $color-marlin-black;
+        background-color: $color-coal-black;
+      }
+
+      thead th {
+        background-color: $color-gunpowder-gray;
+        border-bottom-color: $color-marlin-black;
+      }
+    }
+  }
+
+  // Horizontal-scroll fade overlay — light theme fades to white, which would
+  // read as a bright seam on the dark surface. Fade to the page background.
+  .table-responsive__wide::after {
+    background: linear-gradient(
+      90deg,
+      rgba($color-marlin-black, 0) 0%,
+      rgba($color-marlin-black, 1) 100%
+    );
+  }
+}

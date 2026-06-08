@@ -1,0 +1,68 @@
+// (C) 2026 GoodData Corporation
+// Pill toggle matching Figma "modes switch" — two icon slots, active gets a filled circle.
+
+@import "variables/variables";
+
+.gd-docs-theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 10px;
+  padding: 2px;
+  border: none;
+  border-radius: 50px;
+  background: $color-white;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 54px;
+  height: 28px;
+  transition: background $transition;
+
+  &:focus-visible {
+    outline: 2px solid $color-ocean-blue;
+    outline-offset: 2px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background $transition, color $transition;
+    color: $color-storm-gray;
+
+    svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+
+    // Light mode: sun (right slot) is active — gets filled circle
+    &--light {
+      background: $color-storm-gray;
+      color: $color-white;
+    }
+
+    &--dark {
+      background: transparent;
+    }
+  }
+
+  // Dark mode: moon (left slot) becomes active, sun becomes inactive
+  [data-theme="dark"] & {
+    background: $color-marlin-black;
+
+    .gd-docs-theme-switcher__option--dark {
+      background: $color-storm-gray;
+      color: $color-white;
+    }
+
+    .gd-docs-theme-switcher__option--light {
+      background: transparent;
+      color: $color-storm-gray;
+    }
+  }
+}

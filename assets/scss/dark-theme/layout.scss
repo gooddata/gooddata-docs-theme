@@ -1,0 +1,12 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  // ── Focus ring ─────────────────────────────────────────────────────────────
+
+  :focus-visible {
+    outline-color: $color-shocking-pink !important;
+  }
+}

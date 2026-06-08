@@ -1,4 +1,4 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 @import "variables/variables";
 
 .gd-docs-header {
@@ -8,16 +8,16 @@
         padding: 4px 10px;
         border-radius: 50px;
         color: $color-white;
-        font-family: $gdfont-demibold;
+        font-family: $switzer-semibold;
         font-size: 14px;
         line-height: 19px;
-        background: #94A1AE;
+        background: $color-storm-gray;
     }
 
     &-breadcrumb {
         display: flex;
         align-items: center;
-        color: #2F3336;
+        color: $color-marlin-black;
         font-size: 14px;
         line-height: 30px;
         opacity: 0.8;
@@ -66,6 +66,7 @@
         min-height: $header-first-nav-height;
         background-color: $color-white;
         z-index: 35;
+        border-bottom: 1px solid $color-pearl-gray;
 
         &.td-navbar-cover {
             background-color: $color-white !important;
@@ -76,8 +77,7 @@
         top: $header-first-nav-height;
         height: $header-second-nav-height;
         background: $color-mist-gray;
-        border-bottom: 1px solid transparentize($color-black, 0.8);
-        border-top: 1px solid transparentize($color-black, 0.8);
+        border-bottom: 1px solid $color-pearl-gray;
     }
 
     &__first &__left,
@@ -117,6 +117,7 @@
         @include mq(x-large) {
             display: flex;
             justify-content: flex-end;
+            align-items: center;
         }
     }
 
@@ -134,7 +135,7 @@
             margin-right: 10px;
 
             g {
-                fill: $color-deep-purple;
+                fill: $color-black;
             }
         }
     }
@@ -143,16 +144,16 @@
         display: flex;
         align-items: center;
         height: 2.5rem;
-        padding: .56rem 1.06rem;
+        padding: .56rem 1.25rem;
         border: 1px solid transparent;
-        border-radius: 40px;
-        font-family: $gdfont-demibold;
+        border-radius: 8px;
+        font-family: $switzer-semibold;
         font-size: 18px;
         font-weight: normal;
         line-height: 1.375;
-        background-color: $color-shocking-pink;
+        background-color: $color-cta;
         transition: $transition;
-        
+
         &,
         &:hover,
         &:focus,
@@ -164,7 +165,7 @@
         &:hover,
         &:focus,
         &:active {
-            background-color: $color-shocking-pink-dark;
+            background-color: $color-cta-hover;
         }
 
         & + & {
@@ -178,8 +179,8 @@
 
     &__secondary,
     &__slack {
-        color: $color-deep-purple;
-        border-color: $color-deep-purple;
+        color: $color-black;
+        border-color: $color-black;
 
         &,
         &:hover,
@@ -191,12 +192,12 @@
         &:hover,
         &:focus,
         &:active {
-            color: desaturate(lighten($color-deep-purple, 30%), 40%);
-            border-color: desaturate(lighten($color-deep-purple, 30%), 40%);
+            color: $color-marlin-black;
+            border-color: $color-marlin-black;
         }
 
         &:focus {
-            box-shadow: 0 0 0 0.2rem rgba($color-deep-purple, 0);
+            box-shadow: 0 0 0 0.2rem rgba($color-black, 0);
         }
     }
 
@@ -217,19 +218,23 @@
 .td-search-input {
     width: 100%;
     max-width: 650px;
-    height: 36px;
+    height: 32px;
     margin: 0;
-    padding: 1px 15px;
-    border-radius: 20px;
-    color: $color-deep-purple;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: $color-marlin-black;
     font-size: 14px;
     background: $color-white;
 
     &,
     &.form-control:focus {
-        border: 1px solid transparentize($color-black, 0.8);
+        border: 1px solid $color-cloud-gray;
         outline: none;
         box-shadow: none;
+    }
+
+    &::placeholder {
+        color: $color-storm-gray;
     }
 }
 
@@ -247,7 +252,7 @@
     align-items: center;
     height: $header-second-nav-height - 2px;
     padding: 12px 10px;
-    color: transparentize($color-black, 0.3);
+    color: $color-marlin-black;
     font-weight: bold;
     font-size: 15px;
     line-height: 32px;
@@ -263,13 +268,13 @@
     }
 
     &:hover,
-    &:focus,    
+    &:focus,
     &:active {
         color: $color-black;
     }
 
     .show & {
-        background-color: $color-gray-bg;
+        background-color: $color-pearl-gray;
 
         &::after {
             margin-top: 2px;
@@ -281,9 +286,10 @@
 .dropdown-menu {
     margin-top: -1px;
     padding: 10px 0;
-    border: none;
+    border: 1px solid $color-pearl-gray;
     border-radius: 0 0 3px 3px;
-    box-shadow: 0 2px 3px 0 transparentize($color-black, 0.7);
+    box-shadow: 0 2px 3px 0 rgba($color-black, 0.15);
+    background-color: $color-white;
 }
 
 .dropdown-item {
@@ -291,17 +297,18 @@
 
     &,
     &.active {
-        color: $color-black;
+        color: $color-marlin-black;
     }
 
     &:hover,
     &:focus,
     &:active {
+        color: $color-black;
         text-decoration: underline;
         background: transparent;
     }
 
     &.active {
-        background: $color-gray-bg;
+        background: $color-mist-gray;
     }
 }

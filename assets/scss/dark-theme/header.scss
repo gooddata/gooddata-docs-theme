@@ -1,0 +1,146 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  // ── Header / Navigation ─────────────────────────────────────────────────────
+
+  .gd-docs-header-nav {
+    &__first {
+      background-color: $color-black;
+      border-bottom-color: $color-marlin-black;
+
+      &.td-navbar-cover {
+        background-color: $color-black !important;
+      }
+    }
+
+    &__second {
+      background: $color-black;
+      border-top-color: $color-marlin-black;
+      border-bottom-color: $color-marlin-black;
+    }
+
+    // Logo SVG paths
+    &__logo svg path,
+    &__logo svg g {
+      fill: $color-white;
+    }
+  }
+
+  .gd-header-nav__logo svg path {
+    fill: $color-white;
+  }
+
+  .gd-header-nav__logo-text {
+    color: $color-white;
+  }
+
+  .gd-header-link-item {
+    color: $color-silver-gray;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+    }
+  }
+
+  // Secondary (outlined) header button
+  .gd-docs-header-nav__secondary,
+  .gd-docs-header-nav__slack {
+    color: $color-lime-green;
+    border-color: $color-lime-green;
+    background-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-black;
+      background-color: $color-lime-green;
+    }
+  }
+
+  // ── All inputs ──────────────────────────────────────────────────────────────
+
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="password"],
+  input[type="url"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select,
+  .form-control,
+  .td-search-input {
+    color: $color-white !important;
+    background: $color-marlin-black !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+
+    &::placeholder {
+      color: rgba($color-white, 0.4) !important;
+    }
+
+    &:focus,
+    &.form-control:focus {
+      border-color: $color-gunpowder-gray !important;
+      outline: none !important;
+    }
+  }
+
+  select {
+    color-scheme: dark;
+  }
+
+  // Search icon: Figma shows white at 40% opacity.
+  // filter: brightness(0) invert(1) converts any icon color to white.
+  .gd-docs-header-nav__search svg {
+    filter: brightness(0) invert(1);
+    opacity: 0.4;
+  }
+
+  // ── Nav links / dropdowns ─────────────────────────────────────────────────────
+
+  .nav-link {
+    color: $color-silver-gray;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+    }
+
+    .show & {
+      background-color: $color-gunpowder-gray;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $color-coal-black;
+    border-color: $color-marlin-black;
+  }
+
+  .dropdown-item {
+    color: $color-silver-gray;
+
+    &,
+    &.active {
+      color: $color-silver-gray;
+      background-color: transparent;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-white;
+      background-color: $color-gunpowder-gray;
+    }
+
+    &.active {
+      background-color: $color-gunpowder-gray;
+    }
+  }
+}

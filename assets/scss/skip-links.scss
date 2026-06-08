@@ -1,4 +1,6 @@
 // Skip links for accessibility
+@import "variables/variables";
+
 .skip-links {
   position: fixed;
   top: 0;
@@ -24,12 +26,12 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
-  background-color: #fff;
-  color: #000;
+  background-color: $color-white;
+  color: $color-black;
   padding: 10px 15px;
   font-weight: 600;
   text-decoration: none;
-  border: 2px solid #000;
+  border: 2px solid $color-black;
   border-radius: 4px;
   white-space: nowrap;
 
@@ -42,8 +44,8 @@
     height: auto;
     overflow: visible;
     clip: auto;
-    outline: 3px solid #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
+    outline: 3px solid $color-deep-ocean-blue;
+    box-shadow: 0 0 0 3px rgba($color-deep-ocean-blue, 0.5);
     z-index: 9999;
   }
 
