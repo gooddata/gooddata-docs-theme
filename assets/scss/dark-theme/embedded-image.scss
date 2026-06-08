@@ -1,0 +1,11 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .embedded-image {
+    background: $color-coal-black;
+    border-color: $color-marlin-black;
+  }
+}

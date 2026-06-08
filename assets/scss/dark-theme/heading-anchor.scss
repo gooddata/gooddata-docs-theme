@@ -1,0 +1,10 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .heading-with-anchor .anchor:hover {
+    color: $color-ice-blue;
+  }
+}

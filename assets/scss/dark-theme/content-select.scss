@@ -1,0 +1,27 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .gd-docs-content-select__tab {
+    color: $color-storm-gray;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+      color: $color-white;
+    }
+
+    &.active {
+      border-color: $color-marlin-black;
+      background-color: $color-coal-black;
+    }
+  }
+
+  .gd-docs-content__block {
+    border-color: $color-marlin-black;
+    background-color: $color-coal-black;
+  }
+}

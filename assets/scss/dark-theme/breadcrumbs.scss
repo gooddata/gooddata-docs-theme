@@ -1,0 +1,25 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .gd-breadcrumb-item {
+    color: $color-storm-gray;
+
+    a {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-storm-gray;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-silver-gray;
+      }
+    }
+  }
+}

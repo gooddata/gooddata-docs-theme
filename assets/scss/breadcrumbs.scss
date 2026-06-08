@@ -1,5 +1,6 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 // This file is overridden in Tiger
+@import "variables/variables";
 
 .gd-breadcrumb {
     display: none;
@@ -32,7 +33,13 @@
             &:hover,
             &:focus,
             &:active {
-                color: $color-deep-purple;
+                color: $color-marlin-black;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $color-black;
             }
         }
     }

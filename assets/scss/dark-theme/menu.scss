@@ -1,0 +1,66 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .gd-docs-menu {
+    background: $color-black;
+    color: $color-mist-gray;
+
+    &-section + &-section {
+      border-top-color: $color-gunpowder-gray;
+    }
+
+    &-page {
+      &__separator {
+        border-top-color: $color-gunpowder-gray;
+      }
+
+      &__link {
+        &,
+        &:visited {
+          color: $color-mist-gray;
+          text-decoration: none;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $color-white;
+          text-decoration: none;
+        }
+      }
+
+      &__label {
+        color: $color-storm-gray;
+      }
+
+      &__chevron {
+        color: $color-mist-gray;
+      }
+    }
+
+    h4 {
+      color: $color-white;
+      border-bottom-color: $color-gunpowder-gray;
+    }
+
+    .dropdown-toggle {
+      background-color: $color-gunpowder-gray;
+      color: $color-white;
+      border-color: $color-marlin-black;
+    }
+  }
+
+  // Active sidebar item — must be outside .gd-docs-menu {} to avoid SCSS
+  // prepending [data-theme="dark"] into the middle of the selector chain.
+  .gd-docs-menu-page.active > .gd-docs-menu-page__title .gd-docs-menu-page__link {
+    color: $color-lime-green;
+    font-family: $switzer-semibold;
+  }
+
+  .gd-docs-menu-page.active > .gd-docs-menu-page__title .gd-docs-menu-page__chevron {
+    color: $color-lime-green;
+  }
+}

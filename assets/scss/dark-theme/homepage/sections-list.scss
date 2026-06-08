@@ -1,0 +1,13 @@
+// (C) 2026 GoodData Corporation
+//
+// Dark-theme overrides for the homepage sections list.
+// Mirrors the structure of `../../homepage/sections-list.scss`.
+@import "../../variables/variables";
+
+[data-theme="dark"] {
+
+  .gd-docs-homepage-sections-list__section {
+    background-color: $color-coal-black;
+    border: 1px solid $color-marlin-black;
+  }
+}

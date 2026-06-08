@@ -1,7 +1,7 @@
 //Covers the area between td-main and header
 .homepage-header-bg {
   width: 100vw;
-  background-color: #F2F4F6;
+  background-color: $color-mist-gray;
   height: 280px;
   position: absolute;
   left: 0px;
@@ -68,14 +68,18 @@
       width: 100%;
       line-height: 1.5;
       font-size: 18px;
-      color: #1c0d3f;
+      color: $color-marlin-black;
       padding: .75rem .9375rem .75rem 3.125rem !important;
-      border: 1px solid #bfc9d1;
+      border: 1px solid $color-cloud-gray;
       border-radius: 4px;
-      background-color: #fff;
+      background-color: $color-white;
       background-size: 24px 24px;
       background-position: 12px 10px;
       transition: border-color 350ms ease;
+
+      &::placeholder {
+        color: $color-storm-gray;
+      }
     }
   }
 

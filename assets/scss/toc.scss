@@ -1,4 +1,4 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 @import "variables/variables";
 
 $toc-top: 20px;
@@ -26,20 +26,16 @@ $toc-top: 20px;
     }
 
     #TableOfContents {
-        border-left: 1px solid $color-gray-divider;
+        border-left: 1px solid $color-cloud-gray;
 
         a {
-            &,
-            &:hover,
-            &:focus,
-            &:active {
-                color: #464e56;
-            }
+            color: $color-marlin-black;
 
             &:hover,
             &:focus,
             &:active {
-                text-decoration: underline;
+                color: $color-storm-gray;
+                text-decoration: none;
             }
         }
 
@@ -51,15 +47,18 @@ $toc-top: 20px;
     }
 
     h3 {
-        margin: 35px 0 15px;
-        font-size: 21px;
-        font-weight: bold;
+        margin: 16px 0 8px;
+        color: $color-black;
+        font-family: $switzer-semibold;
+        font-size: 15px;
+        font-weight: normal;
+        line-height: 1.5;
     }
 }
 
 .td-toc nav,
 .gd-docs-learn-more {
-    border-left: 1px solid $color-gray-divider;
+    border-left: 1px solid $color-cloud-gray;
 
     ul {
         padding-left: 20px;
@@ -76,14 +75,28 @@ $toc-top: 20px;
     a {
         padding-bottom: 5px;
         font-size: 15px;
-        line-height: 26px;
+        line-height: 1.5;
+        color: $color-storm-gray;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-marlin-black;
+            text-decoration: none;
+        }
     }
 }
 
 .gd-docs-learn-more {
     a {
-        color: $color-shocking-pink;
+        color: $color-link;
         font-weight: bold;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-link-hover;
+        }
     }
 }
 

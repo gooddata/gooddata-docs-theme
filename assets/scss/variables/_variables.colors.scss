@@ -1,52 +1,111 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
+//
+// Canonical brand palette mirrored from gdc-website
+// (`src/assets/scss/variables/_variables.colors.scss`).
+// Variable names and hex values are kept in sync so that the docs theme
+// uses the same tokens as the marketing site.
 
 // -------------------------------------
 // Colors
 // -------------------------------------
 
 // Brand
-$color-deep-purple:     #1C0D3F;
-$color-indigo:          #1B127D;
-$color-cobalt-blue:	    #2637EF;
-$color-shocking-pink:   #CF119C;
-$color-violet:          #8104CA;
-$color-jade-green:      #A3FFB0;
-$color-emerald-green:   #20CA8B;
+$color-lime-green:           #DAFE85; // Main brand color
+$color-key-lime-green:       #C6E57B; // Border for main brand color
+
+// Brand Blues
+$color-navy-blue:            #213476; // Dark Blue backgrounds
+$color-deep-ocean-blue:      #164E87; // Hyperlink hover state on light backgrounds | Blue backgrounds
+$color-ocean-blue:           #285D92; // Hyperlinks on light backgrounds
+$color-ice-blue:             #CDE2F7; // Hyperlinks on dark backgrounds
+$color-alice-blue:           #E1EEFA; // Background component color
+
+// Brand Blacks
+$color-black:                #09090c; // Generic black | Titles and Headers color on light backgrounds
+$color-coal-black:           #222224; // Background component color on dark background
+$color-marlin-black:         #3A3A3D; // Font color on light backgrounds | Borders color on dark backgrounds
+
+// Brand White
+$color-white:                #ffffff; // Generic white | Titles, Headers and some text color on light backgrounds
 
 // Brand grays
-$color-dove-gray:       #BFC9D1;
-$color-cloud-gray:      #DFE4E8;
-$color-mist-gray:       #F2F4F6;
+$color-storm-gray:           #848486; // Titles Highlight color
+$color-cloud-gray:           #B5B5B6; // Borders color on light backgrounds
+$color-silver-gray:          #CECECE; // Font color on dark backgrounds | Disabled CTAs
+$color-pearl-gray:           #E6E6E7; // Background component color on light background
+$color-mist-gray:            #F2F2F2; // Background component color on light background
 
-// Old Brand
-$color-blue-white:      #E7F7FC;
-$color-blue-light:      #14B2E2;
-$color-blue-dark:       #1782BE;
-$color-green:           #00C18D;
+
+// AI Cloud grays (to be resolved)
+$color-gunpowder-gray:       #535355;
+
+
+// OLD ////////////////////////////////
+
+// Brand grays OLD
+$color-dove-gray:            #BFC9D1;
+$color-dark-gray:            #667D8E;
+
+// Secondary backgrounds OLD
+$color-light-pink:           #F589D8;
+$color-turquoise-blue:       #7DDBE8;
+$color-medium-purple:        #8C7DE8;
+$color-vista-green:          #7DE8AE;
+$color-hawkes-blue:          #CFD5E9;
+$color-hawkes-gray:          #D1D7E8;
+$color-titan-white:          #E0D9E5;
+$color-quartz:               #DBD9F0;
+$color-mirage-gray:          #343E46;
+$color-edward-green:         #8B9C92;
+$color-stone-green:          #677470;
+$color-cocoa-brown:          #342A21;
+$color-white-ice:            #DCECE6;
+$color-bali-hai:             #8296A5;
+$color-french-gray:          #BBB6C5;
+
+// Error
+$color-red:                  #FF424B;
+$color-pumpkin:              #B34700;
+
+// Code snippet
+$color-sky:                  #66D8EF;
+$color-yellow:               #E5DB74;
+
+// OLD Brand
+$color-deep-purple:          #1C0D3F;
+$color-indigo:               #1B127D;
+$color-cobalt-blue:          #2637EF;
+$color-shocking-pink:        #ED26B7;
+$color-accessibility-pink:   #DD00A1;
+$color-shocking-pink-h:      #A00D78;
+$color-melrose:              #C0B4E0;
+$color-violet:               #8104CA;
+$color-dark-violet:          #520181;
+$color-meteorite:            #554A6E;
+$color-jade-green:           #A3FFB0;
+$color-emerald-green:        #20CA8B;
+$color-blue-light:           #14b2e2;
+$color-green:                #00C18D;
+$color-orange:               #E26300;
 
 // Layout
-$color-gray-background: #4f4f4f;
-$color-gray-steel:      #4A6172;
-$color-gray-white:      #F6F6F6;
-$color-gray-bone:       #F0F2F5;
-$color-gray-chalk:      #D7DFE5;
-$color-gray-tag:        #8296A5;
-$color-gray-divider:    #979797;
+$color-gray-background:      #4f4f4f;
+$color-gray-steel:            #4A6172;
+$color-gray-white:           #F6F6F6;
+$color-gray-bone:            #F0F2F5;
+$color-gray-chalk:           #D7DFE5;
+$color-gray-free:            #F8FAFB;
+$color-gray-tag:             #94A1AD;
+$color-gray-divider:         #979797;
+$color-gray-footnote:        #A0AFBB;
+$color-gray-tooltip:         #5A5A5A;
+$color-gray-600:             #6c757d;
 
-// Black & White
-$color-black:           #000000;
-$color-white:           #ffffff;
-
-// Gradients
-$color-pink:            #c86dd7;
-$color-purple:          #3023ae;
-$color-blue-marine:     #0dbfb6;
-$color-blue-azure:      #286dae;
-$color-blue-dark:       #2744a3;
-$color-blue-ocean:      #1f4162;
-$color-blue-navy:       #161e2b;
-$color-blue-very-dark:  #0a0d14;
-
-// Backgrounds
-$color-bg-dark:         #1C2027;
-$color-bg-gray:         #FAFAFA;
+// Diverted gradients
+$bg-gradient:
+        linear-gradient(180deg, rgba(215, 217, 231, 0) 26.29%, #D7D9E7 66.54%),
+        linear-gradient(180deg, #D1D7E8 21.08%, rgba(209, 215, 232, 0) 100%),
+        #DFE4E8;
+$bg-gradient-pink-primary: linear-gradient(360deg, $color-accessibility-pink 0%, $color-shocking-pink 100%);
+$bg-gradient-pink-primary-h: linear-gradient(360deg, $color-shocking-pink-h 0%, $color-shocking-pink-h 100%);
+$bg-gradient-violet: linear-gradient(98.05deg, $color-violet 38.47%, $color-dark-violet 105.31%);

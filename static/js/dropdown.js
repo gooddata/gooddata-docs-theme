@@ -1,4 +1,4 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 
 $(window).click(function(event) {
     $(".gd-docs-dropdown-trigger").each(function(index, element) {

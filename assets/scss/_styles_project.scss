@@ -1,4 +1,4 @@
-// (C) 2023 GoodData Corporation
+// (C) 2026 GoodData Corporation
 
 // Import external styles TODO: link those directly from gooddata/gdc-website repository
 @import "functions/functions.pxtorem";
@@ -31,6 +31,9 @@
 @import "404";
 @import "skip-links";
 @import "heading-anchor";
+@import "theme-switcher";
+@import "dark-theme";
+@import "cta-banner";
 
 #print {
   display: none; // Hide print functionality for now

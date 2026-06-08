@@ -1,0 +1,12 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+
+[data-theme="dark"] {
+
+  .addon-widget {
+    color: $color-silver-gray;
+    background: rgba($color-yellow, 0.1);
+    border-color: rgba($color-yellow, 0.3);
+  }
+}

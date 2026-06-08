@@ -1,0 +1,35 @@
+// (C) 2026 GoodData Corporation
+
+@import "../variables/variables";
+@import "homepage/box";
+@import "homepage/sections-list";
+
+[data-theme="dark"] {
+
+  .homepage-card {
+    background-color: $color-coal-black;
+
+    &__sectionLink {
+      color: $color-white;
+
+      p {
+        color: $color-silver-gray;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-ice-blue;
+      }
+    }
+
+    &__icon svg [fill="#09090c"] {
+      fill: $color-white;
+    }
+  }
+
+  // td-box helpers
+  .td-box--gray {
+    background-color: $color-coal-black;
+  }
+}
