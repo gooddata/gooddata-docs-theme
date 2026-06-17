@@ -157,22 +157,6 @@ The actual numbers don't matter — Goldmark always increments correctly:
 1. Item two
 1. Item three
 
-### Task lists
-
-Goldmark supports GitHub-style task lists (checked items are rendered read-only in static output):
-
-```markdown
-- [x] Write the Markdown reference
-- [x] Add live examples
-- [ ] Review with the team
-- [ ] Publish
-```
-
-- [x] Write the Markdown reference
-- [x] Add live examples
-- [ ] Review with the team
-- [ ] Publish
-
 ---
 
 ## Code

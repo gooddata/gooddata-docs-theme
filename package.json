@@ -5,8 +5,18 @@
     "postcss": "^8.4.27",
     "postcss-cli": "^10.1.0"
   },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "pa11y": "^6.2.3",
+    "puppeteer": "^9.1.1"
+  },
   "scripts": {
     "build": "hugo",
-    "start": "hugo server"
+    "start": "hugo server",
+    "a11y": "bash scripts/a11y.sh",
+    "a11y:ci": "A11Y_LOG_ONLY=1 bash scripts/a11y.sh"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

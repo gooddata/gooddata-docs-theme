@@ -4,7 +4,7 @@
 {{ $icon := .Get "color" | default "default" }}
 <div class="alert alert-{{ $color }}" role="note">
 {{ with resources.Get (printf "icons/icon-alert-%s.svg" $icon) }}{{ ( . | minify).Content | safeHTML }}{{ end }}
-{{ with .Get "title" }}<h4 class="alert-heading">{{ . | safeHTML }}</h4>{{ end }}
+{{ with .Get "title" }}<p class="alert-heading">{{ . | safeHTML }}</p>{{ end }}
 {{ if eq .Page.File.Ext "md" }}
 {{ replaceRE "^<pre><code>" "" .Inner | safeHTML }}
 {{ else }}

@@ -1,0 +1,15 @@
+# Netlify build configuration.
+#
+# The deploy build (`hugo`) runs first and produces the published `public/`
+# output. The accessibility audit then runs in log-only mode: it builds into a
+# separate dir (.a11y-site) so it never touches the deploy output, prints its
+# WCAG 2.1 AA findings (light + dark) to the build log, and — thanks to both
+# A11Y_LOG_ONLY and the `|| true` guard — never fails the build.
+[build]
+  command = "hugo && (npm run a11y:ci || true)"
+  publish = "public"
+
+# Node 20 is required for PostCSS/CSS minification and the audit scripts.
+# (.nvmrc also pins this; kept here so it's explicit in CI.)
+[build.environment]
+  NODE_VERSION = "20"

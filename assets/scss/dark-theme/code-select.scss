@@ -10,6 +10,10 @@
     border-color: $color-marlin-black;
   }
 
+  .td-content > pre {
+    background-color: $color-coal-black;
+  }
+
   // Code-select tabs
   .gd-docs-code-select {
     background-color: $color-coal-black;

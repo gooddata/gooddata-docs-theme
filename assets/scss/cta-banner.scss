@@ -13,10 +13,13 @@
   margin-bottom: pxtorem(40px);
   overflow: hidden;
   position: relative;
-  background-image: url("../img/blog-cta-desk.webp");
-  background-size: auto 90%;
-  background-repeat: no-repeat;
-  background-position: right center;
+
+  &__media {
+    flex: 1 1 0;
+    align-self: stretch;
+    margin: pxtorem(-32px) pxtorem(-32px) pxtorem(-32px) 0;
+    background: url("../img/blog-cta-desk.webp") no-repeat right center / auto 90%;
+  }
 
   // ── Text column ──────────────────────────────────────────────────────────
 
@@ -80,28 +83,16 @@
     flex-direction: column;
     align-items: flex-start;
     padding: pxtorem(24px);
-    padding-bottom: 50%;
-    background-image: url("../img/blog-cta-mobile.webp");
-    background-size: 90% auto;
-    background-repeat: no-repeat;
-    background-position: bottom center;
 
     &__content {
       width: 100%;
     }
 
     &__media {
-      position: static;
-      width: 100%;
-      max-width: 100%;
-      margin-top: pxtorem(8px);
-
-      img {
-        border-radius: 4px 4px 0 0;
-        max-height: 180px;
-        object-fit: cover;
-        object-position: top left;
-      }
+      align-self: stretch;
+      aspect-ratio: 621 / 310;
+      margin: pxtorem(8px) 0 pxtorem(-24px);
+      background: url("../img/blog-cta-mobile.webp") no-repeat center / cover;
     }
   }
 }

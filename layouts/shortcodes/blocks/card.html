@@ -6,6 +6,7 @@
 {{ $iconPosition := default "left" (.Get "iconPosition") }}
 {{ $maxRow := .Parent.Get "maxRow" }}
 {{ $span := .Get "span" }}
+{{ $ordinal := .Ordinal }}
 
 {{ if ne .Page.FirstSection .Site.Home }}
     {{ .Scratch.Set "docsRoot" (replaceRE "/$" "" .Page.FirstSection.RelPermalink) }}
@@ -31,9 +32,7 @@
         {{ with .Site.GetPage (printf "%s%s" (.Scratch.Get "docsRoot") $sectionLink) }}
             <a href="{{ .RelPermalink }}" class="homepage-card homepage-card__sectionLink homepage-card__hasIcon homepage-card__icon{{ title $iconPosition }}">
                 <div class="homepage-card__icon">
-                    {{ $svgContent := readFile (printf "%s%s" .RelPermalink .Params.icon) }}
-                    {{ $modifiedSvg := replaceRE `(<svg)(.*?>)` "$1 aria-hidden=\"true\"$2" $svgContent 1 }}
-                    {{ $modifiedSvg | safeHTML }}
+                    {{ partial "inline-svg.html" (dict "path" (printf "%s%s" .RelPermalink .Params.icon) "uid" (printf "%s-%d" (path.BaseName .Params.icon) $ordinal)) }}
                 </div>
                 <strong class="homepage-card__title">{{ .Title }}</strong>
                 {{ if $description }}
@@ -48,9 +47,7 @@
             {{ if $icon }}
                 <div class="homepage-card__icon">
                     {{ if eq (index (last 1 (split $icon ".")) 0) "svg" }}
-                        {{ $svgContent := readFile $icon }}
-                        {{ $modifiedSvg := replaceRE `(<svg)(.*?>)` "$1 aria-hidden=\"true\"$2" $svgContent 1 }}
-                        {{ $modifiedSvg | safeHTML }}
+                        {{ partial "inline-svg.html" (dict "path" $icon "uid" (printf "%s-%d" (path.BaseName $icon) $ordinal)) }}
                     {{ else }}
                         <img src="{{ $icon }}" aria-hidden="true"/>
                     {{ end }}

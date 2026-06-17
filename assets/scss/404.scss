@@ -1,51 +1,187 @@
+// (C) 2026 GoodData Corporation
+
 .td-404 {
-    background-color: $color-mist-gray;
+    background-color: $color-white;
+
+    .td-sidebar,
+    .td-toc {
+        display: none;
+    }
+
+    main {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 0 !important;
+    }
 
     .td-main {
         padding-top: $header-height-desktop + 40px;
         padding-bottom: 40px;
 
         @include mq(x-large) {
-            padding-top: $header-height-x-big-desktop + 80px;
+            padding-top: $header-height-x-big-desktop + 100px;
             padding-bottom: 80px;
         }
+
+        main {
+            @include mq(large) {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+.gd-404 {
+    margin: 0 auto;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    h1 {
-        font-family: $switzer-variable;
-        margin-bottom: 2rem;
-        font-size: 3rem;
-        line-height: 1.25;
+    &__pretitle {
+        position: relative;
+        display: table;
+        height: 28px;
+        margin-bottom: 1rem;
+        padding: 8px 16px 4px;
+        font-family: $funnel-regular;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $color-black;
 
-        @include mq(large) {
-            font-size: 4.25rem;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 28px;
+            border: 1.5px solid $color-storm-gray;
+        }
+
+        &::before {
+            left: 0;
+            border-right: none;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        &::after {
+            right: 0;
+            border-left: none;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
         }
     }
 
-    h2 {
-        font-family: $switzer-semibold;
+    &__title {
+        font-family: $funnel-regular;
         margin-bottom: 1.5rem;
-        font-size: 1.4375rem;
+        font-size: 2.5rem;
         line-height: 1.25;
+        color: $color-heading;
+
+        @include mq(medium) {
+            font-size: 3rem;
+        }
 
         @include mq(large) {
-            font-size: 2rem;
+            font-size: 4rem;
         }
     }
 
-    main {
-        ul {
-            list-style-type: none;
-            padding: 0;
+    &__suggest {
+        margin-top: 3rem;
+    }
+
+    &__subtitle {
+        font-family: $funnel-regular;
+        margin-bottom: 1.5rem;
+        font-size: 1.25rem;
+        line-height: 1.25;
+        color: $color-heading;
+
+        @include mq(large) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include mq(large) {
+            display: flex;
+            justify-content: center;
         }
 
         li {
-            margin-bottom: 9px;
+            margin-bottom: 1rem;
 
-            a {
-                font-size: 18px;
-                text-decoration: underline;
+            @include mq(large) {
+                margin-bottom: 0;
+
+                &:not(:last-child) {
+                    margin-right: 3rem;
+                }
             }
+        }
+    }
+
+    &__link {
+        display: inline-block;
+        position: relative;
+        font-family: $funnel-regular;
+        font-size: 18px;
+        text-decoration: none;
+        white-space: nowrap;
+        color: $color-link;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $color-link;
+        }
+
+        span {
+            position: relative;
+            border-bottom: 2px solid $color-ice-blue;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: auto auto -2px 0;
+                width: 0;
+                height: 2px;
+                background-color: $color-link;
+                transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+
+        &::after {
+            content: "";
+            display: inline-block;
+            position: relative;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            margin-left: 6px;
+            background-color: currentColor;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8.5 3l5 5-5 5M13 8H2.5' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat center / contain;
+            transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &:hover::after {
+            margin-left: 14px;
+        }
+
+        &:hover span::after {
+            width: 100%;
         }
     }
 }

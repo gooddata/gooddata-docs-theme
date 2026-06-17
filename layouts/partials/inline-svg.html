@@ -1,0 +1,12 @@
+{{- /* (C) 2026 GoodData Corporation
+       Inline an SVG file with its internal ids namespaced by a unique prefix so
+       that multiple icons on one page can't produce duplicate ids, and add
+       aria-hidden. Params: path (file to read), uid (unique prefix). */ -}}
+{{- $path := .path -}}
+{{- $uid := .uid -}}
+{{- $svg := readFile $path -}}
+{{- $svg = replaceRE `id="([^"]+)"` (printf `id="%s-${1}"` $uid) $svg -}}
+{{- $svg = replaceRE `url\(#([^)]+)\)` (printf `url(#%s-${1})` $uid) $svg -}}
+{{- $svg = replaceRE `(xlink:href|href)="#([^"]+)"` (printf `${1}="#%s-${2}"` $uid) $svg -}}
+{{- $svg = replaceRE `(<svg)(.*?>)` `${1} aria-hidden="true"${2}` $svg 1 -}}
+{{- $svg | safeHTML -}}
