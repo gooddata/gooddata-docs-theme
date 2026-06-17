@@ -1,28 +1,21 @@
 {{ define "main" -}}
-<div class="row">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <h2 class="mt-0">404 Page</h2>
-        <h1>Ohh, there is nothing in here!</h1>
+<div class="gd-404 text-center">
+  <header class="gd-404__header">
+    <p class="gd-404__pretitle">404 Page</p>
+    <h1 class="gd-404__title">Ohh, there is nothing in here!</h1>
+  </header>
 
-        {{ if and (isset .Site.Params "404") (isset (index .Site.Params "404") "links") }}
-          <div class="mt-7">
-            <h2 class="mb-4">But you can try:</h2>
-            <ul class="mt-2">
-              {{ range index (index .Site.Params "404") "links" }}
-                <li>
-                  <a href="{{ .link }}">{{ .title }}</a>
-                </li>
-              {{ end }}
-            </ul>
-          </div>
+  {{ if and (isset .Site.Params "404") (isset (index .Site.Params "404") "links") }}
+    <div class="gd-404__suggest">
+      <h2 class="gd-404__subtitle">But you can try:</h2>
+      <ul class="gd-404__links">
+        {{ range index (index .Site.Params "404") "links" }}
+          <li>
+            <a href="{{ .link }}" class="gd-404__link"><span>{{ .title }}</span></a>
+          </li>
         {{ end }}
-      </div>
-      <div class="col-12 col-lg-6 d-flex align-items-center justify-content-end">
-        <img class="mw-100" src="https://www.gooddata.ai/img/pages/error/error-404_animation.svg" alt="Where did it go?">
-      </div>
+      </ul>
     </div>
-  </div>
+  {{ end }}
 </div>
 {{- end }}

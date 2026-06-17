@@ -28,8 +28,9 @@ Use `color="info"` for friendly, non-blocking notes.
 ```markdown
 {{</* alert color="info" title="Note" */>}}
 MongoDB is primarily designed for transactional workloads, not analytical
-ones. The MongoDB Connector makes it possible to use MongoDB with GoodData,
-but its performance depends on how the data is modelled and processed.
+ones. The [MongoDB Connector](https://www.gooddata.ai/docs/cloud/) makes it
+possible to use MongoDB with GoodData, but its performance depends on how the
+data is modelled and processed. Set the data source `type` to `MONGODB`.
 {{</* /alert */>}}
 ```
 
@@ -41,7 +42,8 @@ needs visual urgency.
 ```markdown
 {{</* alert color="warning" title="Beta Feature" */>}}
 GoodData's API solution is currently a **beta feature** and is still under
-active development. Do not use these features in your production environment.
+active development. Avoid calling `/api/v1` endpoints in production.
+See the [API documentation](https://www.gooddata.ai/docs/cloud/) for details.
 {{</* /alert */>}}
 ```
 
@@ -57,15 +59,17 @@ This article is part of the GoodData onboarding track.
 
 ## Live preview
 
-{{< alert color="info" title="Note" >}}
+{{% alert color="info" title="Note" %}}
 MongoDB is primarily designed for transactional workloads, not analytical
-ones. The MongoDB Connector makes it possible to use MongoDB with GoodData,
-but its performance depends on how the data is modelled and processed.
+ones. The [MongoDB Connector](https://www.gooddata.ai/docs/cloud/) makes it
+possible to use MongoDB with GoodData, but its performance depends on how the
+data is modelled and processed. Set the data source `type` to `MONGODB`.
 {{< /alert >}}
 
-{{< alert color="warning" title="Beta Feature" >}}
+{{% alert color="warning" title="Beta Feature" %}}
 GoodData's API solution is currently a **beta feature** and is still under
-active development. Do not use these features in your production environment.
+active development. Avoid calling `/api/v1` endpoints in production.
+See the [API documentation](https://www.gooddata.ai/docs/cloud/) for details.
 {{< /alert >}}
 
 ## See also

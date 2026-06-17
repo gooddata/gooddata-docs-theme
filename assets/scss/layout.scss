@@ -17,6 +17,14 @@
     .panel-line:only-child {
         display: none;
     }
+
+    & &__title {
+        font-family: $switzer-variable;
+        font-size: 1.15rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin: 0;
+    }
 }
 
 :focus {

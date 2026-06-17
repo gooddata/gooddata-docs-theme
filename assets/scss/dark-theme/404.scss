@@ -13,4 +13,32 @@
       color: $color-white;
     }
   }
+
+  .gd-404 {
+    &__pretitle {
+      color: $color-white;
+
+      &::before,
+      &::after {
+        border-color: $color-silver-gray;
+      }
+    }
+
+    &__link {
+      color: $color-ice-blue;
+
+      &:hover,
+      &:focus {
+        color: $color-ice-blue;
+      }
+
+      span {
+        border-bottom-color: rgba($color-ice-blue, 0.4);
+
+        &::after {
+          background-color: $color-ice-blue;
+        }
+      }
+    }
+  }
 }

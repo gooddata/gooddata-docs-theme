@@ -23,6 +23,18 @@
     > svg path {
       fill: $color-ocean-blue;
     }
+
+    // These alerts keep a light background in dark mode, so the global
+    // light-blue link color is unreadable. Restore a dark, legible link.
+    a {
+      color: $color-ocean-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-deep-ocean-blue;
+      }
+    }
   }
 
   .alert-warning {
@@ -31,12 +43,36 @@
     color: $color-black;
 
     .alert-heading {
-      color: $color-red;
+      color: $color-black;
     }
 
     > svg path {
       fill: $color-red;
     }
+
+    a {
+      color: $color-ocean-blue;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-deep-ocean-blue;
+      }
+    }
+  }
+
+  .td-content .alert-info :not(pre) > code,
+  .td-content .alert-warning :not(pre) > code {
+    background-color: rgba($color-black, 0.06);
+    border-color: rgba($color-black, 0.12);
+  }
+
+  .td-content .alert-info :not(pre) > code {
+    color: $color-ocean-blue;
+  }
+
+  .td-content .alert-warning :not(pre) > code {
+    color: $color-black;
   }
 
   .alert-label {
