@@ -9,7 +9,7 @@ layout: "list"
 cascade:
 - type: "docs"
   toc_root: true
-  _target:
+  target:
     path: "/*/**"
 ---
 

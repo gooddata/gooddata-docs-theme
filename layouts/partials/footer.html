@@ -1,5 +1,12 @@
 {{/* (C) 2026 GoodData Corporation */}}
-{{ $footer := getJSON "https://www.gooddata.ai/learn-assets/js/footer-definition-new.json" }}
+{{/* A failed fetch fails the build, matching the old getJSON behavior. */}}
+{{ $footerURL := "https://www.gooddata.ai/learn-assets/js/footer-definition-new.json" }}
+{{ $footer := dict }}
+{{ with resources.GetRemote $footerURL }}
+  {{ $footer = . | transform.Unmarshal }}
+{{ else }}
+  {{ errorf "footer.html: unable to fetch %s" $footerURL }}
+{{ end }}
 {{ if not .Site.Params.whitelabeled }}
 
 <footer class="gd-footer" aria-label="Page footer">

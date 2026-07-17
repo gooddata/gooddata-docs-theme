@@ -5,15 +5,15 @@ weight: 1
 cascade:
 - type: "docs"
   toc_root: true
-  _target:
+  target:
     path: "/*"
 - type: "docs"
   toc_root: true
-  _target:
+  target:
     path: "/*/**"
 - type: "docs"
   toc_root: true
-  _target:
+  target:
     path: "/_index.md"
 
 ---
