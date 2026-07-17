@@ -1,0 +1,22 @@
+{{/* (C) 2026 GoodData Corporation */}}
+{{/* "Ask AI" button — opens the Kapa AI widget (loaded by ask-ai-widget.html).
+     Rendered only when Site.Params.askAI.websiteId is configured. The widget is
+     triggered via the `open-kapa-widget` override class. */}}
+{{- with .Site.Params.askAI }}
+{{- if .websiteId }}
+<div class="ask-ai-button-container">
+    <button
+        class="gd-docs-header-nav__cta gd-docs-header-nav__secondary open-kapa-widget ask-ai-button"
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        aria-controls="kapa-modal-content"
+        id="ask-ai-button"
+    >
+        {{ .buttonText | default "Ask AI" }}
+        <div class="ask-ai-icon">
+            {{ with resources.Get "icons/ai.svg" }}{{ ( . | minify).Content | safeHTML }}{{ end }}
+        </div>
+    </button>
+</div>
+{{- end }}
+{{- end }}

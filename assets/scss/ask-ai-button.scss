@@ -1,0 +1,45 @@
+// (C) 2026 GoodData Corporation
+@import "variables/variables";
+
+// "Ask AI" button — opens the Kapa AI widget. The outlined button appearance
+// comes from the shared .gd-docs-header-nav__secondary styles; this file only
+// owns the container layout and icon sizing. Rendered only when
+// Site.Params.askAI.websiteId is configured (see partials/ask-ai-button.html).
+.ask-ai-button-container {
+    display: flex;
+    margin-left: 20px;
+    justify-content: flex-start;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.2;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: inherit;
+                border-color: inherit;
+            }
+
+            &:focus {
+                box-shadow: inherit;
+            }
+        }
+    }
+
+    .ask-ai-icon {
+        display: flex;
+        width: fit-content;
+
+        svg {
+            width: 15px;
+            height: 15px;
+            margin: 0;
+        }
+    }
+}

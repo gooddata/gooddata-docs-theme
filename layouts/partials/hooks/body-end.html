@@ -11,3 +11,4 @@
 <script src="/js/prism-accessibility.js"></script>
 {{ $themeSwitcherJS := resources.Get "js/theme-switcher.js" | minify | fingerprint }}
 <script src="{{ $themeSwitcherJS.RelPermalink }}" integrity="{{ $themeSwitcherJS.Data.integrity }}" defer></script>
+{{ partial "ask-ai-widget.html" . }}
