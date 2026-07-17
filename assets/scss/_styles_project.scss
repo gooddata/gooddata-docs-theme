@@ -47,4 +47,39 @@
   &-buttons svg {
     vertical-align: top;
   }
+
+  // Match the live www.gooddata.ai footer; selectors must outrank
+  // learn-assets Footer.css, which loads after the theme stylesheet.
+  .gd-footer-buttons {
+    gap: 12px;
+  }
+
+  .gd-footer-buttons-item {
+    margin: 0;
+  }
+
+  .gd-footer-buttons-item-icon-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  @media only screen and (min-width: 993px) {
+    .gd-footer-banner-links .gd-footer-banner-links-item {
+      padding: 80px 40px;
+      margin: 0;
+      max-width: none;
+    }
+  }
+
+  .gd-footer-banner-links-item-wrap {
+    p {
+      margin: 32px 0 24px;
+      line-height: 24px;
+    }
+
+    .gd-footer-buttons {
+      justify-content: flex-start;
+      padding: 0;
+    }
+  }
 }
