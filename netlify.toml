@@ -11,5 +11,9 @@
 
 # Node 20 is required for PostCSS/CSS minification and the audit scripts.
 # (.nvmrc also pins this; kept here so it's explicit in CI.)
+# HUGO_VERSION pins the Netlify-provided `hugo` binary used by the deploy
+# build; keep it in sync with hugo-extended in package.json (used by the
+# a11y audit and local npm scripts).
 [build.environment]
   NODE_VERSION = "20"
+  HUGO_VERSION = "0.164.0"

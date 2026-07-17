@@ -11,7 +11,7 @@ canonifyURLs = true
 # Disable, it makes problems with Netlify (missing internal redirect .../path -> .../path/)
 # relativeURLs = true
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "term"]
 
 # Highlighting config
 pygmentsCodeFences = true
@@ -54,7 +54,7 @@ section = [ "HTML" ]
 [languages]
 [languages.en]
 title = "GoodData Docs Theme"
-languageName = "English"
+label = "English"
 # Weight used for sorting.
 weight = 1
 
@@ -161,12 +161,20 @@ notAlternative = true
 [security]
   [security.funcs]
     getenv = ["^HUGO_", "^hugo_"]
+  # Hugo >= 0.161 runs PostCSS under the Node.js permission model with reads
+  # confined to the project dir. Browserslist probes every ancestor directory
+  # (package.json, browserslist-stats.json), so reads must stay unrestricted;
+  # write/child-process/addon restrictions remain at their defaults.
+  [security.node.permissions]
+    allowRead = ["*"]
 
 [module]
   proxy = "direct"
   [module.hugoVersion]
     extended = true
-    min = "0.81.0"
+    # Templates use hugo.IsServer / .Site.Config.Services (Hugo >= 0.120);
+    # tested with Hugo 0.164.0.
+    min = "0.120.0"
   [[module.imports]]
     path = "github.com/google/docsy"
     disable = false
