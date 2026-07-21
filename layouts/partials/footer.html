@@ -2,27 +2,33 @@
 {{ $footer := getJSON "https://www.gooddata.ai/learn-assets/js/footer-definition-new.json" }}
 {{ if not .Site.Params.whitelabeled }}
 
-<footer class="gd-footer" aria-label="Page footer">
+<footer class="c-sitefooter gd-footer" id="gd-footer" aria-label="Page footer">
   <a href="#top" class="skip-link skip-link--footer">Skip footer content</a>
   
   {{ if $footer.footer.bannerLinks }}
     <ul class="gd-footer-banner-links gd-footer-links">
     {{ range $index, $link := $footer.footer.bannerLinks }}
       <li class="gd-footer-banner-links-item gd-footer-links-item">
-        <span class="gd-footer-banner-links-item-text gd-footer-links-item-text d-none d-lg-block">{{ $link.title | safeHTML }}</span>
+        <div class="gd-footer-banner-links-item-wrap d-flex flex-column align-items-center align-items-lg-start">
+          <img src="https://www.gooddata.ai/img/generic/logo-gd-w.svg" alt="GoodData" class="d-none d-lg-inline-block" width="296" height="53">
+          {{ with $link.subtitle }}
+            <p class="c-p">{{ . }}</p>
+          {{ end }}
+          {{ template "ai-buttons" }}
+        </div>
+
         <button class="gd-footer-banner-links-item-text gd-footer-links-item-text btn d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gd-footer-banner-sublinks-item-{{ $index }}" aria-expanded="false" aria-controls="gd-footer-banner-sublinks-item-{{ $index }}">
-            {{ $link.title }}
+            {{ $link.title | safeHTML }}
         </button>
+
         {{ if and $link.items (gt (len $link.items) 0) }}
-          <ul class="gd-footer-banner-sublinks gd-footer-sublinks collapse d-lg-flex" id="gd-footer-banner-sublinks-item-{{ $index }}">
+          <ul class="gd-footer-banner-sublinks gd-footer-sublinks collapse d-lg-flex w-100 justify-content-lg-end" id="gd-footer-banner-sublinks-item-{{ $index }}">
             {{ range $sublink := $link.items }}
-              <li class="gd-footer-banner-sublinks-item gd-footer-sublinks-item">
-                {{ if and $sublink.link $sublink.title }}
-                  {{ template "absolute-link" (dict "url" $sublink.link "text" $sublink.title "class" "gd-footer-sublinks-item-link" "idPrefix" "footer-link-") }}
-                {{ else }}
-                  <span class="gd-footer-sublinks-item-link">&nbsp;</span>
-                {{ end }}
-              </li>
+              {{ if and (ne $sublink.action "subscribe") $sublink.link $sublink.title }}
+                <li class="gd-footer-banner-sublinks-item gd-footer-sublinks-item">
+                  {{ template "absolute-link" (dict "url" $sublink.link "text" $sublink.title "class" "gd-footer-banner-sublinks-item-link gd-footer-sublinks-item-link" "idPrefix" "footer-sublink-") }}
+                </li>
+              {{ end }}
             {{ end }}
           </ul>
         {{ end }}
@@ -56,11 +62,9 @@
     {{ end }}
   </ul>
 
-  <div class="gd-footer-bottom">
-    {{ template "footer-buttons" (dict "footer" $footer.footer "class" "d-lg-none") }}
-
+  <div class="gd-footer-bottom flex-column">
     {{ if $footer.footer.copyright }}
-      <div class="gd-footer-copyright">
+      <div class="gd-footer-copyright w-100">
         {{ range $copy := $footer.footer.copyright }}
           <div class="gd-footer-copyright-text">
             {{ if $copy.link }}
@@ -73,7 +77,8 @@
       </div>
     {{ end }}
 
-    {{ template "footer-buttons" (dict "footer" $footer.footer "class" "d-none d-lg-flex") }}
+    {{ template "footer-buttons" (dict "footer" $footer.footer) }}
+  </div>
 </footer>
 {{ end }}
 
@@ -82,7 +87,7 @@
       <div class="gd-footer-buttons{{ if .class }} {{ .class }}{{ end }}">
         {{ range $button := .footer.buttons }}
           {{ if eq $button.type "social" }}
-            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "icon" ($button.icon | safeHTML) "class" "gd-footer-buttons-item gd-footer-buttons-item-icon-button" "idPrefix" "footer-btn-" "rel" "noreferrer noopener") }}
+            {{ template "absolute-link" (dict "url" $button.link "text" $button.text "icon" ($button.icon | safeHTML) "ariaLabel" $button.text "class" "gd-footer-buttons-item gd-footer-buttons-item-icon-button" "idPrefix" "footer-btn-" "rel" "noreferrer noopener") }}
           {{ else if eq $button.type "secondary" }}
             {{ template "absolute-link" (dict "url" $button.link "text" $button.text "class" "gd-footer-buttons-item button button-secondary button-small button-inverted" "idPrefix" "footer-btn-") }}
           {{ end }}
@@ -91,11 +96,30 @@
     {{ end }}
 {{ end }}
 
+{{ define "ai-buttons" }}
+  {{ $query := "I want to understand how GoodData helps build secure, scalable, and knowledgeable AI-powered analytics agents. Summarize the key highlights from GoodData's website (https://www.gooddata.ai/ ) and the developer documentation (https://www.gooddata.ai/docs/cloud/ ). Then share the best way to contact GoodData or request a demo." }}
+  {{ $providers := slice
+      (dict "label" "ChatGPT" "icon" "icons/chatgpt.svg" "base" "https://chat.openai.com/?q=")
+      (dict "label" "Claude" "icon" "icons/claude.svg" "base" "https://claude.ai/new?q=")
+      (dict "label" "Gemini" "icon" "icons/gemini.svg" "base" "https://gemini.google.com/?q=")
+      (dict "label" "Grok" "icon" "icons/grok.svg" "base" "https://grok.com/?q=")
+      (dict "label" "Perplexity" "icon" "icons/perplexity.svg" "base" "https://www.perplexity.ai/?q=") }}
+  <div class="gd-footer-buttons d-flex">
+    {{ range $providers }}
+      <div class="gd-footer-buttons-item">
+        <a class="gd-footer-buttons-item-icon-button" href="{{ printf "%s%s" .base (urlquery $query) | safeURL }}" aria-label="{{ .label }}" target="_blank" rel="noreferrer noopener">
+          {{ with resources.Get .icon }}{{ (. | minify).Content | safeHTML }}{{ end }}
+        </a>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}
+
 {{ define "absolute-link" }}
   {{ $urlParse := urls.Parse .url }}
   {{ $url := print (cond (and (gt (len $urlParse.Path) 0) (eq (len $urlParse.Host) 0)) "https://www.gooddata.ai" "") .url }}
   {{ $id := replace (lower .text) " " "-" }}
   {{ $content := cond (isset . "icon") .icon .text }}
 
-  <a href="{{ $url }}" class="{{ .class }}" id="{{ .idPrefix }}{{ $id }}" target="_blank" {{ if (isset . "rel") }}rel="{{ .rel }}"{{ end }}>{{ $content }}</a>
+  <a href="{{ $url }}" class="{{ .class }}" id="{{ .idPrefix }}{{ $id }}" target="_blank" {{ if (isset . "ariaLabel") }}aria-label="{{ .ariaLabel }}" {{ end }}{{ if (isset . "rel") }}rel="{{ .rel }}"{{ end }}>{{ $content }}</a>
 {{ end }}
