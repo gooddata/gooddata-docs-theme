@@ -8,6 +8,10 @@
     background: $color-black;
     color: $color-mist-gray;
 
+    &__mobile-icon::before {
+      filter: brightness(0) invert(1);
+    }
+
     &-section + &-section {
       border-top-color: $color-gunpowder-gray;
     }

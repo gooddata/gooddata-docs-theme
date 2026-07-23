@@ -66,8 +66,6 @@
   @media only screen and (min-width: 993px) {
     .gd-footer-banner-links .gd-footer-banner-links-item {
       padding: 80px 40px;
-      margin: 0;
-      max-width: none;
     }
   }
 
@@ -75,11 +73,6 @@
     p {
       margin: 32px 0 24px;
       line-height: 24px;
-    }
-
-    .gd-footer-buttons {
-      justify-content: flex-start;
-      padding: 0;
     }
   }
 }

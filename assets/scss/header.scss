@@ -108,6 +108,7 @@
 
     &__left {
         display: flex;
+        height: 100%;
     }
 
     &__right {
@@ -118,6 +119,14 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
+        }
+    }
+
+    &__logo {
+
+        &,
+        svg {
+            height: 100%;
         }
     }
 
