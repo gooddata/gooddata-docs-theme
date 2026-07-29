@@ -92,9 +92,10 @@ theme = ["GDCDocsTheme", "docsy"]
 ## Reference
 
 | Page | Description |
-|------|-------------|
+| ---- | ----------- |
 | [Markdown Reference](markdown-reference) | All Markdown formatting options with live rendered output. |
 | [Shortcodes](shortcodes) | Every Hugo shortcode bundled with the theme. |
+| [Table Examples](tables) | Live examples of all table variants, including responsive stacking for wide tables. |
 
 ## License
 

@@ -18,6 +18,11 @@
         background-color: $color-gunpowder-gray;
         border-bottom-color: $color-marlin-black;
       }
+
+      &.restables-clone tbody td:first-child {
+        color: $color-white;
+        background-color: $color-gunpowder-gray;
+      }
     }
   }
 

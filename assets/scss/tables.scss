@@ -38,8 +38,44 @@
                     writing-mode: vertical-lr;
                 }
             }
-            
+
         }
+
+        &.restables-clone {
+            display: none;
+            width: 100%;
+
+            tbody {
+                display: table;
+                width: 100%;
+                border-collapse: collapse;
+
+                + tbody {
+                    margin-top: 10px;
+                }
+
+                td {
+                    box-shadow: none;
+                }
+
+                td:first-child {
+                    width: 35%;
+                    color: $color-black;
+                    font-weight: 700;
+                    background-color: $color-mist-gray;
+                }
+            }
+        }
+    }
+}
+
+.table-responsive--stacked {
+    table.restables-origin {
+        display: none;
+    }
+
+    table.restables-clone {
+        display: block;
     }
 }
 
