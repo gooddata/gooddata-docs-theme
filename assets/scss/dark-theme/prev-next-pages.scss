@@ -8,13 +8,19 @@
     border-top-color: $color-gunpowder-gray;
 
     &__link {
-      color: $color-lime-green;
+      // Was $color-lime-green — identical to the active sidebar-nav ink
+      // (see dark-theme/menu.scss), so the two affordances were
+      // indistinguishable by color. Use the palette's dedicated
+      // "Hyperlinks on dark backgrounds" token instead (already used by
+      // the generic `a` in dark-theme/typography.scss), keeping the
+      // existing underline as the non-color differentiator (WCAG 1.4.1).
+      color: $color-ice-blue;
       text-decoration: underline;
 
       &:hover,
       &:focus,
       &:active {
-        color: $color-white;
+        color: $color-alice-blue;
         text-decoration: underline;
       }
     }
