@@ -7,7 +7,7 @@ description = "GoodData documentation sites theme"
 homepage = "http://help.gooddata.com/"
 tags = ["documentation"]
 features = []
-min_version = "0.81.0"
+min_version = "0.120.0"
 
 [author]
   name = "GoodData Corporation"
